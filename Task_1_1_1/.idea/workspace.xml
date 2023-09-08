@@ -86,7 +86,7 @@
       <command value="gradle build" />
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.Task_1_1_1 [javadoc]">
+  <component name="RunManager" selected="Gradle.Task_1_1_1 [build]">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Task_1_1.main" />
@@ -182,8 +182,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.Task_1_1_1 [javadoc]" />
         <item itemvalue="Gradle.Task_1_1_1 [build]" />
+        <item itemvalue="Gradle.Task_1_1_1 [javadoc]" />
         <item itemvalue="Gradle.Task_1_1 [build]" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Gradle.Task_1_1" />
@@ -200,7 +200,7 @@
       <updated>1694101900063</updated>
       <workItem from="1694101901113" duration="1605000" />
       <workItem from="1694147775311" duration="4306000" />
-      <workItem from="1694181930639" duration="8512000" />
+      <workItem from="1694181930639" duration="8833000" />
     </task>
     <servers />
   </component>
