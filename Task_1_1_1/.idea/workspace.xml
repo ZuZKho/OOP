@@ -67,6 +67,7 @@
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="gradle build" />
+      <command value="gradlew build" />
     </option>
   </component>
   <component name="RunManager" selected="Gradle.Task_1_1 [build]">
@@ -136,7 +137,7 @@
       <option name="presentableId" value="Default" />
       <updated>1694101900063</updated>
       <workItem from="1694101901113" duration="1605000" />
-      <workItem from="1694147775311" duration="3769000" />
+      <workItem from="1694147775311" duration="4306000" />
     </task>
     <servers />
   </component>
