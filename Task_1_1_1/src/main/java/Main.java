@@ -1,5 +1,5 @@
 /**
- * Класс реализующий сортировку кучей
+ * Класс реализующий сортировку кучей.
  */
 public class Main {
     private static int sz;
@@ -8,11 +8,12 @@ public class Main {
      * Функция выполняющая сортировку массива.
      * Переданный в метод массив также отсортируется!!!
      * @param arr массив который нужно отсортировать
+     *
      * @return отсортированный массив
      */
     public static int[] heapsort(int[] arr) {
         sz = arr.length;
-        for(int i = 1; i < sz; i++) {
+        for (int i = 1; i < sz; i++) {
             siftUp(i, arr);
         }
 
@@ -29,7 +30,9 @@ public class Main {
     }
 
     private static void siftUp(int idx, int[] arr) {
-        if (idx == 0) return;
+        if (idx == 0) {
+            return;
+        }
 
         int par = (idx - 1) / 2;
         System.out.println(par);
@@ -44,7 +47,8 @@ public class Main {
     }
 
     private static void siftDown(int idx, int[] arr) {
-        if (idx * 2 + 1 < sz && arr[idx] < arr[idx * 2 + 1] || idx * 2 + 2 < sz && arr[idx] < arr[idx * 2 + 2]     ) {
+        if (idx * 2 + 1 < sz && arr[idx] < arr[idx * 2 + 1] ||
+                idx * 2 + 2 < sz && arr[idx] < arr[idx * 2 + 2]) {
             int toswp = idx * 2 + 1;
             if (idx * 2 + 2 < sz && arr[idx * 2 + 2] > arr[idx * 2 + 1]) {
                 toswp = idx * 2 + 2;
