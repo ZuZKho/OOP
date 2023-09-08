@@ -3,6 +3,13 @@ plugins {
     id 'jacoco'
 }
 
+javadoc {
+    destinationDir = file("${buildDir}/docs/javadoc")
+    options.encoding = 'UTF-8'
+    options.docEncoding = 'UTF-8'
+    options.charSet = 'UTF-8'
+}
+
 group = 'org.example'
 version = '1.0-SNAPSHOT'
 

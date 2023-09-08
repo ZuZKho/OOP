@@ -24,7 +24,7 @@ class MainTest {
         final int MAXN = 1000_000;
         int[] arr = new int[MAXN];
         int[] ans = new int[MAXN];
-        for(int i = 0; i < MAXN; i++) {
+        for (int i = 0; i < MAXN; i++) {
             arr[i] = ThreadLocalRandom.current().nextInt(-1000_000_000, 1000_000_000);
             ans[i] = arr[i];
         }

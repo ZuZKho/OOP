@@ -86,7 +86,7 @@
       <command value="gradle build" />
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.Task_1_1_1 [build]">
+  <component name="RunManager" selected="Gradle.Task_1_1_1 [javadoc]">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Task_1_1.main" />
@@ -158,8 +158,31 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="Task_1_1_1 [javadoc]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="javadoc" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.Task_1_1_1 [javadoc]" />
         <item itemvalue="Gradle.Task_1_1_1 [build]" />
         <item itemvalue="Gradle.Task_1_1 [build]" />
         <item itemvalue="Application.Main" />
@@ -177,7 +200,7 @@
       <updated>1694101900063</updated>
       <workItem from="1694101901113" duration="1605000" />
       <workItem from="1694147775311" duration="4306000" />
-      <workItem from="1694181930639" duration="5060000" />
+      <workItem from="1694181930639" duration="7700000" />
     </task>
     <servers />
   </component>
