@@ -9,7 +9,7 @@ class PolynomialTest {
     void plus() {
         Polynomial p1 = new Polynomial(new int[] {4, 3, 6, 7});
         Polynomial p2 = new Polynomial(new int[] {3, 2, 8});
-        Assertions.assertEquals("7x^3 + 6x^2 + 19x + 6",p1.plus(p2.differentiate(1)).toString());
+        Assertions.assertEquals("7x^3 + 6x^2 + 19x + 6", p1.plus(p2.differentiate(1)).toString());
     }
 
     @Test
@@ -35,16 +35,18 @@ class PolynomialTest {
 
     @Test
     void differentiate() {
-        Assertions.assertTrue((new Polynomial(new int[]{1, 2, 3, 0, 4, 13})).differentiate(0).isEqual(new Polynomial((new int[]{1, 2, 3, 0, 4, 13}))));
-        Assertions.assertTrue((new Polynomial(new int[]{1, 2, 3, 0, 4, 13})).differentiate(1).isEqual(new Polynomial((new int[]{2, 6, 0, 16, 65}))));
-        Assertions.assertTrue((new Polynomial(new int[]{1, 2, 3, 0, 4, 13})).differentiate(2).isEqual(new Polynomial((new int[]{6, 0, 48, 260}))));
-        Assertions.assertTrue((new Polynomial(new int[]{1, 2, 3, 0, 4, 13})).differentiate(10).isEqual(new Polynomial(new int[]{0})));
+        Polynomial p1 = new Polynomial(new int[]{1, 2, 3, 0, 4, 13});
+        Assertions.assertTrue(p1.differentiate(0).isEqual(new Polynomial((new int[]{1, 2, 3, 0, 4, 13}))));
+        Assertions.assertTrue(p1.differentiate(1).isEqual(new Polynomial((new int[]{2, 6, 0, 16, 65}))));
+        Assertions.assertTrue(p1.differentiate(2).isEqual(new Polynomial((new int[]{6, 0, 48, 260}))));
+        Assertions.assertTrue(p1.differentiate(10).isEqual(new Polynomial(new int[]{0})));
     }
 
     @Test
     void isEqual() {
-        Assertions.assertTrue( (new Polynomial(new int[]{1, 2, 3, 0, 4, 13})).isEqual(new Polynomial(new int[]{1, 2, 3, 0, 4, 13})));
-        Assertions.assertFalse( (new Polynomial(new int[]{1, 2, 3, 0, 4, 12})).isEqual(new Polynomial(new int[]{1, 2, 3, 0, 4, 13})));
+        Polynomial p1 = new Polynomial(new int[]{1, 2, 3, 0, 4, 13});
+        Assertions.assertTrue(p1.isEqual(new Polynomial(new int[]{1, 2, 3, 0, 4, 13})));
+        Assertions.assertFalse((new Polynomial(new int[]{1, 2, 3, 0, 4, 12})).isEqual(p1));
     }
 
     @Test

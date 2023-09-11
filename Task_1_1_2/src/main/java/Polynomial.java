@@ -95,7 +95,7 @@ public class Polynomial {
     public int evaluate(int x) {
         int cur = 1;
         int res = 0;
-        for (int coef: coefs) {
+        for (int coef : coefs) {
             res += cur * coef;
             cur *= x;
         }
@@ -143,7 +143,9 @@ public class Polynomial {
     public boolean isEqual(Polynomial b) {
         if (this.n != b.n) return false;
         for (int i = 0; i < this.n; i++) {
-            if (this.coefs[i] != b.coefs[i]) return false;
+            if (this.coefs[i] != b.coefs[i]) {
+                return false;
+            }
         }
         return true;
     }
@@ -169,7 +171,7 @@ public class Polynomial {
                 }
 
                 if (i != 0) {
-                    res+= "x";
+                    res += "x";
                     if (i != 1) {
                         res += "^" + i;
                     }
@@ -179,5 +181,5 @@ public class Polynomial {
         return res;
     }
 
-    
+
 }
