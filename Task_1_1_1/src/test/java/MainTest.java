@@ -19,6 +19,18 @@ class MainTest {
     }
 
     @Test
+    void heapsortSingleton() {
+        int[] ans = Main.heapsort(new int[] {1});
+        Assertions.assertArrayEquals(new int[] {1}, ans);
+    }
+
+    @Test
+    void heapsortEmpty() {
+        Assertions.assertArrayEquals(new int[] {},
+                Main.heapsort(new int[] {}));
+    }
+
+    @Test
     void heapsortLong() {
         final int Maxn = 1000_000;
         int[] arr = new int[Maxn];
