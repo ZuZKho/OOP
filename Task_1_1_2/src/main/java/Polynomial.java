@@ -19,12 +19,12 @@ public class Polynomial {
      * @return полином без ведущих нулей.
      */
     private int[] normalize(int[] arr) {
-        int newLen = Math.max(0, arr.length - 1);
-        while (newLen > 0 && arr[newLen] == 0) {
-            newLen--;
+        int polynomialDegree = Math.max(0, arr.length - 1);
+        while (polynomialDegree > 0 && arr[polynomialDegree] == 0) {
+            polynomialDegree--;
         }
 
-        newLen++;
+        int newLen = polynomialDegree + 1;
         int[] buf = new int[newLen];
         System.arraycopy(arr, 0, buf, 0, newLen);
         return buf;
@@ -80,7 +80,7 @@ public class Polynomial {
      * @param b второй множитель
      * @return произведение полиномов
      */
-    public Polynomial times(Polynomial b) {
+    public Polynomial multiply(Polynomial b) {
         int newLen = this.len + b.len - 1;
         int[] newCoefs = new int[newLen];
         for (int i = 0; i < this.len; i++) {
@@ -133,10 +133,14 @@ public class Polynomial {
     /**
      * Сравнение двух полиномов.
      *
-     * @param b второй полином
+     * @param obj второй полином
      * @return равны ли полиномы
      */
-    public boolean isEqual(Polynomial b) {
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Polynomial)) return false;
+        Polynomial b = (Polynomial) obj;
+
         if (this.len != b.len) return false;
         for (int i = 0; i < this.len; i++) {
             if (this.coefs[i] != b.coefs[i]) {
