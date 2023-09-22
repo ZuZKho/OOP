@@ -1,5 +1,10 @@
 import java.util.*;
 
+/**
+ * Tree Class.
+ *
+ * @param <T> vertex value type
+ */
 public class Tree<T> implements Iterable<T> {
     private T value;
     private Tree<T> parent;
@@ -10,6 +15,12 @@ public class Tree<T> implements Iterable<T> {
         this.parent = null;
     }
 
+    /**
+     * Add new child with value.
+     *
+     * @param value value of new vertex
+     * @return new child node
+     */
     public Tree<T> addChild(T value) {
         Tree<T> newChild = new Tree<>(value);
         newChild.parent = this;
@@ -20,6 +31,11 @@ public class Tree<T> implements Iterable<T> {
         return newChild;
     }
 
+    /**
+     * Add subtree.
+     *
+     * @param newChild subtree
+     */
     public void addChild(Tree<T> newChild) {
         newChild.parent = this;
         Tree<T> old = this.children.put(newChild.value, newChild);
@@ -28,6 +44,9 @@ public class Tree<T> implements Iterable<T> {
         }
     }
 
+    /**
+     * Remove subtree.
+     */
     public void remove() {
         if (this.parent != null) {
             this.parent.children.remove(this.value);
@@ -118,7 +137,9 @@ public class Tree<T> implements Iterable<T> {
             T toReturn = this.current.value;
 
             this.current = getNext(this.current);
-            if (this.current != null) used.add(this.current.value);
+            if (this.current != null) {
+                used.add(this.current.value);
+            }
 
             return toReturn;
         }
@@ -131,6 +152,7 @@ public class Tree<T> implements Iterable<T> {
 
     private class BfsIterator<T> implements Iterator<T> {
         private ArrayDeque<Tree<T>> queue = new ArrayDeque<>();
+
         BfsIterator(Tree<T> root) {
             queue.addLast(root);
         }
@@ -148,9 +170,9 @@ public class Tree<T> implements Iterable<T> {
 
         @Override
         public T next() {
-            if (!hasNext())
+            if (!hasNext()) {
                 throw new NoSuchElementException();
-
+            }
             Tree<T> toReturn = queue.pollFirst();
             updateQueue(toReturn);
             return toReturn.value;
