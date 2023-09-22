@@ -1,8 +1,9 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.ArrayList;
 import java.util.Iterator;
+
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 class TreeTest {
@@ -85,6 +86,97 @@ class TreeTest {
         }
 
         assertEquals(sz, 5);
+    }
+
+    @Test
+    void testSingleton() {
+        Tree<Integer> tree1 = new Tree<>(1);
+        Tree<Integer> tree2 = new Tree<>(1);
+
+        assertEquals(tree1, tree2);
+    }
+
+    @Test
+    void testEmpty1() {
+        Tree<Integer> tree1 = new Tree<>(1);
+        tree1.remove();
+        Tree<Integer> tree2 = new Tree<>(1);
+
+        assertNotEquals(tree1, tree2);
+    }
+
+    @Test
+    void testEmpty2() {
+        Tree<Integer> tree1 = new Tree<>(1);
+        tree1.remove();
+        Tree<Integer> tree2 = new Tree<>(1);
+        tree2.remove();
+
+        assertEquals(tree1, tree2);
+    }
+
+    @Test
+    void testDfsBamboo() {
+        ArrayList<Integer> expected = new ArrayList<>();
+        expected.add(0);
+
+        final int vertexCnt = 5000;
+        Tree<Integer> tree = new Tree<>(0);
+        Tree<Integer> buf = tree;
+
+        for (int i = 1; i < vertexCnt; i++) {
+            buf = buf.addChild(i);
+            expected.add(i);
+        }
+
+        int j = 0;
+        for (Iterator<Integer> it = tree.iterator(); it.hasNext(); ) {
+            var vertex = it.next();
+            assertEquals(vertex, expected.get(j));
+            j++;
+        }
+    }
+
+    @Test
+    void testDfsEmpty() {
+        Tree<String> tree = new Tree<>("empty");
+        tree.remove();
+
+        for (Iterator<?> it = tree.iterator(); it.hasNext(); ) {
+            fail();
+        }
+    }
+
+    @Test
+    void testBfsEmpty() {
+        Tree<String> tree = new Tree<>("empty");
+        tree.remove();
+
+        for (Iterator<?> it = tree.iterator(); it.hasNext(); ) {
+            fail();
+        }
+    }
+
+    @Test
+    void testBfsBamboo() {
+        ArrayList<Integer> expected = new ArrayList<>();
+        expected.add(0);
+
+        final int vertexCnt = 5000;
+        Tree<Integer> tree = new Tree<>(0);
+        Tree<Integer> buf = tree;
+
+        for (int i = 1; i < vertexCnt; i++) {
+            buf = buf.addChild(i);
+            expected.add(i);
+        }
+
+        int j = 0;
+        for (Iterator<Integer> it = tree.iteratorBfs(); it.hasNext(); ) {
+            var vertex = it.next();
+            assertEquals(vertex, expected.get(j));
+            j++;
+        }
     }
 
 }

@@ -51,6 +51,8 @@ public class Tree<T> implements Iterable<T> {
         if (this.parent != null) {
             this.parent.children.remove(this.value);
         }
+        this.value = null;
+        this.children.clear();
     }
 
     @Override
@@ -85,7 +87,7 @@ public class Tree<T> implements Iterable<T> {
     /**
      * Iterator по-умолчанию. Выполняет функции обхода в глубину.
      *
-     * @return
+     * @return dfs iterator
      */
     @Override
     public Iterator<T> iterator() {
@@ -95,7 +97,7 @@ public class Tree<T> implements Iterable<T> {
     /**
      * Iterator выполняющий обход в ширину.
      *
-     * @return
+     * @return bfs iterator
      */
     public Iterator<T> iteratorBfs() {
         return new BfsIterator<>(this);
@@ -106,9 +108,11 @@ public class Tree<T> implements Iterable<T> {
         private Tree<T> current;
 
         DfsIterator(Tree<T> root) {
-            this.current = root;
-            if (this.current != null) {
+            if (root.value != null) {
+                this.current = root;
                 used.add(this.current.value);
+            } else {
+                this.current = null;
             }
         }
 
@@ -120,7 +124,9 @@ public class Tree<T> implements Iterable<T> {
                     return entry.getValue();
                 }
             }
-            if (root.parent != null) return getNext(root.parent);
+            if (root.parent != null) {
+                return getNext(root.parent);
+            }
             return null;
         }
 
@@ -131,9 +137,9 @@ public class Tree<T> implements Iterable<T> {
 
         @Override
         public T next() {
-            if (!hasNext())
+            if (!hasNext()) {
                 throw new NoSuchElementException();
-
+            }
             T toReturn = this.current.value;
 
             this.current = getNext(this.current);
@@ -154,7 +160,9 @@ public class Tree<T> implements Iterable<T> {
         private ArrayDeque<Tree<T>> queue = new ArrayDeque<>();
 
         BfsIterator(Tree<T> root) {
-            queue.addLast(root);
+            if (root.value != null) {
+                queue.addLast(root);
+            }
         }
 
         private void updateQueue(Tree<T> root) {
