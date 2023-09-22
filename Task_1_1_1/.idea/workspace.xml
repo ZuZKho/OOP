@@ -19,28 +19,6 @@
       <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myBuild.sh" beforeDir="false" afterPath="$PROJECT_DIR$/myBuild.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/docs/Main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/docs/Main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/docs/allclasses-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/docs/allclasses-index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/docs/allpackages-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/docs/allpackages-index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/docs/element-list" beforeDir="false" afterPath="$PROJECT_DIR$/src/docs/element-list" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/docs/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/docs/help-doc.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/docs/index-all.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/docs/index-all.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/docs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/docs/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/docs/jquery-ui.overrides.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/docs/jquery-ui.overrides.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/docs/legal/ADDITIONAL_LICENSE_INFO" beforeDir="false" afterPath="$PROJECT_DIR$/src/docs/legal/ADDITIONAL_LICENSE_INFO" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/docs/legal/ASSEMBLY_EXCEPTION" beforeDir="false" afterPath="$PROJECT_DIR$/src/docs/legal/ASSEMBLY_EXCEPTION" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/docs/legal/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/src/docs/legal/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/docs/legal/jquery.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/docs/legal/jquery.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/docs/legal/jqueryUI.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/docs/legal/jqueryUI.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/docs/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/docs/overview-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/docs/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/docs/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/docs/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/docs/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/docs/script-dir/jquery-3.6.1.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/docs/script-dir/jquery-3.6.1.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/docs/script-dir/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/docs/script-dir/jquery-ui.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/docs/script-dir/jquery-ui.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/docs/script-dir/jquery-ui.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/docs/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/docs/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/docs/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/docs/search.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/docs/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/docs/stylesheet.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MainTest.java" afterDir="false" />
     </list>
@@ -91,27 +69,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Task__1__1__1&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/matve/Documents/GitHub/OOP/Task_1_1_1&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "Task__1__2__1",
+    "last_opened_file_path": "C:/Users/matve/Documents/GitHub/OOP/Task_1_1_1",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "terminal",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -247,6 +225,7 @@
       <workItem from="1694334855873" duration="857000" />
       <workItem from="1694335737839" duration="1549000" />
       <workItem from="1695205411869" duration="32000" />
+      <workItem from="1695350793284" duration="229000" />
     </task>
     <servers />
   </component>
