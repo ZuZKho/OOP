@@ -79,4 +79,9 @@ class PolynomialTest {
     void testToString2() {
         Assertions.assertEquals("13x^5 + 4x^4 + 3x^2 + 2x + 1", (new Polynomial(new int[]{1, 2, 3, 0, 4, 13})).toString());
     }
+
+    @Test
+    void testEmpty() {
+        Assertions.assertEquals("0", (new Polynomial(new int[]{})).toString());
+    }
 }

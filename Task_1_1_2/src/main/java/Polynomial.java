@@ -7,9 +7,15 @@ public class Polynomial {
     private int len;
 
     Polynomial(int[] arr) {
-        this.len = arr.length;
-        this.coefs = new int[arr.length];
-        System.arraycopy(arr, 0, this.coefs, 0, this.len);
+        if (arr.length == 0) {
+            System.out.println("Warn: empty array. Polynomial will be equals to 0.");
+            this.len = 1;
+            this.coefs = new int[this.len];
+        } else {
+            this.len = arr.length;
+            this.coefs = new int[this.len];
+            System.arraycopy(arr, 0, this.coefs, 0, this.len);
+        }
     }
 
     /**
@@ -164,9 +170,20 @@ public class Polynomial {
         for (int i = this.len - 1; i >= 0; i--) {
             if (this.coefs[i] != 0) {
                 if (res == "") {
-                    res += this.coefs[i];
+
+                    if (this.coefs[i] < 0) {
+                        res += "- " + Math.abs(this.coefs[i]);
+                    } else {
+                        res += this.coefs[i];
+                    }
+
                 } else {
-                    res += " + " + this.coefs[i];
+                    if (this.coefs[i] < 0) {
+                        res += " - " + Math.abs(this.coefs[i]);
+                    } else {
+                        res += " + " + this.coefs[i];
+                    }
+
                 }
 
                 if (i != 0) {
