@@ -28,6 +28,24 @@ class TreeTest {
         assertEquals(tree1, tree2);
     }
 
+    void test2() {
+        Tree<String> tree1 = new Tree<>("R1");
+        var a1 = tree1.addChild("A");
+        a1.addChild("B");
+        Tree<String> subtree = new Tree<>("R2");
+        subtree.addChild("C");
+        subtree.addChild("D");
+        tree1.addChild(subtree);
+
+        Tree<String> tree2 = new Tree<>("R1");
+        var r2 = tree2.addChild("R2");
+        var a2 = tree2.addChild("A");
+        r2.addChild("D");
+        a2.addChild("B");
+
+        assertNotEquals(tree1, tree2);
+    }
+
 
     @Test
     void testRemove() {
