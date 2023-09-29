@@ -249,7 +249,7 @@ class TreeTest {
 
         Exception exception = assertThrows(ConcurrentModificationException.class, () -> {
             a1.remove();
-            while(it.hasNext()) {
+            while (it.hasNext()) {
                 it.next();
             }
         });
@@ -271,7 +271,7 @@ class TreeTest {
 
         assertDoesNotThrow(() -> {
             tree.addChild("228");
-            while(it.hasNext()) {
+            while (it.hasNext()) {
                 it.next();
             }
         });
@@ -293,7 +293,7 @@ class TreeTest {
 
         assertDoesNotThrow(() -> {
             subtree.addChild("228");
-            while(it.hasNext()) {
+            while (it.hasNext()) {
                 it.next();
             }
         });
@@ -312,14 +312,14 @@ class TreeTest {
 
         Exception exception = assertThrows(ConcurrentModificationException.class, () -> {
             a1.remove();
-            while(it.hasNext()) {
+            while (it.hasNext()) {
                 it.next();
             }
         });
     }
 
     /**
-     * Changes выше по дереву
+     * Changes выше по дереву.
      */
     @Test
     public void concurrentModificationBfsMultithread2() {
@@ -334,7 +334,7 @@ class TreeTest {
 
         assertDoesNotThrow(() -> {
             tree.addChild("228");
-            while(it.hasNext()) {
+            while (it.hasNext()) {
                 it.next();
             }
         });
@@ -356,7 +356,7 @@ class TreeTest {
 
         assertDoesNotThrow(() -> {
             subtree.addChild("228");
-            while(it.hasNext()) {
+            while (it.hasNext()) {
                 it.next();
             }
         });

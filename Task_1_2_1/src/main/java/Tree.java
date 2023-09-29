@@ -19,12 +19,12 @@ public class Tree<T> implements Iterable<T> {
 
     /**
      * Функция для обработки ConcurrentModificationException.
-     *
      * При любом изменении поддерева изменяем счетчик всех предков.
      * Таким образом, если мы изменили что-то в поддереве исключение выбросится,
-     * а если выше по дереву или в соседних поддеревьях (это вершины, которые не учавствуют в обходе) не выбросится.
+     * а если выше по дереву или в соседних поддеревьях
+     *  (это вершины, которые не учавствуют в обходе) не выбросится.
      *
-     * @param current
+     * @param current текущая нода.
      */
     private void propagateToParents(Tree<T> current) {
         if (current == null || current.parent == null) {
@@ -172,7 +172,7 @@ public class Tree<T> implements Iterable<T> {
         }
 
         @Override
-        public T next() throws  NoSuchElementException{
+        public T next() throws NoSuchElementException {
             if (!hasNext()) {
                 throw new NoSuchElementException();
             }
