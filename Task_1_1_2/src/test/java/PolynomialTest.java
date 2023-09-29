@@ -19,7 +19,7 @@ class PolynomialTest {
     void minus1() {
         Polynomial p1 = new Polynomial(new int[]{4, 3, 6, 7});
         Polynomial p2 = new Polynomial(new int[]{3, 2, 8});
-        Assertions.assertEquals(p1.minus(p2),new Polynomial(new int[]{1, 1, -2, 7}));
+        Assertions.assertEquals(p1.minus(p2), new Polynomial(new int[]{1, 1, -2, 7}));
     }
 
     @Test
@@ -73,17 +73,19 @@ class PolynomialTest {
     @Test
     void hashCode1() {
         Polynomial p1 = new Polynomial(new int[]{1, 2, 3, 0, 4, 13});
-        Assertions.assertEquals(p1.hashCode(),(new Polynomial(new int[]{1, 2, 3, 0, 4, 13})).hashCode());
+        Assertions.assertEquals(p1.hashCode(), (new Polynomial(new int[]{1, 2, 3, 0, 4, 13})).hashCode());
     }
 
     @Test
     void testToString1() {
-        Assertions.assertEquals("5x^4 + 3x^2", (new Polynomial(new int[]{0, 0, 3, 0, 5})).toString());
+        Assertions.assertEquals("5x^4 + 3x^2",
+                (new Polynomial(new int[]{0, 0, 3, 0, 5})).toString());
     }
 
     @Test
     void testToString2() {
-        Assertions.assertEquals("13x^5 + 4x^4 + 3x^2 + 2x + 1", (new Polynomial(new int[]{1, 2, 3, 0, 4, 13})).toString());
+        Assertions.assertEquals("13x^5 + 4x^4 + 3x^2 + 2x + 1",
+                (new Polynomial(new int[]{1, 2, 3, 0, 4, 13})).toString());
     }
 
     @Test

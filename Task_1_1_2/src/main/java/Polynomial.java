@@ -154,10 +154,14 @@ public class Polynomial {
      */
     @Override
     public boolean equals(Object obj) {
-        if (!(obj instanceof Polynomial)) return false;
+        if (!(obj instanceof Polynomial)) {
+            return false;
+        }
         Polynomial b = (Polynomial) obj;
 
-        if (this.len != b.len) return false;
+        if (this.len != b.len) {
+            return false;
+        }
         for (int i = 0; i < this.len; i++) {
             if (this.coefs[i] != b.coefs[i]) {
                 return false;
