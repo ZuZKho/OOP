@@ -10,9 +10,28 @@ public class Tree<T> implements Iterable<T> {
     private Tree<T> parent;
     private Map<T, Tree<T>> children = new HashMap<>();
 
+    private int modificationsCount = 0;
+
     Tree(T value) {
         this.value = value;
         this.parent = null;
+    }
+
+    /**
+     * Функция для обработки ConcurrentModificationException.
+     *
+     * При любом изменении поддерева изменяем счетчик всех предков.
+     * Таким образом, если мы изменили что-то в поддереве исключение выбросится,
+     * а если выше по дереву или в соседних поддеревьях (это вершины, которые не учавствуют в обходе) не выбросится.
+     *
+     * @param current
+     */
+    private void propagateToParents(Tree<T> current) {
+        if (current == null || current.parent == null) {
+            return;
+        }
+        current.parent.modificationsCount++;
+        propagateToParents(current.parent);
     }
 
     /**
@@ -22,6 +41,9 @@ public class Tree<T> implements Iterable<T> {
      * @return new child node
      */
     public Tree<T> addChild(T value) {
+        this.modificationsCount++;
+        propagateToParents(this);
+
         Tree<T> newChild = new Tree<>(value);
         newChild.parent = this;
         Tree<T> old = this.children.put(value, newChild);
@@ -37,6 +59,9 @@ public class Tree<T> implements Iterable<T> {
      * @param newChild subtree
      */
     public void addChild(Tree<T> newChild) {
+        this.modificationsCount++;
+        propagateToParents(this);
+
         newChild.parent = this;
         Tree<T> old = this.children.put(newChild.value, newChild);
         if (old != null) {
@@ -48,6 +73,9 @@ public class Tree<T> implements Iterable<T> {
      * Remove subtree.
      */
     public void remove() {
+        this.modificationsCount++;
+        propagateToParents(this);
+
         if (this.parent != null) {
             this.parent.children.remove(this.value);
         }
@@ -105,18 +133,23 @@ public class Tree<T> implements Iterable<T> {
 
     private class DfsIterator<T> implements Iterator<T> {
         private Set<T> used = new HashSet<>();
+
+        private T rootValue;
         private Tree<T> current;
+        private int modificationsBefore;
 
         DfsIterator(Tree<T> root) {
+            modificationsBefore = modificationsCount;
+
             if (root.value != null) {
+                rootValue = root.value;
                 this.current = root;
-                used.add(this.current.value);
+                this.used.add(this.current.value);
             } else {
                 this.current = null;
             }
         }
 
-        // Тесты с пустым деревом и единичным
         private Tree<T> getNext(Tree<T> root) {
             for (var entry : root.children.entrySet()) {
                 T key = entry.getKey();
@@ -124,19 +157,22 @@ public class Tree<T> implements Iterable<T> {
                     return entry.getValue();
                 }
             }
-            if (root.parent != null) {
+            if (root.parent != null && root.value != rootValue) {
                 return getNext(root.parent);
             }
             return null;
         }
 
         @Override
-        public boolean hasNext() {
+        public boolean hasNext() throws ConcurrentModificationException {
+            if (modificationsCount != modificationsBefore) {
+                throw new ConcurrentModificationException();
+            }
             return this.current != null;
         }
 
         @Override
-        public T next() {
+        public T next() throws  NoSuchElementException{
             if (!hasNext()) {
                 throw new NoSuchElementException();
             }
@@ -151,15 +187,17 @@ public class Tree<T> implements Iterable<T> {
         }
 
         @Override
-        public void remove() {
-            throw new UnsupportedOperationException();
+        public void remove() throws ConcurrentModificationException {
+            throw new ConcurrentModificationException();
         }
     }
 
     private class BfsIterator<T> implements Iterator<T> {
         private ArrayDeque<Tree<T>> queue = new ArrayDeque<>();
+        private int modificationsBefore;
 
         BfsIterator(Tree<T> root) {
+            modificationsBefore = modificationsCount;
             if (root.value != null) {
                 queue.addLast(root);
             }
@@ -172,12 +210,15 @@ public class Tree<T> implements Iterable<T> {
         }
 
         @Override
-        public boolean hasNext() {
+        public boolean hasNext() throws ConcurrentModificationException {
+            if (modificationsCount != modificationsBefore) {
+                throw new ConcurrentModificationException();
+            }
             return !queue.isEmpty();
         }
 
         @Override
-        public T next() {
+        public T next() throws NoSuchElementException {
             if (!hasNext()) {
                 throw new NoSuchElementException();
             }
@@ -187,8 +228,8 @@ public class Tree<T> implements Iterable<T> {
         }
 
         @Override
-        public void remove() {
-            throw new UnsupportedOperationException();
+        public void remove() throws ConcurrentModificationException {
+            throw new ConcurrentModificationException();
         }
     }
 }

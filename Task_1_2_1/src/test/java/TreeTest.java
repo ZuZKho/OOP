@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 
 import org.junit.jupiter.api.Test;
@@ -195,6 +196,170 @@ class TreeTest {
             assertEquals(vertex, expected.get(j));
             j++;
         }
+    }
+
+
+    @Test
+    public void concurrentModificationBfs() {
+        Tree<String> tree = new Tree<>("R1");
+        var a1 = tree.addChild("A");
+        a1.addChild("B");
+        Tree<String> subtree = new Tree<>("R2");
+        subtree.addChild("C");
+        subtree.addChild("D");
+        tree.addChild(subtree);
+
+        Exception exception = assertThrows(ConcurrentModificationException.class, () -> {
+            for (Iterator<String> it = tree.iteratorBfs(); it.hasNext(); ) {
+                it.remove();
+            }
+        });
+    }
+
+    @Test
+    public void concurrentModificationDfs() {
+        Tree<String> tree = new Tree<>("R1");
+        var a1 = tree.addChild("A");
+        a1.addChild("B");
+        Tree<String> subtree = new Tree<>("R2");
+        subtree.addChild("C");
+        subtree.addChild("D");
+        tree.addChild(subtree);
+
+        Exception exception = assertThrows(ConcurrentModificationException.class, () -> {
+            for (Iterator<String> it = tree.iterator(); it.hasNext(); ) {
+                it.remove();
+            }
+        });
+    }
+
+    /**
+     * Changes внутри обхода.
+     */
+    @Test
+    public void concurrentModificationDfsMultithread1() {
+        Tree<String> tree = new Tree<>("R1");
+        var a1 = tree.addChild("A");
+        a1.addChild("B");
+        Tree<String> subtree = new Tree<>("R2");
+        subtree.addChild("C");
+        subtree.addChild("D");
+        tree.addChild(subtree);
+        Iterator<?> it = tree.iterator();
+
+        Exception exception = assertThrows(ConcurrentModificationException.class, () -> {
+            a1.remove();
+            while(it.hasNext()) {
+                it.next();
+            }
+        });
+    }
+
+    /**
+     * Changes выше по дереву
+     */
+    @Test
+    public void concurrentModificationDfsMultithread2() {
+        Tree<String> tree = new Tree<>("R1");
+        var a1 = tree.addChild("A");
+        a1.addChild("B");
+        Tree<String> subtree = new Tree<>("R2");
+        subtree.addChild("C");
+        subtree.addChild("D");
+        tree.addChild(subtree);
+        Iterator<?> it = a1.iterator();
+
+        assertDoesNotThrow(() -> {
+            tree.addChild("228");
+            while(it.hasNext()) {
+                it.next();
+            }
+        });
+    }
+
+    /**
+     * Changes в соседних поддеревьях.
+     */
+    @Test
+    public void concurrentModificationDfsMultithread3() {
+        Tree<String> tree = new Tree<>("R1");
+        var a1 = tree.addChild("A");
+        a1.addChild("B");
+        Tree<String> subtree = new Tree<>("R2");
+        subtree.addChild("C");
+        subtree.addChild("D");
+        tree.addChild(subtree);
+        Iterator<?> it = a1.iterator();
+
+        assertDoesNotThrow(() -> {
+            subtree.addChild("228");
+            while(it.hasNext()) {
+                it.next();
+            }
+        });
+    }
+
+    @Test
+    public void concurrentModificationBfsMultithread1() {
+        Tree<String> tree = new Tree<>("R1");
+        var a1 = tree.addChild("A");
+        a1.addChild("B");
+        Tree<String> subtree = new Tree<>("R2");
+        subtree.addChild("C");
+        subtree.addChild("D");
+        tree.addChild(subtree);
+        Iterator<?> it = tree.iteratorBfs();
+
+        Exception exception = assertThrows(ConcurrentModificationException.class, () -> {
+            a1.remove();
+            while(it.hasNext()) {
+                it.next();
+            }
+        });
+    }
+
+    /**
+     * Changes выше по дереву
+     */
+    @Test
+    public void concurrentModificationBfsMultithread2() {
+        Tree<String> tree = new Tree<>("R1");
+        var a1 = tree.addChild("A");
+        a1.addChild("B");
+        Tree<String> subtree = new Tree<>("R2");
+        subtree.addChild("C");
+        subtree.addChild("D");
+        tree.addChild(subtree);
+        Iterator<?> it = a1.iteratorBfs();
+
+        assertDoesNotThrow(() -> {
+            tree.addChild("228");
+            while(it.hasNext()) {
+                it.next();
+            }
+        });
+    }
+
+    /**
+     * Changes в соседних поддеревьях.
+     */
+    @Test
+    public void concurrentModificationBfsMultithread3() {
+        Tree<String> tree = new Tree<>("R1");
+        var a1 = tree.addChild("A");
+        a1.addChild("B");
+        Tree<String> subtree = new Tree<>("R2");
+        subtree.addChild("C");
+        subtree.addChild("D");
+        tree.addChild(subtree);
+        Iterator<?> it = a1.iteratorBfs();
+
+        assertDoesNotThrow(() -> {
+            subtree.addChild("228");
+            while(it.hasNext()) {
+                it.next();
+            }
+        });
     }
 
 }
