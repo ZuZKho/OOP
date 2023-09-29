@@ -71,6 +71,12 @@ class PolynomialTest {
     }
 
     @Test
+    void hashCode1() {
+        Polynomial p1 = new Polynomial(new int[]{1, 2, 3, 0, 4, 13});
+        Assertions.assertEquals(p1.hashCode(),(new Polynomial(new int[]{1, 2, 3, 0, 4, 13})).hashCode());
+    }
+
+    @Test
     void testToString1() {
         Assertions.assertEquals("5x^4 + 3x^2", (new Polynomial(new int[]{0, 0, 3, 0, 5})).toString());
     }

@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.Objects;
+
 /**
  * Класс реализующий представление полинома.
  */
@@ -136,6 +139,13 @@ public class Polynomial {
         return new Polynomial(normalize(newCoefs));
     }
 
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(len);
+        result = 31 * result + Arrays.hashCode(coefs);
+        return result;
+    }
+
     /**
      * Сравнение двух полиномов.
      *
@@ -197,6 +207,4 @@ public class Polynomial {
 
         return res;
     }
-
-
 }
