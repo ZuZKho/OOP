@@ -97,7 +97,9 @@ public class AdjacencyListGraph<V, E extends Number> extends Graph<V, E> impleme
                 Integer toVertexId = entry.to.getId();
                 Double weight = entry.value.doubleValue();
 
-                if (!used.contains(toVertexId) && (!distances.containsKey(toVertexId) || distances.get(toVertexId) > minValue + weight)) {
+                if (!used.contains(toVertexId)
+                        && (!distances.containsKey(toVertexId)
+                        || distances.get(toVertexId) > minValue + weight)) {
                     distances.put(toVertexId, minValue + weight);
                 }
             }

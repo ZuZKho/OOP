@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Nested;
+
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,22 +25,28 @@ class GraphTest {
         assertEquals(vertices.size(), 7);
 
         ArrayList<PairComparable<Double, Vertex<Integer>>> ans = g.sortByDistance(vertices.get(2));
-        assertEquals(Arrays.asList(0, 2, 4, 5, 9, 10, 14), ans.stream().map(item -> item.first.intValue()).toList());
-        assertEquals(Arrays.asList(3, 4, 5, 6, 7, 2, 1), ans.stream().map(item -> item.second.getValue()).toList());
+        assertEquals(Arrays.asList(0, 2, 4, 5, 9, 10, 14),
+                ans.stream().map(item -> item.first.intValue()).toList());
+        assertEquals(Arrays.asList(3, 4, 5, 6, 7, 2, 1),
+                ans.stream().map(item -> item.second.getValue()).toList());
 
         g.deleteEdge(edges.get(5));
         ans = g.sortByDistance(vertices.get(2));
-        assertEquals(Arrays.asList(0, 4, 5, 9, 34, 39, 46), ans.stream().map(item -> item.first.intValue()).toList());
-        assertEquals(Arrays.asList(3, 5, 6, 7, 1, 2, 4), ans.stream().map(item -> item.second.getValue()).toList());
+        assertEquals(Arrays.asList(0, 4, 5, 9, 34, 39, 46),
+                ans.stream().map(item -> item.first.intValue()).toList());
+        assertEquals(Arrays.asList(3, 5, 6, 7, 1, 2, 4),
+                ans.stream().map(item -> item.second.getValue()).toList());
 
         edges.add(g.addEdge(3, vertices.get(2), vertices.get(0)));
         ans = g.sortByDistance(vertices.get(2));
-        assertEquals(Arrays.asList(0, 3, 4, 5, 8, 9, 15), ans.stream().map(item -> item.first.intValue()).toList());
-        assertEquals(Arrays.asList(3, 1, 5, 6, 2, 7, 4), ans.stream().map(item -> item.second.getValue()).toList());
+        assertEquals(Arrays.asList(0, 3, 4, 5, 8, 9, 15),
+                ans.stream().map(item -> item.first.intValue()).toList());
+        assertEquals(Arrays.asList(3, 1, 5, 6, 2, 7, 4),
+                ans.stream().map(item -> item.second.getValue()).toList());
     }
 
     @Nested
-    class test1Group {
+    class Test1Group {
         @Test
         void test1AdjacencyMatrix() {
             test1Helper(AdjacencyMatrixGraph::new);
@@ -77,7 +84,7 @@ class GraphTest {
 
     @Nested
     @DisplayName("Adding edge between non existing vertices")
-    class test2Group {
+    class Test2Group {
         @Test
         void testAdjacencyMatrix() {
             test2Helper(AdjacencyMatrixGraph::new);
@@ -115,7 +122,7 @@ class GraphTest {
 
     @Nested
     @DisplayName("Deleting vertices")
-    class test3Group {
+    class Test3Group {
         @Test
         void testAdjacencyMatrix() {
             test3Helper(AdjacencyMatrixGraph::new);
@@ -134,22 +141,23 @@ class GraphTest {
 
     private void test4Helper(Supplier<GraphInterface<Integer, Integer>> constructor) {
         GraphInterface<Integer, Integer> g = constructor.get();
-        ArrayList<Vertex<Integer>> vertices = g.getVerticesList(); // will be empty initially
-        ArrayList<Edge<Integer, Integer>> edges = g.getEdgesList(); // will be empty initially
+        var vertices = g.getVerticesList(); // will be empty initially
+        var edges = g.getEdgesList(); // will be empty initially
 
-        GraphDownloader.downloadGraphFromFile(g, vertices, edges, "src/main/java/input1.txt");
+        GraphDownloader.downloadGraphFromFile(g, vertices, edges,
+                "src/main/java/input1.txt");
 
-        Set<Vertex<Integer>> expectedVertices = new HashSet<Vertex<Integer>>(vertices);
-        Set<Edge<Integer, Integer>> expectedEdges = new HashSet<Edge<Integer, Integer>>(edges);
-        Set<Vertex<Integer>> realVertices = new HashSet<Vertex<Integer>>(g.getVerticesList());
-        Set<Edge<Integer, Integer>> realEdges = new HashSet<Edge<Integer, Integer>>(g.getEdgesList());
+        Set<Vertex<Integer>> expectedVertices = new HashSet<>(vertices);
+        Set<Edge<Integer, Integer>> expectedEdges = new HashSet<>(edges);
+        Set<Vertex<Integer>> realVertices = new HashSet<>(g.getVerticesList());
+        Set<Edge<Integer, Integer>> realEdges = new HashSet<>(g.getEdgesList());
         assertEquals(expectedVertices, realVertices);
         assertEquals(expectedEdges, realEdges);
     }
 
     @Nested
     @DisplayName("Common Graph class test: getLists")
-    class test4Group {
+    class Test4Group {
         @Test
         void testAdjacencyMatrix() {
             test4Helper(AdjacencyMatrixGraph::new);
@@ -165,12 +173,14 @@ class GraphTest {
             test4Helper(IncidenceMatrixGraph::new);
         }
     }
+
     private void test5Helper(Supplier<GraphInterface<Integer, Integer>> constructor) {
         GraphInterface<Integer, Integer> g = constructor.get();
         ArrayList<Vertex<Integer>> vertices = g.getVerticesList(); // will be empty initially
         ArrayList<Edge<Integer, Integer>> edges = g.getEdgesList(); // will be empty initially
 
-        GraphDownloader.downloadGraphFromFile(g, vertices, edges, "src/main/java/input1.txt");
+        GraphDownloader.downloadGraphFromFile(g, vertices, edges,
+                "src/main/java/input1.txt");
 
         for (int i = 0; i < vertices.size(); i++) {
             assertEquals(vertices.get(i), g.getVertexById(vertices.get(i).getId()));
@@ -182,7 +192,7 @@ class GraphTest {
 
     @Nested
     @DisplayName("Common Graph class test: getById")
-    class test5Group {
+    class Test5Group {
         @Test
         void testAdjacencyMatrix() {
             test5Helper(AdjacencyMatrixGraph::new);

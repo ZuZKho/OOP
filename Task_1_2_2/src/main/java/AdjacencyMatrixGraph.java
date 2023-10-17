@@ -1,9 +1,12 @@
-import java.util.*;
-
-// Так как для алгоритма поиска кратчайшего расстояния должны быть определены сложение и сравнение,
+// Так как для алгоритма поиска кратчайшего расстояния должны
+// быть определены сложение и сравнение,
 // То будем приводить все типы к даблу.
 
-public class AdjacencyMatrixGraph<V, E extends Number> extends Graph<V, E> implements GraphInterface<V, E> {
+import java.util.HashMap;
+import java.util.HashSet;
+
+public class AdjacencyMatrixGraph<V, E extends Number> extends Graph<V, E>
+        implements GraphInterface<V, E> {
     private final HashMap<Integer, HashMap<Integer, Edge<V, E>>> matrix;
 
     public AdjacencyMatrixGraph() {
@@ -20,7 +23,9 @@ public class AdjacencyMatrixGraph<V, E extends Number> extends Graph<V, E> imple
     }
 
     public void deleteVertex(Vertex<V> vertex) {
-        // При удалении вершины, также нужно удалить ребра, инцидентные данной вершние
+        // При удалении вершины, также нужно удалить ребра,
+        // инцидентные данной вершние
+
         // Удаляем выходящие ребра
         for (var entry : matrix.get(vertex.getId()).entrySet()) {
             edges.remove(entry.getValue().getId());
@@ -90,14 +95,18 @@ public class AdjacencyMatrixGraph<V, E extends Number> extends Graph<V, E> imple
                 }
             }
 
-            if (minIdx == null) break;
+            if (minIdx == null) {
+                break;
+            }
             used.add(minIdx);
 
             for (var entry : matrix.get(minIdx).entrySet()) {
                 Integer toVertexId = entry.getKey();
                 Double weight = entry.getValue().value.doubleValue();
 
-                if (!used.contains(toVertexId) && (!distances.containsKey(toVertexId) || distances.get(toVertexId) > minValue + weight)) {
+                if (!used.contains(toVertexId)
+                        && (!distances.containsKey(toVertexId)
+                        || distances.get(toVertexId) > minValue + weight)) {
                     distances.put(toVertexId, minValue + weight);
                 }
             }

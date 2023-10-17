@@ -2,7 +2,8 @@ public class Edge<V, E> {
     private static int freeId = 0;
     E value;
     private int id;
-    Vertex<V> from, to;
+    Vertex<V> from;
+    Vertex<V> to;
 
     public Edge(E value, Vertex<V> from, Vertex<V> to) {
         this.value = value;

@@ -19,11 +19,11 @@ public class Graph<V, E extends Number> {
     }
 
     public ArrayList<Vertex<V>> getVerticesList() {
-        return new ArrayList<>(vertices.values().stream().toList());
+        return new ArrayList<>(vertices.values());
     }
 
     public ArrayList<Edge<V, E>> getEdgesList() {
-        return new ArrayList<>(edges.values().stream().toList());
+        return new ArrayList<>(edges.values());
     }
 
 }

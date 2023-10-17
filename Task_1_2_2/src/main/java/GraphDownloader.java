@@ -6,7 +6,10 @@ import java.util.Scanner;
 
 public class GraphDownloader {
 
-    static void downloadGraphFromFile(GraphInterface<Integer, Integer> g, ArrayList<Vertex<Integer>> vertices, ArrayList<Edge<Integer, Integer>> edges, String fileName) {
+    static void downloadGraphFromFile(GraphInterface<Integer, Integer> g,
+                                      ArrayList<Vertex<Integer>> vertices,
+                                      ArrayList<Edge<Integer, Integer>> edges,
+                                      String fileName) {
 
         Scanner scanner;
         try {

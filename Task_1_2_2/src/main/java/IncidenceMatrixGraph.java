@@ -2,7 +2,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class IncidenceMatrixGraph<V, E extends Number> extends Graph<V, E> implements GraphInterface<V, E> {
+public class IncidenceMatrixGraph<V, E extends Number> extends Graph<V, E>
+        implements GraphInterface<V, E> {
 
     // matrix.get(edge) - map из двух вершни
     private final HashMap<Integer, HashMap<Integer, Double>> matrix;
@@ -16,12 +17,14 @@ public class IncidenceMatrixGraph<V, E extends Number> extends Graph<V, E> imple
     public Vertex<V> addVertex(V value) {
         Vertex<V> newVertex = new Vertex<>(value);
         vertices.put(newVertex.getId(), newVertex);
-        // Когда добавляем вершину в матрицу добавляются нулевые элементы - чтобы зря не терять память, можно ничего не делать
+        // Когда добавляем вершину в матрицу добавляются нулевые элементы
+        // чтобы зря не терять память, можно ничего не делать
         return newVertex;
     }
 
     public void deleteVertex(Vertex<V> vertex) {
-        // Когда удаляем вершину, нужно пройтись по строке с вершиной и занулить все столбцы в которых не ноль и удалить эти ребра
+        // Когда удаляем вершину, нужно пройтись по строке с вершиной
+        // и занулить все столбцы в которых не ноль и удалить эти ребра
         // + Удалить из списка ребер в графе.
         ArrayList<Integer> keysToDelete = new ArrayList<>();
         for (var entry : matrix.entrySet()) {
@@ -87,7 +90,9 @@ public class IncidenceMatrixGraph<V, E extends Number> extends Graph<V, E> imple
                 }
             }
 
-            if (minIdx == null) break;
+            if (minIdx == null) {
+                break;
+            }
             used.add(minIdx);
 
             // Смотрим все ребра из вершины minIdx
@@ -99,12 +104,15 @@ public class IncidenceMatrixGraph<V, E extends Number> extends Graph<V, E> imple
                 // Найдем куда оно выходит
                 // entry.getValue() - HashMap размера два
                 // Так как делаем матрицу инцидентности, то видимо подразумевается,
-                // что нужно пройтись по всем возможным вершинам, чтобы найти куда идет ребро
-                // Поэтому даже при том что у нас HashMap размера два, просто пройдем по всем вершинам
+                // что нужно пройтись по всем возможным вершинам, чтобы найти
+                // куда идет ребро.
+                // Поэтому даже при том что у нас HashMap размера два,
+                // просто пройдем по всем вершинам
 
                 Integer toVertexId = 1;
                 for (var vertex : vertices.entrySet()) {
-                    if (vertex.getKey() != minIdx && entry.getValue().containsKey(vertex.getKey())) {
+                    if (vertex.getKey() != minIdx
+                            && entry.getValue().containsKey(vertex.getKey())) {
                         toVertexId = vertex.getKey();
                         break;
                     }
@@ -112,7 +120,8 @@ public class IncidenceMatrixGraph<V, E extends Number> extends Graph<V, E> imple
 
                 Double weight = entry.getValue().get(toVertexId);
 
-                if (!used.contains(toVertexId) && (!distances.containsKey(toVertexId) || distances.get(toVertexId) > minValue + weight)) {
+                if (!used.contains(toVertexId) && (!distances.containsKey(toVertexId)
+                        || distances.get(toVertexId) > minValue + weight)) {
                     distances.put(toVertexId, minValue + weight);
                 }
             }
