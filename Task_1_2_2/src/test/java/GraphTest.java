@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -26,23 +27,23 @@ class GraphTest {
 
         ArrayList<PairComparable<Double, Vertex<Integer>>> ans = g.sortByDistance(vertices.get(2));
         assertEquals(Arrays.asList(0, 2, 4, 5, 9, 10, 14),
-                ans.stream().map(item -> item.first.intValue()).toList());
+                ans.stream().map(item -> item.first.intValue()).collect(Collectors.toList()));
         assertEquals(Arrays.asList(3, 4, 5, 6, 7, 2, 1),
-                ans.stream().map(item -> item.second.getValue()).toList());
+                ans.stream().map(item -> item.second.getValue()).collect(Collectors.toList()));
 
         g.deleteEdge(edges.get(5));
         ans = g.sortByDistance(vertices.get(2));
         assertEquals(Arrays.asList(0, 4, 5, 9, 34, 39, 46),
-                ans.stream().map(item -> item.first.intValue()).toList());
+                ans.stream().map(item -> item.first.intValue()).collect(Collectors.toList()));
         assertEquals(Arrays.asList(3, 5, 6, 7, 1, 2, 4),
-                ans.stream().map(item -> item.second.getValue()).toList());
+                ans.stream().map(item -> item.second.getValue()).collect(Collectors.toList()));
 
         edges.add(g.addEdge(3, vertices.get(2), vertices.get(0)));
         ans = g.sortByDistance(vertices.get(2));
         assertEquals(Arrays.asList(0, 3, 4, 5, 8, 9, 15),
-                ans.stream().map(item -> item.first.intValue()).toList());
+                ans.stream().map(item -> item.first.intValue()).collect(Collectors.toList()));
         assertEquals(Arrays.asList(3, 1, 5, 6, 2, 7, 4),
-                ans.stream().map(item -> item.second.getValue()).toList());
+                ans.stream().map(item -> item.second.getValue()).collect(Collectors.toList()));
     }
 
     @Nested
