@@ -1,24 +1,29 @@
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public interface Graph<V, E> {
-    int addVertex(Vertex<V> vertex);
-    default int addVertex(V value) {
-        Vertex<V> vertex = new Vertex<V>(value);
-        return addVertex(vertex);
+public class Graph<V, E extends Number> {
+
+
+    protected HashMap<Integer, Vertex<V>> vertices;
+    protected HashMap<Integer, Edge<V, E>> edges;
+
+    public Vertex<V> getVertexById(int vertexId) {
+        return vertices.get(vertexId);
     }
 
-
-    default void deleteVertex(Vertex<V> vertex){
-        deleteVertex(vertex.getId());
+    public Edge<V, E> getEdgeById(int edgeId) {
+        return edges.get(edgeId);
     }
-    void deleteVertex(int vertexId);
 
-    int addEdge(E value, int fromId, int toId);
+    public ArrayList<Vertex<V>> getVerticesList() {
+        return new ArrayList<>(vertices.values().stream().toList());
+    }
 
+    public ArrayList<Edge<V, E>> getEdgesList() {
+        return new ArrayList<>(edges.values().stream().toList());
+    }
 
-    void deleteEdge(int edgeId);
-
-    Vertex<V> getVertex(int id);
-
-    Edge<V, E> getEdge(int edgeId);
 }

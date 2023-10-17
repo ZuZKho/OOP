@@ -3,134 +3,106 @@ import java.util.*;
 // Так как для алгоритма поиска кратчайшего расстояния должны быть определены сложение и сравнение,
 // То будем приводить все типы к даблу.
 
-public class AdjacencyMatrixGraph<V, E extends Number>  implements Graph<V, E> {
+public class AdjacencyMatrixGraph<V, E extends Number> extends Graph<V, E> implements GraphInterface<V, E> {
+    private final HashMap<Integer, HashMap<Integer, Edge<V, E>>> matrix;
 
-    private final HashMap<Integer, Vertex<V>> vertices = new HashMap<Integer, Vertex<V>>();  // HashMap, который по индексу хранить вершину.
-    private final ArrayList<Integer> verticesIds = new ArrayList<Integer>(); // ArrayList, который сохраняет Порядок индексов вершин, которые лежат в матрице.
-    private final HashMap<Integer, Edge<V, E>> edges = new HashMap<Integer, Edge<V, E>>(); // HashMap, который по индексу хранит ребро.
-
-    private final ArrayList<ArrayList<Double>> matrix = new ArrayList<ArrayList<Double>>();
-
-    public int addVertex(Vertex<V> newVertex) {
-
-        for(ArrayList<Double> row: matrix) {
-            row.add(null);
-        }
-
-        // Добавляем строчку
-        matrix.add(new ArrayList<Double>());
-        for(int i = 0; i < matrix.size(); i++) {
-            matrix.get(matrix.size() - 1).add(null);
-        }
-
-        verticesIds.add(newVertex.getId());
-
-        return newVertex.getId();
+    public AdjacencyMatrixGraph() {
+        this.vertices = new HashMap<Integer, Vertex<V>>();
+        this.edges = new HashMap<Integer, Edge<V, E>>();
+        this.matrix = new HashMap<Integer, HashMap<Integer, Edge<V, E>>>();
     }
 
-    public void deleteVertex(int vertexId) {
-        int idx = verticesIds.indexOf(vertexId);
-        if (idx == -1) return;
-
-        matrix.remove(idx);
-        for(var row : matrix) {
-            row.remove(idx);
-        }
-
-        verticesIds.remove(idx);
+    public Vertex<V> addVertex(V value) {
+        Vertex<V> newVertex = new Vertex<V>(value);
+        vertices.put(newVertex.getId(), newVertex);
+        matrix.put(newVertex.getId(), new HashMap<Integer, Edge<V, E>>());
+        return newVertex;
     }
 
-    public int addEdge(E value, int fromId, int toId) throws IllegalArgumentException {
-        if (!verticesIds.contains(fromId)) {
+    public void deleteVertex(Vertex<V> vertex) {
+        // При удалении вершины, также нужно удалить ребра, инцидентные данной вершние
+        // Удаляем выходящие ребра
+        for (var entry : matrix.get(vertex.getId()).entrySet()) {
+            edges.remove(entry.getValue().getId());
+        }
+        // Удаляем входящие ребра
+        for (var entry : matrix.entrySet()) {
+            if (entry.getValue().containsKey(vertex.getId())) {
+                edges.remove(entry.getValue().get(vertex.getId()).getId());
+            }
+        }
+
+        matrix.remove(vertex.getId());
+
+        for (var entry : matrix.entrySet()) {
+            entry.getValue().remove(vertex.getId());
+        }
+        vertices.remove(vertex.getId());
+    }
+
+    public Edge<V, E> addEdge(E value, Vertex<V> from, Vertex<V> to) throws IllegalArgumentException {
+        if (!matrix.containsKey(from.getId())) {
             throw new IllegalArgumentException("Не существует вершины с таким id.");
         }
-        if (!verticesIds.contains(toId)) {
+        if (!matrix.containsKey(to.getId())) {
             throw new IllegalArgumentException("Не существует вершины с таким id.");
         }
 
-        this.matrix.get(fromId).set(toId, value.doubleValue());
-        Edge<V, E> newEdge = new Edge<V, E>(value, vertices.get(fromId), vertices.get(toId));
 
+        Edge<V, E> newEdge = new Edge<V, E>(value, from, to);
+        this.matrix.get(from.getId()).put(to.getId(), newEdge);
         this.edges.put(newEdge.getId(), newEdge);
-        return newEdge.getId();
+
+        return newEdge;
     }
 
-    public void deleteEdge(int edgeId) {
-        Edge<V, E> curEdge = edges.get(edgeId);
+    public void deleteEdge(Edge<V, E> edge) {
+        int positionFrom = edge.from.getId();
+        int positionTo = edge.to.getId();
 
-        int positionFrom = verticesIds.indexOf(curEdge.from.getId());
-        int positionTo = verticesIds.indexOf(curEdge.to.getId());
+        this.matrix.get(positionFrom).remove(positionTo);
 
-        this.matrix.get(positionFrom).set(positionTo, null);
-
-        this.edges.remove(curEdge.getId());
+        this.edges.remove(edge.getId());
     }
 
-    public Vertex<V> getVertex(int id) {
-        return vertices.get(id);
-    }
 
-    public Edge<V, E> getEdge(int edgeId) {
-        return edges.get(edgeId);
-    }
-
-    private HashMap<Integer, Double> dijkstra(int startVertexId) {
-        int verticesCount = verticesIds.size();
+    public HashMap<Integer, Double> dijkstra(int startVertexId) {
+        int verticesCount = matrix.size();
 
         HashMap<Integer, Double> distances = new HashMap<>();
         HashSet<Integer> used = new HashSet<Integer>();
 
         distances.put(startVertexId, (double) 0);
-        for(int i = 0; i < verticesCount; i++) {
+        for (int i = 0; i < verticesCount; i++) {
 
             Double minValue = null;
-            Integer minIdxInArr = null;
-            for (int j = 0; j < verticesCount; j++) {
-                Integer vertexId = verticesIds.get(j);
+            Integer minIdx = null;
 
-                if (!used.contains(vertexId) && distances.containsKey(vertexId)) {
-                    if (minValue == null || distances.get(vertexId) < minValue) {
-                        minValue = distances.get(vertexId);
-                        minIdxInArr = j;
-                    }
+            for (var entry : matrix.entrySet()) {
+                Integer vertexId = entry.getKey();
+                if (used.contains(vertexId) || !distances.containsKey(vertexId)) {
+                    continue;
+                }
+
+                if (minValue == null || distances.get(vertexId) < minValue) {
+                    minValue = distances.get(vertexId);
+                    minIdx = vertexId;
                 }
             }
 
-            if (minIdxInArr == null) break;
-
-            int minIdx = verticesIds.get(minIdxInArr);
+            if (minIdx == null) break;
             used.add(minIdx);
 
-            double distanceToMinIdx = distances.get(minIdx);
-            for (int j = 0; j < verticesCount; j++) {
+            for (var entry : matrix.get(minIdx).entrySet()) {
+                Integer toVertexId = entry.getKey();
+                Double weight = entry.getValue().value.doubleValue();
 
-                if (matrix.get(minIdxInArr).get(j) == null) continue;
-                Double edgeWeight = matrix.get(minIdxInArr).get(j).doubleValue();
-                int toVertexId = verticesIds.get(j);
-                if (!used.contains(toVertexId) && (!distances.containsKey(toVertexId) || distances.get(toVertexId) > minValue + edgeWeight)) {
-                    distances.put(toVertexId, minValue + edgeWeight);
+                if (!used.contains(toVertexId) && (!distances.containsKey(toVertexId) || distances.get(toVertexId) > minValue + weight)) {
+                    distances.put(toVertexId, minValue + weight);
                 }
-
             }
-
         }
         return distances;
     }
 
-    public ArrayList<Pair<Double, Integer>> sortByDistance(int startVertexId) {
-
-        var distances = dijkstra(startVertexId);
-        ArrayList<Pair<Double, Integer>> arr = new ArrayList<>();
-
-        for(Map.Entry<Integer, Double> entry : distances.entrySet()) {
-            Integer vertexId = entry.getKey();
-            Double distance = entry.getValue();
-
-            arr.add(new Pair<Double, Integer>(distance, vertexId));
-        }
-
-        Collections.sort(arr);
-
-        return arr;
-    }
 }

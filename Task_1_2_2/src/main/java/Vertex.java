@@ -9,6 +9,10 @@ public class Vertex<T> {
         freeId++;
     }
 
+    protected void setValue(T value) {
+        this.value = value;
+    }
+
     public T getValue() {
         return this.value;
     }
