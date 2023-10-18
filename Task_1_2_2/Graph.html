@@ -129,12 +129,18 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <ul class="blockList">
 <li class="blockList">
 <dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>V</code> - тип значения вершины.</dd>
+<dd><code>E</code> - тип значения ребра.</dd>
+</dl>
+<dl>
 <dt>Direct Known Subclasses:</dt>
 <dd><code><a href="AdjacencyListGraph.html" title="class in &lt;Unnamed&gt;">AdjacencyListGraph</a></code>, <code><a href="AdjacencyMatrixGraph.html" title="class in &lt;Unnamed&gt;">AdjacencyMatrixGraph</a></code>, <code><a href="IncidenceMatrixGraph.html" title="class in &lt;Unnamed&gt;">IncidenceMatrixGraph</a></code></dd>
 </dl>
 <hr>
 <pre>public class <span class="typeNameLabel">Graph&lt;V,&#8203;E extends java.lang.Number&gt;</span>
 extends java.lang.Object</pre>
+<div class="block">Общий класс графа от которого наследуются остальные виды.</div>
 </li>
 </ul>
 </div>
@@ -312,7 +318,6 @@ extends java.lang.Object</pre>
 <h4>getVertexById</h4>
 <pre class="methodSignature">public&nbsp;<a href="Vertex.html" title="class in &lt;Unnamed&gt;">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&nbsp;getVertexById&#8203;(int&nbsp;vertexId)</pre>
 <div class="block">Получить вершину по ее ID.
- <p>
  Время работы - O(1).</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
