@@ -14,6 +14,13 @@ public class IncidenceMatrixGraph<V, E extends Number> extends Graph<V, E>
         this.matrix = new HashMap<Integer, HashMap<Integer, Double>>();
     }
 
+    /**
+     * Добавить вершину по значению.
+     * Время работы - O(1).
+     *
+     * @param value значение.
+     * @return Объект добавленной вершины.
+     */
     public Vertex<V> addVertex(V value) {
         Vertex<V> newVertex = new Vertex<>(value);
         vertices.put(newVertex.getId(), newVertex);
@@ -22,6 +29,13 @@ public class IncidenceMatrixGraph<V, E extends Number> extends Graph<V, E>
         return newVertex;
     }
 
+    /**
+     * Удалить вершину по ее объекту.
+     * При удалении вершины также удаляются все ребра инцидентные ей.
+     * Время работы - O(E), где E - количество ребер в графе.
+     *
+     * @param vertex объект вершины.
+     */
     public void deleteVertex(Vertex<V> vertex) {
         // Когда удаляем вершину, нужно пройтись по строке с вершиной
         // и занулить все столбцы в которых не ноль и удалить эти ребра
@@ -41,6 +55,16 @@ public class IncidenceMatrixGraph<V, E extends Number> extends Graph<V, E>
         vertices.remove(vertex.getId());
     }
 
+    /**
+     * Добавить ребро в граф.
+     * Время работы - O(1).
+     *
+     * @param value значение написанное ребре.
+     * @param from  объект вершины из которой ребро выходит.
+     * @param to    объект вершины в которую ребро входит
+     * @return объект добавленного ребра.
+     * @throws IllegalArgumentException выкидывается при несуществующих вершинах в аргументах.
+     */
     public Edge<V, E> addEdge(E value, Vertex<V> from, Vertex<V> to) throws IllegalArgumentException {
 
         if (!vertices.containsKey(from.getId())) {
@@ -60,11 +84,24 @@ public class IncidenceMatrixGraph<V, E extends Number> extends Graph<V, E>
         return newEdge;
     }
 
+    /**
+     * Удалить ребро, по его объекту.
+     * Время работы - O(1).
+     *
+     * @param edge объект ребра, которое нужно удалить.
+     */
     public void deleteEdge(Edge<V, E> edge) {
         matrix.remove(edge.getId());
         edges.remove(edge.getId());
     }
 
+    /**
+     * Алгоритм дейкстры на графе.
+     * Время работы - O(V^2*E), где V - кол-во вершин, E - кол-во ребер.
+     *
+     * @param startVertexId индекс стартовой вершины
+     * @return hashmap вида (id вершины, расстояние до нее от стартовой).
+     */
     public HashMap<Integer, Double> dijkstra(int startVertexId) {
         int verticesCount = vertices.size();
 

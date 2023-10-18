@@ -10,6 +10,13 @@ public class AdjacencyListGraph<V, E extends Number> extends Graph<V, E> impleme
         this.vertexOutEdges = new HashMap<>();
     }
 
+    /**
+     * Добавить вершину по значению.
+     * Время работы - O(1).
+     *
+     * @param value значение.
+     * @return Объект добавленной вершины.
+     */
     public Vertex<V> addVertex(V value) {
         Vertex<V> newVertex = new Vertex<>(value);
         vertices.put(newVertex.getId(), newVertex);
@@ -17,6 +24,13 @@ public class AdjacencyListGraph<V, E extends Number> extends Graph<V, E> impleme
         return newVertex;
     }
 
+    /**
+     * Удалить вершину по ее объекту.
+     * При удалении вершины также удаляются все ребра инцидентные ей.
+     * Время работы - O(E), E - кол-во ребер в графе.
+     *
+     * @param vertex объект вершины.
+     */
     public void deleteVertex(Vertex<V> vertex) {
         // Удаляем исходящие ребра
         for (var edge : vertexOutEdges.get(vertex.getId())) {
@@ -40,6 +54,17 @@ public class AdjacencyListGraph<V, E extends Number> extends Graph<V, E> impleme
         vertices.remove(vertex.getId());
     }
 
+
+    /**
+     * Добавить ребро в граф.
+     * Время работы - O(1).
+     *
+     * @param value значение написанное ребре.
+     * @param from  объект вершины из которой ребро выходит.
+     * @param to    объект вершины в которую ребро входит
+     * @return объект добавленного ребра.
+     * @throws IllegalArgumentException выкидывается при несуществующих вершинах в аргументах.
+     */
     public Edge<V, E> addEdge(E value, Vertex<V> from, Vertex<V> to) throws IllegalArgumentException {
 
         if (!vertexOutEdges.containsKey(from.getId())) {
@@ -57,14 +82,25 @@ public class AdjacencyListGraph<V, E extends Number> extends Graph<V, E> impleme
         return newEdge;
     }
 
-
+    /**
+     * Удалить ребро, по его объекту.
+     * Время работы - O(1).
+     *
+     * @param edge объект ребра, которое нужно удалить.
+     */
     public void deleteEdge(Edge<V, E> edge) {
         int fromId = edge.from.getId();
         vertexOutEdges.get(fromId).remove(edge);
         edges.remove(edge.getId());
     }
 
-
+    /**
+     * Алгоритм дейкстры на графе.
+     * Время работы - O(V^2), где V - количество вершин в графе.
+     *
+     * @param startVertexId индекс стартовой вершины
+     * @return hashmap вида (id вершины, расстояние до нее от стартовой).
+     */
     public HashMap<Integer, Double> dijkstra(int startVertexId) {
         int verticesCount = vertexOutEdges.size();
 

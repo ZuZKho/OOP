@@ -1,8 +1,6 @@
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class Graph<V, E extends Number> {
 
@@ -12,7 +10,7 @@ public class Graph<V, E extends Number> {
 
     /**
      * Получить вершину по ее ID.
-     *
+     * <p>
      * Время работы - O(1).
      *
      * @param vertexId айди вершины.
@@ -25,7 +23,7 @@ public class Graph<V, E extends Number> {
 
     /**
      * Получить ребро по его IDю
-     *
+     * <p>
      * Время работы - O(1).
      *
      * @param edgeId айди ребра.
@@ -38,7 +36,7 @@ public class Graph<V, E extends Number> {
     /**
      * Получить список всех вершин.
      * Не гарантируется, что вершины будут отсортированны по ID.
-     *
+     * <p>
      * Время работы - O(V). V - количество вершин.
      *
      * @return список объектов вершин.
@@ -50,7 +48,7 @@ public class Graph<V, E extends Number> {
     /**
      * Получить список всех ребер.
      * Не гарантируется, что ребра будут отсортированны по ID.
-     *
+     * <p>
      * Время работы - O(E). E - количество вершин.
      *
      * @return список объектов ребер.

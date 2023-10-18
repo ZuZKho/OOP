@@ -15,6 +15,13 @@ public class AdjacencyMatrixGraph<V, E extends Number> extends Graph<V, E>
         this.matrix = new HashMap<Integer, HashMap<Integer, Edge<V, E>>>();
     }
 
+    /**
+     * Добавить вершину по значению.
+     * Время работы - O(1).
+     *
+     * @param value значение.
+     * @return Объект добавленной вершины.
+     */
     public Vertex<V> addVertex(V value) {
         Vertex<V> newVertex = new Vertex<V>(value);
         vertices.put(newVertex.getId(), newVertex);
@@ -22,6 +29,13 @@ public class AdjacencyMatrixGraph<V, E extends Number> extends Graph<V, E>
         return newVertex;
     }
 
+    /**
+     * Удалить вершину по ее объекту.
+     * При удалении вершины также удаляются все ребра инцидентные ей.
+     * Время работы - O(V), где V - количество вершин в графе.
+     *
+     * @param vertex объект вершины.
+     */
     public void deleteVertex(Vertex<V> vertex) {
         // При удалении вершины, также нужно удалить ребра,
         // инцидентные данной вершние
@@ -45,6 +59,17 @@ public class AdjacencyMatrixGraph<V, E extends Number> extends Graph<V, E>
         vertices.remove(vertex.getId());
     }
 
+
+    /**
+     * Добавить ребро в граф.
+     * Время работы - O(1).
+     *
+     * @param value значение написанное ребре.
+     * @param from  объект вершины из которой ребро выходит.
+     * @param to    объект вершины в которую ребро входит
+     * @return объект добавленного ребра.
+     * @throws IllegalArgumentException выкидывается при несуществующих вершинах в аргументах.
+     */
     public Edge<V, E> addEdge(E value, Vertex<V> from, Vertex<V> to) throws IllegalArgumentException {
         if (!matrix.containsKey(from.getId())) {
             throw new IllegalArgumentException("Не существует вершины с таким id.");
@@ -61,6 +86,12 @@ public class AdjacencyMatrixGraph<V, E extends Number> extends Graph<V, E>
         return newEdge;
     }
 
+    /**
+     * Удалить ребро, по его объекту.
+     * Время работы - O(1).
+     *
+     * @param edge объект ребра, которое нужно удалить.
+     */
     public void deleteEdge(Edge<V, E> edge) {
         int positionFrom = edge.from.getId();
         int positionTo = edge.to.getId();
@@ -71,6 +102,13 @@ public class AdjacencyMatrixGraph<V, E extends Number> extends Graph<V, E>
     }
 
 
+    /**
+     * Алгоритм дейкстры на графе.
+     * Время работы - O(V^2), где V - количество вершин в графе.
+     *
+     * @param startVertexId индекс стартовой вершины
+     * @return hashmap вида (id вершины, расстояние до нее от стартовой).
+     */
     public HashMap<Integer, Double> dijkstra(int startVertexId) {
         int verticesCount = matrix.size();
 

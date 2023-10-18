@@ -1,23 +1,23 @@
-import java.io.File;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Основная идея реализации в том, что в разных вершинах могут находится одинаковые значения.
  * Это накладывает многие ограничения. Из за этого ввод графа довольно некрасивый,
  * и любые операции тоже принимают сложный вид,
  * потому что пользователю приходится поддерживать объекты вершин или их id.
- *
+ * <p>
  * Итого у пользователя есть два варианта взаимодействия с графом
  * 1) Поддерживая объекты вершин
  * 2) Поддерживая Id вершин
  * В тестах использую первый вариант.
  *
- *
- *
  * @param <V> Тип объекта находящегося в вершине.
  * @param <E> Тип объекта находящегося в ребре. Он должен наследоваться от Number,
- * чтобы алгоритм нахождения кратчайшего расстояния мог делать операции сложения и сравнения.
- * Также при вычислении расстояний все типы приводятся к double.
+ *            чтобы алгоритм нахождения кратчайшего расстояния мог делать операции сложения и сравнения.
+ *            Также при вычислении расстояний все типы приводятся к double.
  */
 public interface GraphInterface<V, E extends Number> {
 
@@ -64,8 +64,8 @@ public interface GraphInterface<V, E extends Number> {
      * Добавить ребро в граф.
      *
      * @param value значение написанное ребре.
-     * @param from объект вершины из которой ребро выходит.
-     * @param to объект вершины в которую ребро входит
+     * @param from  объект вершины из которой ребро выходит.
+     * @param to    объект вершины в которую ребро входит
      * @return объект добавленного ребра.
      * @throws IllegalArgumentException выкидывается при несуществующих вершинах в аргументах.
      */
@@ -96,6 +96,14 @@ public interface GraphInterface<V, E extends Number> {
      */
     HashMap<Integer, Double> dijkstra(int startVertexId);
 
+    /**
+     * Cортирует вершины графа по возрастанию расстояния от стартовой вершины.
+     *
+     * Время работы - O(dijkstra + VlogV), где V - количество вершин в графе.
+     *
+     * @param startVertex id стартовой вершины.
+     * @return ArrayList пар (расстояние, объект вершины) отсортированный по расстоянию.
+     */
     default ArrayList<PairComparable<Double, Vertex<V>>> sortByDistance(Vertex<V> startVertex) {
         HashMap<Integer, Double> distances = dijkstra(startVertex.getId());
         ArrayList<PairComparable<Double, Vertex<V>>> answer = new ArrayList<>();
