@@ -233,7 +233,7 @@ implements <a href="GraphInterface.html" title="interface in &lt;Unnamed&gt;">Gr
 <td class="colFirst"><code>java.util.HashMap&lt;java.lang.Integer,&#8203;java.lang.Double&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#dijkstra(int)">dijkstra</a></span>&#8203;(int&nbsp;startVertexId)</code></th>
 <td class="colLast">
-<div class="block">Алгоритм дейкстры на графе</div>
+<div class="block">Алгоритм дейкстры на графе.</div>
 </td>
 </tr>
 </table>
@@ -302,8 +302,8 @@ implements <a href="GraphInterface.html" title="interface in &lt;Unnamed&gt;">Gr
 <li class="blockList">
 <h4>addVertex</h4>
 <pre class="methodSignature">public&nbsp;<a href="Vertex.html" title="class in &lt;Unnamed&gt;">Vertex</a>&lt;<a href="AdjacencyMatrixGraph.html" title="type parameter in AdjacencyMatrixGraph">V</a>&gt;&nbsp;addVertex&#8203;(<a href="AdjacencyMatrixGraph.html" title="type parameter in AdjacencyMatrixGraph">V</a>&nbsp;value)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="GraphInterface.html#addVertex(V)">GraphInterface</a></code></span></div>
-<div class="block">Добавить вершину по значению.</div>
+<div class="block">Добавить вершину по значению.
+ Время работы - O(1).</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="GraphInterface.html#addVertex(V)">addVertex</a></code>&nbsp;in interface&nbsp;<code><a href="GraphInterface.html" title="interface in &lt;Unnamed&gt;">GraphInterface</a>&lt;<a href="AdjacencyMatrixGraph.html" title="type parameter in AdjacencyMatrixGraph">V</a>,&#8203;<a href="AdjacencyMatrixGraph.html" title="type parameter in AdjacencyMatrixGraph">E</a> extends java.lang.Number&gt;</code></dd>
@@ -321,9 +321,9 @@ implements <a href="GraphInterface.html" title="interface in &lt;Unnamed&gt;">Gr
 <li class="blockList">
 <h4>deleteVertex</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;deleteVertex&#8203;(<a href="Vertex.html" title="class in &lt;Unnamed&gt;">Vertex</a>&lt;<a href="AdjacencyMatrixGraph.html" title="type parameter in AdjacencyMatrixGraph">V</a>&gt;&nbsp;vertex)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="GraphInterface.html#deleteVertex(Vertex)">GraphInterface</a></code></span></div>
 <div class="block">Удалить вершину по ее объекту.
- При удалении вершины также удаляются все ребра инцидентные ей.</div>
+ При удалении вершины также удаляются все ребра инцидентные ей.
+ Время работы - O(V), где V - количество вершин в графе.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="GraphInterface.html#deleteVertex(Vertex)">deleteVertex</a></code>&nbsp;in interface&nbsp;<code><a href="GraphInterface.html" title="interface in &lt;Unnamed&gt;">GraphInterface</a>&lt;<a href="AdjacencyMatrixGraph.html" title="type parameter in AdjacencyMatrixGraph">V</a>,&#8203;<a href="AdjacencyMatrixGraph.html" title="type parameter in AdjacencyMatrixGraph">E</a> extends java.lang.Number&gt;</code></dd>
@@ -344,8 +344,8 @@ implements <a href="GraphInterface.html" title="interface in &lt;Unnamed&gt;">Gr
                                <a href="Vertex.html" title="class in &lt;Unnamed&gt;">Vertex</a>&lt;<a href="AdjacencyMatrixGraph.html" title="type parameter in AdjacencyMatrixGraph">V</a>&gt;&nbsp;from,
                                <a href="Vertex.html" title="class in &lt;Unnamed&gt;">Vertex</a>&lt;<a href="AdjacencyMatrixGraph.html" title="type parameter in AdjacencyMatrixGraph">V</a>&gt;&nbsp;to)
                         throws java.lang.IllegalArgumentException</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="GraphInterface.html#addEdge(E,Vertex,Vertex)">GraphInterface</a></code></span></div>
-<div class="block">Добавить ребро в граф.</div>
+<div class="block">Добавить ребро в граф.
+ Время работы - O(1).</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="GraphInterface.html#addEdge(E,Vertex,Vertex)">addEdge</a></code>&nbsp;in interface&nbsp;<code><a href="GraphInterface.html" title="interface in &lt;Unnamed&gt;">GraphInterface</a>&lt;<a href="AdjacencyMatrixGraph.html" title="type parameter in AdjacencyMatrixGraph">V</a>,&#8203;<a href="AdjacencyMatrixGraph.html" title="type parameter in AdjacencyMatrixGraph">E</a> extends java.lang.Number&gt;</code></dd>
@@ -367,8 +367,8 @@ implements <a href="GraphInterface.html" title="interface in &lt;Unnamed&gt;">Gr
 <li class="blockList">
 <h4>deleteEdge</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;deleteEdge&#8203;(<a href="Edge.html" title="class in &lt;Unnamed&gt;">Edge</a>&lt;<a href="AdjacencyMatrixGraph.html" title="type parameter in AdjacencyMatrixGraph">V</a>,&#8203;<a href="AdjacencyMatrixGraph.html" title="type parameter in AdjacencyMatrixGraph">E</a>&gt;&nbsp;edge)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="GraphInterface.html#deleteEdge(Edge)">GraphInterface</a></code></span></div>
-<div class="block">Удалить ребро, по его объекту.</div>
+<div class="block">Удалить ребро, по его объекту.
+ Время работы - O(1).</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="GraphInterface.html#deleteEdge(Edge)">deleteEdge</a></code>&nbsp;in interface&nbsp;<code><a href="GraphInterface.html" title="interface in &lt;Unnamed&gt;">GraphInterface</a>&lt;<a href="AdjacencyMatrixGraph.html" title="type parameter in AdjacencyMatrixGraph">V</a>,&#8203;<a href="AdjacencyMatrixGraph.html" title="type parameter in AdjacencyMatrixGraph">E</a> extends java.lang.Number&gt;</code></dd>
@@ -384,8 +384,8 @@ implements <a href="GraphInterface.html" title="interface in &lt;Unnamed&gt;">Gr
 <li class="blockList">
 <h4>dijkstra</h4>
 <pre class="methodSignature">public&nbsp;java.util.HashMap&lt;java.lang.Integer,&#8203;java.lang.Double&gt;&nbsp;dijkstra&#8203;(int&nbsp;startVertexId)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="GraphInterface.html#dijkstra(int)">GraphInterface</a></code></span></div>
-<div class="block">Алгоритм дейкстры на графе</div>
+<div class="block">Алгоритм дейкстры на графе.
+ Время работы - O(V^2), где V - количество вершин в графе.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="GraphInterface.html#dijkstra(int)">dijkstra</a></code>&nbsp;in interface&nbsp;<code><a href="GraphInterface.html" title="interface in &lt;Unnamed&gt;">GraphInterface</a>&lt;<a href="AdjacencyMatrixGraph.html" title="type parameter in AdjacencyMatrixGraph">V</a>,&#8203;<a href="AdjacencyMatrixGraph.html" title="type parameter in AdjacencyMatrixGraph">E</a> extends java.lang.Number&gt;</code></dd>

@@ -124,8 +124,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="paramLabel">Type Parameters:</span></dt>
 <dd><code>V</code> - Тип объекта находящегося в вершине.</dd>
 <dd><code>E</code> - Тип объекта находящегося в ребре. Он должен наследоваться от Number,
- чтобы алгоритм нахождения кратчайшего расстояния мог делать операции сложения и сравнения.
- Также при вычислении расстояний все типы приводятся к double.</dd>
+            чтобы алгоритм нахождения кратчайшего расстояния мог делать операции сложения и сравнения.
+            Также при вычислении расстояний все типы приводятся к double.</dd>
 </dl>
 <dl>
 <dt>All Known Implementing Classes:</dt>
@@ -137,7 +137,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
  Это накладывает многие ограничения. Из за этого ввод графа довольно некрасивый,
  и любые операции тоже принимают сложный вид,
  потому что пользователю приходится поддерживать объекты вершин или их id.
-
+ <p>
  Итого у пользователя есть два варианта взаимодействия с графом
  1) Поддерживая объекты вершин
  2) Поддерживая Id вершин
@@ -230,7 +230,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>default java.util.ArrayList&lt;<a href="PairComparable.html" title="class in &lt;Unnamed&gt;">PairComparable</a>&lt;java.lang.Double,&#8203;<a href="Vertex.html" title="class in &lt;Unnamed&gt;">Vertex</a>&lt;<a href="GraphInterface.html" title="type parameter in GraphInterface">V</a>&gt;&gt;&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#sortByDistance(Vertex)">sortByDistance</a></span>&#8203;(<a href="Vertex.html" title="class in &lt;Unnamed&gt;">Vertex</a>&lt;<a href="GraphInterface.html" title="type parameter in GraphInterface">V</a>&gt;&nbsp;startVertex)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Cортирует вершины графа по возрастанию расстояния от стартовой вершины.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -404,6 +406,15 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <h4>sortByDistance</h4>
 <pre class="methodSignature">default&nbsp;java.util.ArrayList&lt;<a href="PairComparable.html" title="class in &lt;Unnamed&gt;">PairComparable</a>&lt;java.lang.Double,&#8203;<a href="Vertex.html" title="class in &lt;Unnamed&gt;">Vertex</a>&lt;<a href="GraphInterface.html" title="type parameter in GraphInterface">V</a>&gt;&gt;&gt;&nbsp;sortByDistance&#8203;(<a href="Vertex.html" title="class in &lt;Unnamed&gt;">Vertex</a>&lt;<a href="GraphInterface.html" title="type parameter in GraphInterface">V</a>&gt;&nbsp;startVertex)</pre>
+<div class="block">Cортирует вершины графа по возрастанию расстояния от стартовой вершины.
+
+ Время работы - O(dijkstra + VlogV), где V - количество вершин в графе.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>startVertex</code> - id стартовой вершины.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>ArrayList пар (расстояние, объект вершины) отсортированный по расстоянию.</dd>
+</dl>
 </li>
 </ul>
 </li>
