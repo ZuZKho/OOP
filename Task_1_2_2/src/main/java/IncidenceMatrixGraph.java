@@ -97,8 +97,12 @@ public class IncidenceMatrixGraph<V, E extends Number> extends Graph<V, E>
 
             // Смотрим все ребра из вершины minIdx
             for (var entry : matrix.entrySet()) {
-                if (!entry.getValue().containsKey(minIdx)) continue;
-                if (entry.getValue().get(minIdx) >= 0) continue;
+                if (!entry.getValue().containsKey(minIdx)) {
+                    continue;
+                }
+                if (entry.getValue().get(minIdx) >= 0) {
+                    continue;
+                }
 
                 // Знаем, что из вершины minIdx выходит ребро
                 // Найдем куда оно выходит

@@ -1,7 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class GraphDownloader {
@@ -26,7 +25,9 @@ public class GraphDownloader {
         }
 
         for (int i = 0; i < edgesCount; i++) {
-            int from, to, weight;
+            int from;
+            int to;
+            int weight;
             from = scanner.nextInt();
             to = scanner.nextInt();
             weight = scanner.nextInt();
