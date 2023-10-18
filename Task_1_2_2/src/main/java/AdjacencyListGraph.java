@@ -1,6 +1,15 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 
-public class AdjacencyListGraph<V, E extends Number> extends Graph<V, E> implements GraphInterface<V, E> {
+/**
+ * Класс графа реализующий представление в виде списков смежности.
+ *
+ * @param <V> тип значения вершины.
+ * @param <E> тип значения ребра.
+ */
+public class AdjacencyListGraph<V, E extends Number> extends Graph<V, E>
+        implements GraphInterface<V, E> {
 
     private final HashMap<Integer, ArrayList<Edge<V, E>>> vertexOutEdges;
 

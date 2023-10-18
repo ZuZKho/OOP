@@ -2,6 +2,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
+/**
+ * Класс графа реализующий представление в виде Матрицы инцидентности.
+ *
+ * @param <V> тип значения вершины.
+ * @param <E> тип значения ребра.
+ */
 public class IncidenceMatrixGraph<V, E extends Number> extends Graph<V, E>
         implements GraphInterface<V, E> {
 

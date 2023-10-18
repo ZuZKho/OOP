@@ -3,8 +3,19 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Класс реализующий загрузку графа Int Int из файла.
+ */
 public class GraphDownloader {
 
+    /**
+     * Функция загрузки графа из файла
+     *
+     * @param g граф
+     * @param vertices список, куда будут сложены объекты вершин.
+     * @param edges список, куда будут сложены объекты ребер.
+     * @param fileName имя файла из которого нужно осуществить ввод.
+     */
     static void downloadGraphFromFile(GraphInterface<Integer, Integer> g,
                                       ArrayList<Vertex<Integer>> vertices,
                                       ArrayList<Edge<Integer, Integer>> edges,

@@ -2,6 +2,12 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Общий класс графа от которого наследуются остальные виды.
+ *
+ * @param <V> тип значения вершины.
+ * @param <E> тип значения ребра.
+ */
 public class Graph<V, E extends Number> {
 
 
@@ -10,7 +16,6 @@ public class Graph<V, E extends Number> {
 
     /**
      * Получить вершину по ее ID.
-     * <p>
      * Время работы - O(1).
      *
      * @param vertexId айди вершины.

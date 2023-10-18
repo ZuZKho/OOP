@@ -5,6 +5,12 @@
 import java.util.HashMap;
 import java.util.HashSet;
 
+/**
+ * Класс графа реализующий представление в виде Матрицы смежности.
+ *
+ * @param <V> тип значения вершины.
+ * @param <E> тип значения ребра.
+ */
 public class AdjacencyMatrixGraph<V, E extends Number> extends Graph<V, E>
         implements GraphInterface<V, E> {
     private final HashMap<Integer, HashMap<Integer, Edge<V, E>>> matrix;
@@ -70,7 +76,8 @@ public class AdjacencyMatrixGraph<V, E extends Number> extends Graph<V, E>
      * @return объект добавленного ребра.
      * @throws IllegalArgumentException выкидывается при несуществующих вершинах в аргументах.
      */
-    public Edge<V, E> addEdge(E value, Vertex<V> from, Vertex<V> to) throws IllegalArgumentException {
+    public Edge<V, E> addEdge(E value, Vertex<V> from, Vertex<V> to)
+            throws IllegalArgumentException {
         if (!matrix.containsKey(from.getId())) {
             throw new IllegalArgumentException("Не существует вершины с таким id.");
         }
