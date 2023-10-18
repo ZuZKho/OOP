@@ -204,27 +204,37 @@ implements <a href="GraphInterface.html" title="interface in &lt;Unnamed&gt;">Gr
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addEdge(E,Vertex,Vertex)">addEdge</a></span>&#8203;(<a href="AdjacencyListGraph.html" title="type parameter in AdjacencyListGraph">E</a>&nbsp;value,
        <a href="Vertex.html" title="class in &lt;Unnamed&gt;">Vertex</a>&lt;<a href="AdjacencyListGraph.html" title="type parameter in AdjacencyListGraph">V</a>&gt;&nbsp;from,
        <a href="Vertex.html" title="class in &lt;Unnamed&gt;">Vertex</a>&lt;<a href="AdjacencyListGraph.html" title="type parameter in AdjacencyListGraph">V</a>&gt;&nbsp;to)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Добавить ребро в граф.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="Vertex.html" title="class in &lt;Unnamed&gt;">Vertex</a>&lt;<a href="AdjacencyListGraph.html" title="type parameter in AdjacencyListGraph">V</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addVertex(V)">addVertex</a></span>&#8203;(<a href="AdjacencyListGraph.html" title="type parameter in AdjacencyListGraph">V</a>&nbsp;value)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Добавить вершину по значению.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#deleteEdge(Edge)">deleteEdge</a></span>&#8203;(<a href="Edge.html" title="class in &lt;Unnamed&gt;">Edge</a>&lt;<a href="AdjacencyListGraph.html" title="type parameter in AdjacencyListGraph">V</a>,&#8203;<a href="AdjacencyListGraph.html" title="type parameter in AdjacencyListGraph">E</a>&gt;&nbsp;edge)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Удалить ребро, по его объекту.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#deleteVertex(Vertex)">deleteVertex</a></span>&#8203;(<a href="Vertex.html" title="class in &lt;Unnamed&gt;">Vertex</a>&lt;<a href="AdjacencyListGraph.html" title="type parameter in AdjacencyListGraph">V</a>&gt;&nbsp;vertex)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Удалить вершину по ее объекту.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>java.util.HashMap&lt;java.lang.Integer,&#8203;java.lang.Double&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#dijkstra(int)">dijkstra</a></span>&#8203;(int&nbsp;startVertexId)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Алгоритм дейкстры на графе</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -292,9 +302,15 @@ implements <a href="GraphInterface.html" title="interface in &lt;Unnamed&gt;">Gr
 <li class="blockList">
 <h4>addVertex</h4>
 <pre class="methodSignature">public&nbsp;<a href="Vertex.html" title="class in &lt;Unnamed&gt;">Vertex</a>&lt;<a href="AdjacencyListGraph.html" title="type parameter in AdjacencyListGraph">V</a>&gt;&nbsp;addVertex&#8203;(<a href="AdjacencyListGraph.html" title="type parameter in AdjacencyListGraph">V</a>&nbsp;value)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="GraphInterface.html#addVertex(V)">GraphInterface</a></code></span></div>
+<div class="block">Добавить вершину по значению.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="GraphInterface.html#addVertex(V)">addVertex</a></code>&nbsp;in interface&nbsp;<code><a href="GraphInterface.html" title="interface in &lt;Unnamed&gt;">GraphInterface</a>&lt;<a href="AdjacencyListGraph.html" title="type parameter in AdjacencyListGraph">V</a>,&#8203;<a href="AdjacencyListGraph.html" title="type parameter in AdjacencyListGraph">E</a> extends java.lang.Number&gt;</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>value</code> - значение.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Объект добавленной вершины.</dd>
 </dl>
 </li>
 </ul>
@@ -305,9 +321,14 @@ implements <a href="GraphInterface.html" title="interface in &lt;Unnamed&gt;">Gr
 <li class="blockList">
 <h4>deleteVertex</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;deleteVertex&#8203;(<a href="Vertex.html" title="class in &lt;Unnamed&gt;">Vertex</a>&lt;<a href="AdjacencyListGraph.html" title="type parameter in AdjacencyListGraph">V</a>&gt;&nbsp;vertex)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="GraphInterface.html#deleteVertex(Vertex)">GraphInterface</a></code></span></div>
+<div class="block">Удалить вершину по ее объекту.
+ При удалении вершины также удаляются все ребра инцидентные ей.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="GraphInterface.html#deleteVertex(Vertex)">deleteVertex</a></code>&nbsp;in interface&nbsp;<code><a href="GraphInterface.html" title="interface in &lt;Unnamed&gt;">GraphInterface</a>&lt;<a href="AdjacencyListGraph.html" title="type parameter in AdjacencyListGraph">V</a>,&#8203;<a href="AdjacencyListGraph.html" title="type parameter in AdjacencyListGraph">E</a> extends java.lang.Number&gt;</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>vertex</code> - объект вершины.</dd>
 </dl>
 </li>
 </ul>
@@ -323,11 +344,19 @@ implements <a href="GraphInterface.html" title="interface in &lt;Unnamed&gt;">Gr
                                <a href="Vertex.html" title="class in &lt;Unnamed&gt;">Vertex</a>&lt;<a href="AdjacencyListGraph.html" title="type parameter in AdjacencyListGraph">V</a>&gt;&nbsp;from,
                                <a href="Vertex.html" title="class in &lt;Unnamed&gt;">Vertex</a>&lt;<a href="AdjacencyListGraph.html" title="type parameter in AdjacencyListGraph">V</a>&gt;&nbsp;to)
                         throws java.lang.IllegalArgumentException</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="GraphInterface.html#addEdge(E,Vertex,Vertex)">GraphInterface</a></code></span></div>
+<div class="block">Добавить ребро в граф.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="GraphInterface.html#addEdge(E,Vertex,Vertex)">addEdge</a></code>&nbsp;in interface&nbsp;<code><a href="GraphInterface.html" title="interface in &lt;Unnamed&gt;">GraphInterface</a>&lt;<a href="AdjacencyListGraph.html" title="type parameter in AdjacencyListGraph">V</a>,&#8203;<a href="AdjacencyListGraph.html" title="type parameter in AdjacencyListGraph">E</a> extends java.lang.Number&gt;</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>value</code> - значение написанное ребре.</dd>
+<dd><code>from</code> - объект вершины из которой ребро выходит.</dd>
+<dd><code>to</code> - объект вершины в которую ребро входит</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>объект добавленного ребра.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.IllegalArgumentException</code></dd>
+<dd><code>java.lang.IllegalArgumentException</code> - выкидывается при несуществующих вершинах в аргументах.</dd>
 </dl>
 </li>
 </ul>
@@ -338,9 +367,13 @@ implements <a href="GraphInterface.html" title="interface in &lt;Unnamed&gt;">Gr
 <li class="blockList">
 <h4>deleteEdge</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;deleteEdge&#8203;(<a href="Edge.html" title="class in &lt;Unnamed&gt;">Edge</a>&lt;<a href="AdjacencyListGraph.html" title="type parameter in AdjacencyListGraph">V</a>,&#8203;<a href="AdjacencyListGraph.html" title="type parameter in AdjacencyListGraph">E</a>&gt;&nbsp;edge)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="GraphInterface.html#deleteEdge(Edge)">GraphInterface</a></code></span></div>
+<div class="block">Удалить ребро, по его объекту.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="GraphInterface.html#deleteEdge(Edge)">deleteEdge</a></code>&nbsp;in interface&nbsp;<code><a href="GraphInterface.html" title="interface in &lt;Unnamed&gt;">GraphInterface</a>&lt;<a href="AdjacencyListGraph.html" title="type parameter in AdjacencyListGraph">V</a>,&#8203;<a href="AdjacencyListGraph.html" title="type parameter in AdjacencyListGraph">E</a> extends java.lang.Number&gt;</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>edge</code> - объект ребра, которое нужно удалить.</dd>
 </dl>
 </li>
 </ul>
@@ -351,9 +384,15 @@ implements <a href="GraphInterface.html" title="interface in &lt;Unnamed&gt;">Gr
 <li class="blockList">
 <h4>dijkstra</h4>
 <pre class="methodSignature">public&nbsp;java.util.HashMap&lt;java.lang.Integer,&#8203;java.lang.Double&gt;&nbsp;dijkstra&#8203;(int&nbsp;startVertexId)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="GraphInterface.html#dijkstra(int)">GraphInterface</a></code></span></div>
+<div class="block">Алгоритм дейкстры на графе</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="GraphInterface.html#dijkstra(int)">dijkstra</a></code>&nbsp;in interface&nbsp;<code><a href="GraphInterface.html" title="interface in &lt;Unnamed&gt;">GraphInterface</a>&lt;<a href="AdjacencyListGraph.html" title="type parameter in AdjacencyListGraph">V</a>,&#8203;<a href="AdjacencyListGraph.html" title="type parameter in AdjacencyListGraph">E</a> extends java.lang.Number&gt;</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>startVertexId</code> - индекс стартовой вершины</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>hashmap вида (id вершины, расстояние до нее от стартовой).</dd>
 </dl>
 </li>
 </ul>

@@ -121,11 +121,27 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <ul class="blockList">
 <li class="blockList">
 <dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>V</code> - Тип объекта находящегося в вершине.</dd>
+<dd><code>E</code> - Тип объекта находящегося в ребре. Он должен наследоваться от Number,
+ чтобы алгоритм нахождения кратчайшего расстояния мог делать операции сложения и сравнения.
+ Также при вычислении расстояний все типы приводятся к double.</dd>
+</dl>
+<dl>
 <dt>All Known Implementing Classes:</dt>
 <dd><code><a href="AdjacencyListGraph.html" title="class in &lt;Unnamed&gt;">AdjacencyListGraph</a></code>, <code><a href="AdjacencyMatrixGraph.html" title="class in &lt;Unnamed&gt;">AdjacencyMatrixGraph</a></code>, <code><a href="IncidenceMatrixGraph.html" title="class in &lt;Unnamed&gt;">IncidenceMatrixGraph</a></code></dd>
 </dl>
 <hr>
 <pre>public interface <span class="typeNameLabel">GraphInterface&lt;V,&#8203;E extends java.lang.Number&gt;</span></pre>
+<div class="block">Основная идея реализации в том, что в разных вершинах могут находится одинаковые значения.
+ Это накладывает многие ограничения. Из за этого ввод графа довольно некрасивый,
+ и любые операции тоже принимают сложный вид,
+ потому что пользователю приходится поддерживать объекты вершин или их id.
+
+ Итого у пользователя есть два варианта взаимодействия с графом
+ 1) Поддерживая объекты вершин
+ 2) Поддерживая Id вершин
+ В тестах использую первый вариант.</div>
 </li>
 </ul>
 </div>
@@ -151,47 +167,65 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addEdge(E,Vertex,Vertex)">addEdge</a></span>&#8203;(<a href="GraphInterface.html" title="type parameter in GraphInterface">E</a>&nbsp;value,
        <a href="Vertex.html" title="class in &lt;Unnamed&gt;">Vertex</a>&lt;<a href="GraphInterface.html" title="type parameter in GraphInterface">V</a>&gt;&nbsp;from,
        <a href="Vertex.html" title="class in &lt;Unnamed&gt;">Vertex</a>&lt;<a href="GraphInterface.html" title="type parameter in GraphInterface">V</a>&gt;&nbsp;to)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Добавить ребро в граф.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="Vertex.html" title="class in &lt;Unnamed&gt;">Vertex</a>&lt;<a href="GraphInterface.html" title="type parameter in GraphInterface">V</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addVertex(V)">addVertex</a></span>&#8203;(<a href="GraphInterface.html" title="type parameter in GraphInterface">V</a>&nbsp;value)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Добавить вершину по значению.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#deleteEdge(Edge)">deleteEdge</a></span>&#8203;(<a href="Edge.html" title="class in &lt;Unnamed&gt;">Edge</a>&lt;<a href="GraphInterface.html" title="type parameter in GraphInterface">V</a>,&#8203;<a href="GraphInterface.html" title="type parameter in GraphInterface">E</a>&gt;&nbsp;edge)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Удалить ребро, по его объекту.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#deleteVertex(Vertex)">deleteVertex</a></span>&#8203;(<a href="Vertex.html" title="class in &lt;Unnamed&gt;">Vertex</a>&lt;<a href="GraphInterface.html" title="type parameter in GraphInterface">V</a>&gt;&nbsp;vertex)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Удалить вершину по ее объекту.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>java.util.HashMap&lt;java.lang.Integer,&#8203;java.lang.Double&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#dijkstra(int)">dijkstra</a></span>&#8203;(int&nbsp;startVertexId)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Алгоритм дейкстры на графе</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code><a href="Edge.html" title="class in &lt;Unnamed&gt;">Edge</a>&lt;<a href="GraphInterface.html" title="type parameter in GraphInterface">V</a>,&#8203;<a href="GraphInterface.html" title="type parameter in GraphInterface">E</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getEdgeById(int)">getEdgeById</a></span>&#8203;(int&nbsp;edgeId)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Получить Объект ребра по его ID.</div>
+</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>java.util.ArrayList&lt;<a href="Edge.html" title="class in &lt;Unnamed&gt;">Edge</a>&lt;<a href="GraphInterface.html" title="type parameter in GraphInterface">V</a>,&#8203;<a href="GraphInterface.html" title="type parameter in GraphInterface">E</a>&gt;&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getEdgesList()">getEdgesList</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Получить список объектов всех ребер.</div>
+</td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code><a href="Vertex.html" title="class in &lt;Unnamed&gt;">Vertex</a>&lt;<a href="GraphInterface.html" title="type parameter in GraphInterface">V</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVertexById(int)">getVertexById</a></span>&#8203;(int&nbsp;vertexId)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Получить объект вершины по ее ID.</div>
+</td>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>java.util.ArrayList&lt;<a href="Vertex.html" title="class in &lt;Unnamed&gt;">Vertex</a>&lt;<a href="GraphInterface.html" title="type parameter in GraphInterface">V</a>&gt;&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVerticesList()">getVerticesList</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Получить список объектов всех вершин.</div>
+</td>
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>default java.util.ArrayList&lt;<a href="PairComparable.html" title="class in &lt;Unnamed&gt;">PairComparable</a>&lt;java.lang.Double,&#8203;<a href="Vertex.html" title="class in &lt;Unnamed&gt;">Vertex</a>&lt;<a href="GraphInterface.html" title="type parameter in GraphInterface">V</a>&gt;&gt;&gt;</code></td>
@@ -224,6 +258,13 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <h4>addVertex</h4>
 <pre class="methodSignature"><a href="Vertex.html" title="class in &lt;Unnamed&gt;">Vertex</a>&lt;<a href="GraphInterface.html" title="type parameter in GraphInterface">V</a>&gt;&nbsp;addVertex&#8203;(<a href="GraphInterface.html" title="type parameter in GraphInterface">V</a>&nbsp;value)</pre>
+<div class="block">Добавить вершину по значению.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>value</code> - значение.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Объект добавленной вершины.</dd>
+</dl>
 </li>
 </ul>
 <a id="getVertexById(int)">
@@ -233,6 +274,13 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <h4>getVertexById</h4>
 <pre class="methodSignature"><a href="Vertex.html" title="class in &lt;Unnamed&gt;">Vertex</a>&lt;<a href="GraphInterface.html" title="type parameter in GraphInterface">V</a>&gt;&nbsp;getVertexById&#8203;(int&nbsp;vertexId)</pre>
+<div class="block">Получить объект вершины по ее ID.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>vertexId</code> - айди вершины.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>объект вершины</dd>
+</dl>
 </li>
 </ul>
 <a id="deleteVertex(Vertex)">
@@ -242,6 +290,12 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <h4>deleteVertex</h4>
 <pre class="methodSignature">void&nbsp;deleteVertex&#8203;(<a href="Vertex.html" title="class in &lt;Unnamed&gt;">Vertex</a>&lt;<a href="GraphInterface.html" title="type parameter in GraphInterface">V</a>&gt;&nbsp;vertex)</pre>
+<div class="block">Удалить вершину по ее объекту.
+ При удалении вершины также удаляются все ребра инцидентные ей.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>vertex</code> - объект вершины.</dd>
+</dl>
 </li>
 </ul>
 <a id="getVerticesList()">
@@ -251,6 +305,11 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <h4>getVerticesList</h4>
 <pre class="methodSignature">java.util.ArrayList&lt;<a href="Vertex.html" title="class in &lt;Unnamed&gt;">Vertex</a>&lt;<a href="GraphInterface.html" title="type parameter in GraphInterface">V</a>&gt;&gt;&nbsp;getVerticesList()</pre>
+<div class="block">Получить список объектов всех вершин.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>список объектов вершин.</dd>
+</dl>
 </li>
 </ul>
 <a id="getEdgesList()">
@@ -260,6 +319,11 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <h4>getEdgesList</h4>
 <pre class="methodSignature">java.util.ArrayList&lt;<a href="Edge.html" title="class in &lt;Unnamed&gt;">Edge</a>&lt;<a href="GraphInterface.html" title="type parameter in GraphInterface">V</a>,&#8203;<a href="GraphInterface.html" title="type parameter in GraphInterface">E</a>&gt;&gt;&nbsp;getEdgesList()</pre>
+<div class="block">Получить список объектов всех ребер.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>список объектов ребер.</dd>
+</dl>
 </li>
 </ul>
 <a id="addEdge(java.lang.Number,Vertex,Vertex)">
@@ -274,9 +338,16 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
                         <a href="Vertex.html" title="class in &lt;Unnamed&gt;">Vertex</a>&lt;<a href="GraphInterface.html" title="type parameter in GraphInterface">V</a>&gt;&nbsp;from,
                         <a href="Vertex.html" title="class in &lt;Unnamed&gt;">Vertex</a>&lt;<a href="GraphInterface.html" title="type parameter in GraphInterface">V</a>&gt;&nbsp;to)
                  throws java.lang.IllegalArgumentException</pre>
+<div class="block">Добавить ребро в граф.</div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>value</code> - значение написанное ребре.</dd>
+<dd><code>from</code> - объект вершины из которой ребро выходит.</dd>
+<dd><code>to</code> - объект вершины в которую ребро входит</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>объект добавленного ребра.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.IllegalArgumentException</code></dd>
+<dd><code>java.lang.IllegalArgumentException</code> - выкидывается при несуществующих вершинах в аргументах.</dd>
 </dl>
 </li>
 </ul>
@@ -287,6 +358,13 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <h4>getEdgeById</h4>
 <pre class="methodSignature"><a href="Edge.html" title="class in &lt;Unnamed&gt;">Edge</a>&lt;<a href="GraphInterface.html" title="type parameter in GraphInterface">V</a>,&#8203;<a href="GraphInterface.html" title="type parameter in GraphInterface">E</a>&gt;&nbsp;getEdgeById&#8203;(int&nbsp;edgeId)</pre>
+<div class="block">Получить Объект ребра по его ID.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>edgeId</code> - id ребра.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>объект ребра.</dd>
+</dl>
 </li>
 </ul>
 <a id="deleteEdge(Edge)">
@@ -296,6 +374,11 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <h4>deleteEdge</h4>
 <pre class="methodSignature">void&nbsp;deleteEdge&#8203;(<a href="Edge.html" title="class in &lt;Unnamed&gt;">Edge</a>&lt;<a href="GraphInterface.html" title="type parameter in GraphInterface">V</a>,&#8203;<a href="GraphInterface.html" title="type parameter in GraphInterface">E</a>&gt;&nbsp;edge)</pre>
+<div class="block">Удалить ребро, по его объекту.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>edge</code> - объект ребра, которое нужно удалить.</dd>
+</dl>
 </li>
 </ul>
 <a id="dijkstra(int)">
@@ -305,6 +388,13 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <h4>dijkstra</h4>
 <pre class="methodSignature">java.util.HashMap&lt;java.lang.Integer,&#8203;java.lang.Double&gt;&nbsp;dijkstra&#8203;(int&nbsp;startVertexId)</pre>
+<div class="block">Алгоритм дейкстры на графе</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>startVertexId</code> - индекс стартовой вершины</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>hashmap вида (id вершины, расстояние до нее от стартовой).</dd>
+</dl>
 </li>
 </ul>
 <a id="sortByDistance(Vertex)">
