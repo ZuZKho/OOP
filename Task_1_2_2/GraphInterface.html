@@ -124,7 +124,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="paramLabel">Type Parameters:</span></dt>
 <dd><code>V</code> - Тип объекта находящегося в вершине.</dd>
 <dd><code>E</code> - Тип объекта находящегося в ребре. Он должен наследоваться от Number,
-            чтобы алгоритм нахождения кратчайшего расстояния мог делать операции сложения и сравнения.
+            чтобы алгоритм нахождения кратчайшего расстояния мог делать
+            операции сложения и сравнения.
             Также при вычислении расстояний все типы приводятся к double.</dd>
 </dl>
 <dl>
@@ -134,10 +135,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public interface <span class="typeNameLabel">GraphInterface&lt;V,&#8203;E extends java.lang.Number&gt;</span></pre>
 <div class="block">Основная идея реализации в том, что в разных вершинах могут находится одинаковые значения.
- Это накладывает многие ограничения. Из за этого ввод графа довольно некрасивый,
+ Это накладывает многие ограничения. Так как пользователь не может обращатья по значению.
+ Из за этого ввод графа довольно некрасивый,
  и любые операции тоже принимают сложный вид,
  потому что пользователю приходится поддерживать объекты вершин или их id.
- <p>
  Итого у пользователя есть два варианта взаимодействия с графом
  1) Поддерживая объекты вершин
  2) Поддерживая Id вершин
@@ -196,7 +197,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <td class="colFirst"><code>java.util.HashMap&lt;java.lang.Integer,&#8203;java.lang.Double&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#dijkstra(int)">dijkstra</a></span>&#8203;(int&nbsp;startVertexId)</code></th>
 <td class="colLast">
-<div class="block">Алгоритм дейкстры на графе</div>
+<div class="block">Алгоритм дейкстры на графе.</div>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
@@ -390,7 +391,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <h4>dijkstra</h4>
 <pre class="methodSignature">java.util.HashMap&lt;java.lang.Integer,&#8203;java.lang.Double&gt;&nbsp;dijkstra&#8203;(int&nbsp;startVertexId)</pre>
-<div class="block">Алгоритм дейкстры на графе</div>
+<div class="block">Алгоритм дейкстры на графе.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>startVertexId</code> - индекс стартовой вершины</dd>
@@ -407,7 +408,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <h4>sortByDistance</h4>
 <pre class="methodSignature">default&nbsp;java.util.ArrayList&lt;<a href="PairComparable.html" title="class in &lt;Unnamed&gt;">PairComparable</a>&lt;java.lang.Double,&#8203;<a href="Vertex.html" title="class in &lt;Unnamed&gt;">Vertex</a>&lt;<a href="GraphInterface.html" title="type parameter in GraphInterface">V</a>&gt;&gt;&gt;&nbsp;sortByDistance&#8203;(<a href="Vertex.html" title="class in &lt;Unnamed&gt;">Vertex</a>&lt;<a href="GraphInterface.html" title="type parameter in GraphInterface">V</a>&gt;&nbsp;startVertex)</pre>
 <div class="block">Cортирует вершины графа по возрастанию расстояния от стартовой вершины.
-
  Время работы - O(dijkstra + VlogV), где V - количество вершин в графе.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
