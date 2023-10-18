@@ -1,4 +1,12 @@
-public class PairComparable<T1 extends Comparable<T1>, T2> implements Comparable<PairComparable<T1, T2>> {
+/**
+ * Класс реализуюший Пару значений,
+ * которую можно сравнивать по первому из них.
+ *
+ * @param <T1> тип первого элемента пары. Должен быть Comparable.
+ * @param <T2> тип второго элемента пары.
+ */
+public class PairComparable<T1 extends Comparable<T1>, T2>
+        implements Comparable<PairComparable<T1, T2>> {
 
     public T1 first;
     public T2 second;

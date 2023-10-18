@@ -1,3 +1,9 @@
+/**
+ * Класс ребра.
+ *
+ * @param <V> тип значения вершины.
+ * @param <E> тип значения ребра.
+ */
 public class Edge<V, E> {
     private static int freeId = 0;
     E value;
@@ -13,6 +19,11 @@ public class Edge<V, E> {
         freeId++;
     }
 
+    /**
+     * Получить id ребра.
+     *
+     * @return id ребра.
+     */
     public int getId() {
         return this.id;
     }

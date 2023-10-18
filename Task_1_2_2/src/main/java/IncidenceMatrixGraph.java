@@ -65,7 +65,8 @@ public class IncidenceMatrixGraph<V, E extends Number> extends Graph<V, E>
      * @return объект добавленного ребра.
      * @throws IllegalArgumentException выкидывается при несуществующих вершинах в аргументах.
      */
-    public Edge<V, E> addEdge(E value, Vertex<V> from, Vertex<V> to) throws IllegalArgumentException {
+    public Edge<V, E> addEdge(E value, Vertex<V> from, Vertex<V> to)
+            throws IllegalArgumentException {
 
         if (!vertices.containsKey(from.getId())) {
             throw new IllegalArgumentException("Не существует вершины с таким id.");

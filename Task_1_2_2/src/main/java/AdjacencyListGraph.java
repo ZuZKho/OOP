@@ -126,7 +126,9 @@ public class AdjacencyListGraph<V, E extends Number> extends Graph<V, E> impleme
                 }
             }
 
-            if (minIdx == null) break;
+            if (minIdx == null) {
+                break;
+            }
             used.add(minIdx);
 
             for (var entry : vertexOutEdges.get(minIdx)) {
