@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"<Unnamed>","c":"SubstrFinder","l":"find(String, char[])","url":"find(java.lang.String,char[])"},{"p":"<Unnamed>","c":"SubstrFinder","l":"SubstrFinder()","url":"%3Cinit%3E()"},{"p":"<Unnamed>","c":"SubstrFinder","l":"SubstrFinder(int)","url":"%3Cinit%3E(int)"}]
