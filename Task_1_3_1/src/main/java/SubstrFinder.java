@@ -3,46 +3,75 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Класс для буферизированного поиска подстроки.
+ * имплементация: считывает буфер, ищет все подстроки которые ПОЛНОСТЬЮ ВОЙДУТ в этот буфер,
+ * копирует конец буфера (который мы не успели обработать из за нашего ограничения), в начало,
+ * считывает недостающие символы, чтобы буфер снова восполнился и повторяет.
+ */
 public class SubstrFinder {
 
     private final int minbufsz;
 
+    /**
+     * Constructor for predefined buffer size.
+     */
     public SubstrFinder() {
         this.minbufsz = 1000;
     }
 
+
+    /**
+     * Constructor for custom buffer size.
+     *
+     * @param minbufsz minimal length of buffer.
+     */
     public SubstrFinder(int minbufsz) {
         this.minbufsz = minbufsz;
     }
 
-    private int[] getZFunction(char[] string) {
+    /**
+     * По строке возвращает массив ее z-Функции.
+     *
+     * @param string строка.
+     * @return z-Функция.
+     */
+    private int[] getzFunction(char[] string) {
         int len = string.length;
 
-        int[] zFunction = new int[len];
-        zFunction[0] = 0;
+        int[] zfunction = new int[len];
+        zfunction[0] = 0;
         int l = 0, r = 0;
 
         // Посчитаем z-Функцию для искомой подстроки
         for (int i = 1; i < len; i++) {
             if (i <= r) {
-                zFunction[i] = Math.min(zFunction[i - l], r - i + 1);
+                zfunction[i] = Math.min(zfunction[i - l], r - i + 1);
             }
-            while (zFunction[i] + i < len && string[zFunction[i]] == string[zFunction[i] + i]) {
-                zFunction[i]++;
+            while (zfunction[i] + i < len && string[zfunction[i]] == string[zfunction[i] + i]) {
+                zfunction[i]++;
             }
-            if (i + zFunction[i] - 1 > r) {
-                r = i + zFunction[i] - 1;
+            if (i + zfunction[i] - 1 > r) {
+                r = i + zfunction[i] - 1;
                 l = i;
             }
         }
 
-        return zFunction;
+        return zfunction;
     }
 
+    /**
+     * Функция поиска подстроки в тексте, который расположен в файле.
+     *
+     * @param fileName имя файла в котором расположен текст.
+     * @param substr искомая подстрока.
+     * @return массив индексов вхождений.
+     * @throws FileNotFoundException в случае если файл с таким именем не найден.
+     */
     public int[] find(String fileName, char[] substr) throws FileNotFoundException {
-        ArrayList<Integer> answer = new ArrayList<>(); 
+        ArrayList<Integer> answer = new ArrayList<>();
         int substrLength = substr.length;
-        int[] zFunction = getZFunction(substr);
+        int[] zfunction = getzFunction(substr);
 
         int bufferCapacity = Math.max(2 * substrLength, minbufsz);
         char[] buffer = new char[bufferCapacity];
@@ -60,7 +89,7 @@ public class SubstrFinder {
                     int realIdx = i + shift;
                     int curZ = 0;
                     if (realIdx < r) {
-                        curZ = Math.min(zFunction[realIdx - l], r - realIdx + 1);
+                        curZ = Math.min(zfunction[realIdx - l], r - realIdx + 1);
                     }
                     while (curZ < substrLength && buffer[i + curZ] == substr[curZ]) {
                         curZ++;
@@ -69,7 +98,9 @@ public class SubstrFinder {
                         r = realIdx + curZ - 1;
                         l = realIdx;
                     }
-                    if (curZ == substrLength) answer.add(realIdx);
+                    if (curZ == substrLength) {
+                        answer.add(realIdx);
+                    }
                 }
                 shift += bufferLen - substrLength + 1;
 
@@ -79,7 +110,9 @@ public class SubstrFinder {
                 char[] tmp = new char[bufferCapacity - substrLength + 1];
                 bufferLen = reader.read(tmp);
                 // Если считывать нечего выходим
-                if (bufferLen == -1) break;
+                if (bufferLen == -1) {
+                    break;
+                }
                 // Копируем считанное в конец буфера
                 System.arraycopy(tmp, 0, buffer, substrLength - 1, bufferLen);
                 bufferLen += substrLength - 1;
