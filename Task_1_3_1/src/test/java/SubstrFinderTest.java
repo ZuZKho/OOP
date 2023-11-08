@@ -1,18 +1,16 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import java.io.FileNotFoundException;
+import java.nio.charset.StandardCharsets;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
 class SubstrFinderTest {
-
 
     @Test
     @DisplayName("Test with small buffer")
     void test1() {
-        char[] substr = "aba".toCharArray();
+        String substr = new String("аба".getBytes(), StandardCharsets.UTF_8);
         SubstrFinder substrFinder = new SubstrFinder(2);
         int[] expected = new int[]{0, 2, 4, 6, 8};
 
@@ -27,7 +25,7 @@ class SubstrFinderTest {
     @Test
     @DisplayName("Test with big buffer")
     void test2() {
-        char[] substr = "aba".toCharArray();
+        String substr = new String("аба".getBytes(), StandardCharsets.UTF_8);
         SubstrFinder substrFinder = new SubstrFinder();
         int[] expected = new int[]{0, 2, 4, 6, 8};
 
@@ -42,7 +40,7 @@ class SubstrFinderTest {
     @Test
     @DisplayName("Test whole string is substring")
     void test3() {
-        char[] substr = "abababababa".toCharArray();
+        String substr = new String("абабабабаба".getBytes(), StandardCharsets.UTF_8);
         SubstrFinder substrFinder = new SubstrFinder();
         int[] expected = new int[]{0};
 
@@ -57,7 +55,7 @@ class SubstrFinderTest {
     @Test
     @DisplayName("No substrings")
     void test4() {
-        char[] substr = "brbrbr".toCharArray();
+        String substr = new String("брбрбр".getBytes(), StandardCharsets.UTF_8);
         SubstrFinder substrFinder = new SubstrFinder(2);
         int[] expected = new int[0];
 
@@ -72,7 +70,7 @@ class SubstrFinderTest {
     @Test
     @DisplayName("No such file")
     void test5() {
-        char[] substr = "brbrbr".toCharArray();
+        String substr = new String("брбрбр".getBytes(), StandardCharsets.UTF_8);
         SubstrFinder substrFinder = new SubstrFinder(2);
 
         assertThrows(FileNotFoundException.class, () -> substrFinder.find("src/test/java/input2.txt", substr));

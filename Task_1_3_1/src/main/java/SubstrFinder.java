@@ -1,6 +1,7 @@
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 /**
@@ -20,7 +21,6 @@ public class SubstrFinder {
         this.minbufsz = 1000;
     }
 
-
     /**
      * Constructor for custom buffer size.
      *
@@ -36,8 +36,9 @@ public class SubstrFinder {
      * @param string строка.
      * @return z-Функция.
      */
-    private int[] getzFunction(char[] string) {
-        int len = string.length;
+    private int[] getzFunction(String string) {
+        String utf8String = new String(string.getBytes(StandardCharsets.UTF_8), StandardCharsets.UTF_8);
+        int len = utf8String.length();
 
         int[] zfunction = new int[len];
         zfunction[0] = 0;
@@ -48,7 +49,7 @@ public class SubstrFinder {
             if (i <= r) {
                 zfunction[i] = Math.min(zfunction[i - l], r - i + 1);
             }
-            while (zfunction[i] + i < len && string[zfunction[i]] == string[zfunction[i] + i]) {
+            while (zfunction[i] + i < len && utf8String.charAt(zfunction[i]) == utf8String.charAt(zfunction[i] + i)) {
                 zfunction[i]++;
             }
             if (i + zfunction[i] - 1 > r) {
@@ -68,20 +69,19 @@ public class SubstrFinder {
      * @return массив индексов вхождений.
      * @throws FileNotFoundException в случае если файл с таким именем не найден.
      */
-    public int[] find(String fileName, char[] substr) throws FileNotFoundException {
+    public int[] find(String fileName, String substr) throws FileNotFoundException {
         ArrayList<Integer> answer = new ArrayList<>();
-        int substrLength = substr.length;
+        int substrLength = substr.length();
         int[] zfunction = getzFunction(substr);
 
         int bufferCapacity = Math.max(2 * substrLength, minbufsz);
         char[] buffer = new char[bufferCapacity];
 
-        try (FileReader reader = new FileReader(fileName)) {
+        try (FileReader reader = new FileReader(fileName, StandardCharsets.UTF_8)) {
             int bufferLen = reader.read(buffer);
             int shift = 0; // количество символов уже прошедших через буфер и убранных из него
             int l = 0;
             int r = 0;
-
 
             do {
                 // Обрабатываем z функцией подстроки, которые точно успеют закончиться в этом буфере
@@ -91,7 +91,7 @@ public class SubstrFinder {
                     if (realIdx < r) {
                         curZ = Math.min(zfunction[realIdx - l], r - realIdx + 1);
                     }
-                    while (curZ < substrLength && buffer[i + curZ] == substr[curZ]) {
+                    while (curZ < substrLength && buffer[i + curZ] == substr.charAt(curZ)) {
                         curZ++;
                     }
                     if (realIdx + curZ - 1 > r) {
