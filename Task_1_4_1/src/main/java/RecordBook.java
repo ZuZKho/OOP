@@ -14,7 +14,7 @@ public class RecordBook {
      *
      * @param semester добавляемый семестр.
      */
-    public void AddSemester(Semester semester) {
+    public void addSemester(Semester semester) {
         semesterList.add(semester);
     }
 
@@ -75,22 +75,31 @@ public class RecordBook {
             return false;
         }
 
-        var lastMarkMap = getAllSubjectsStream().collect(Collectors.toMap(Subject::title, Subject::mark, (existing, replacement) -> replacement));
+        var lastMarkMap = getAllSubjectsStream()
+                .collect(Collectors.toMap(
+                        Subject::title,
+                        Subject::mark,
+                        (existing, replacement) -> replacement
+                ));
 
         int fourCount = 0;
         int fiveCount = 0;
 
         for (var subject : lastMarkMap.entrySet()) {
             switch (subject.getValue()) {
-                case FOUR -> fourCount++;
-                case FIVE -> fiveCount++;
-                default -> {
+                case FOUR:
+                    fourCount++;
+                    break;
+                case FIVE:
+                    fiveCount++;
+                    break;
+                default:
                     return false;
-                }
             }
         }
 
-        return (double) fiveCount / (double) (fourCount + fiveCount) >= 0.75 && diplomaWork.mark() == Mark.FIVE;
+        return (double) fiveCount / (double) (fourCount + fiveCount) >= 0.75
+                && diplomaWork.mark() == Mark.FIVE;
     }
 
     /**
