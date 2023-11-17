@@ -1,22 +1,20 @@
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 class RecordBookTest {
 
-    static RecordBook badStudentRB = new RecordBook();
-    static RecordBook goodStudentRB = new RecordBook();
-    static RecordBook excellentStudentRB = new RecordBook();
+    static RecordBook badStudentRecordBook = new RecordBook();
+    static RecordBook goodStudentRecordBook = new RecordBook();
+    static RecordBook excellentStudentRecordBook = new RecordBook();
 
     @BeforeAll
     static void setBadStudentRB() {
         Semester semester = new Semester();
         semester.addSubject(new Subject("Math", Mark.THREE));
         semester.addSubject(new Subject("Haskell", Mark.FOUR));
-        badStudentRB.addSemester(semester);
+        badStudentRecordBook.addSemester(semester);
     }
 
     @BeforeAll
@@ -24,17 +22,21 @@ class RecordBookTest {
         Semester firstSemester = new Semester();
         firstSemester.addSubject(new Subject("Math", Mark.THREE));
         firstSemester.addSubject(new Subject("Haskell", Mark.FOUR));
-        goodStudentRB.addSemester(firstSemester);
+        goodStudentRecordBook.addSemester(firstSemester);
 
 
         Semester secondSemester = new Semester();
         secondSemester.addSubject(new Subject("Math", Mark.FOUR));
-        goodStudentRB.addSemester(secondSemester);
-        secondSemester = goodStudentRB.getLastSemester();
+        goodStudentRecordBook.addSemester(secondSemester);
+        secondSemester = goodStudentRecordBook.getLastSemester();
         secondSemester.addSubject(new Subject("OOP", Mark.FIVE));
         secondSemester.addSubject(new Subject("Programming", Mark.FIVE));
 
-        goodStudentRB.setDiplomaWork(new Subject("Differences between Imperative and Declarative programming", Mark.FIVE));
+        goodStudentRecordBook.setDiplomaWork(
+                new Subject(
+                        "Differences between Imperative and Declarative programming",
+                        Mark.FIVE
+                ));
     }
 
     @BeforeAll
@@ -42,16 +44,16 @@ class RecordBookTest {
         Semester firstSemester = new Semester();
         firstSemester.addSubject(new Subject("Math", Mark.FOUR));
         firstSemester.addSubject(new Subject("Haskell", Mark.FOUR));
-        excellentStudentRB.addSemester(firstSemester);
+        excellentStudentRecordBook.addSemester(firstSemester);
 
         Semester secondSemester = new Semester();
         secondSemester.addSubject(new Subject("Math", Mark.FIVE));
         secondSemester.addSubject(new Subject("OOP", Mark.FIVE));
         secondSemester.addSubject(new Subject("Project", Mark.FIVE));
         secondSemester.addSubject(new Subject("Operating Systems", Mark.FIVE));
-        excellentStudentRB.addSemester(secondSemester);
+        excellentStudentRecordBook.addSemester(secondSemester);
 
-        excellentStudentRB.setDiplomaWork(
+        excellentStudentRecordBook.setDiplomaWork(
                 new Subject(
                         "Differences between Imperative and Declarative programming",
                         Mark.FIVE
@@ -60,31 +62,31 @@ class RecordBookTest {
 
     @Test
     void stipendPossibilityTest1() {
-        assertTrue(excellentStudentRB.isStipendPossible());
+        assertTrue(excellentStudentRecordBook.isStipendPossible());
     }
 
     @Test
     void stipendPossibilityTest2() {
-        assertFalse(badStudentRB.isStipendPossible());
+        assertFalse(badStudentRecordBook.isStipendPossible());
     }
 
     @Test
     void averageMarkTest() {
-        assertEquals(4.2, goodStudentRB.getAverageMark());
+        assertEquals(4.2, goodStudentRecordBook.getAverageMark());
     }
 
     @Test
     void redDiplomaTest1() {
-        assertTrue(excellentStudentRB.isRedDiploma());
+        assertTrue(excellentStudentRecordBook.isRedDiploma());
     }
 
     @Test
     void redDiplomaTest2() {
-        assertFalse(goodStudentRB.isRedDiploma());
+        assertFalse(goodStudentRecordBook.isRedDiploma());
     }
 
     @Test
     void redDiplomaTest3() {
-        assertFalse(badStudentRB.isRedDiploma());
+        assertFalse(badStudentRecordBook.isRedDiploma());
     }
 }
