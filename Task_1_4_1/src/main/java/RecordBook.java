@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.OptionalDouble;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -41,11 +43,7 @@ public class RecordBook {
     }
 
     private Stream<Subject> getAllSubjectsStream() {
-        Stream<Subject> subjectStream = Stream.empty();
-        for (var semester : semesterList) {
-            subjectStream = Stream.concat(subjectStream, semester.getSubjectList().stream());
-        }
-        return subjectStream;
+        return semesterList.stream().flatMap(i -> i.getSubjectList().stream());
     }
 
     /**
@@ -82,23 +80,14 @@ public class RecordBook {
                         (existing, replacement) -> replacement
                 ));
 
-        int fourCount = 0;
-        int fiveCount = 0;
+        Map<Mark, Long> count = lastMarkMap.values().stream()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        long fourCount = count.getOrDefault(Mark.FOUR, 0L);
+        long fiveCount = count.getOrDefault(Mark.FIVE, 0L);
 
-        for (var subject : lastMarkMap.entrySet()) {
-            switch (subject.getValue()) {
-                case FOUR:
-                    fourCount++;
-                    break;
-                case FIVE:
-                    fiveCount++;
-                    break;
-                default:
-                    return false;
-            }
-        }
-
-        return (double) fiveCount / (double) (fourCount + fiveCount) >= 0.75
+        return fourCount + fiveCount == count.values().stream().reduce((long) 0, Long::sum)
+                && fourCount + fiveCount != 0
+                && (double) fiveCount / (double) (fourCount + fiveCount) >= 0.75
                 && diplomaWork.mark() == Mark.FIVE;
     }
 
