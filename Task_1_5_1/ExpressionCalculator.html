@@ -131,6 +131,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">ExpressionCalculator</span>
 extends java.lang.Object</pre>
+<div class="block">Utility class for calculating prefix notation expression from string.</div>
 </li>
 </ul>
 </div>
@@ -175,7 +176,9 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>static double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#calculate(java.lang.String)">calculate</a></span>&#8203;(java.lang.String&nbsp;expression)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Calculating expression from string.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -230,11 +233,16 @@ extends java.lang.Object</pre>
                         throws <a href="IllegalFunctionArgument.html" title="class in &lt;Unnamed&gt;">IllegalFunctionArgument</a>,
                                <a href="IllegalPrefixNotationOperand.html" title="class in &lt;Unnamed&gt;">IllegalPrefixNotationOperand</a>,
                                <a href="WrongPrefixNotationException.html" title="class in &lt;Unnamed&gt;">WrongPrefixNotationException</a></pre>
+<div class="block">Calculating expression from string.</div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>expression</code> - input string.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>double value of expression.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="IllegalFunctionArgument.html" title="class in &lt;Unnamed&gt;">IllegalFunctionArgument</a></code></dd>
-<dd><code><a href="IllegalPrefixNotationOperand.html" title="class in &lt;Unnamed&gt;">IllegalPrefixNotationOperand</a></code></dd>
-<dd><code><a href="WrongPrefixNotationException.html" title="class in &lt;Unnamed&gt;">WrongPrefixNotationException</a></code></dd>
+<dd><code><a href="IllegalFunctionArgument.html" title="class in &lt;Unnamed&gt;">IllegalFunctionArgument</a></code> - division by 0, sqrt from negative and another...</dd>
+<dd><code><a href="IllegalPrefixNotationOperand.html" title="class in &lt;Unnamed&gt;">IllegalPrefixNotationOperand</a></code> - not allowed argument like sqr, ln.</dd>
+<dd><code><a href="WrongPrefixNotationException.html" title="class in &lt;Unnamed&gt;">WrongPrefixNotationException</a></code> - can't parse string as prefix notation.</dd>
 </dl>
 </li>
 </ul>
