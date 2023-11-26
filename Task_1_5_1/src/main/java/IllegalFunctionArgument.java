@@ -1,6 +1,9 @@
+/**
+ * Exception when dividing by zero, sqrt from negative and another...
+ */
 public class IllegalFunctionArgument extends Exception {
 
-    IllegalFunctionArgument(){
+    IllegalFunctionArgument() {
         super();
     }
 

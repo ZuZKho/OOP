@@ -13,7 +13,7 @@ public class ExpressionCalculator {
         return new Expression[]{first, second};
     }
 
-    private static Expression[] MyPop1(Stack<Expression> stack) throws WrongPrefixNotationException{
+    private static Expression[] MyPop1(Stack<Expression> stack) throws WrongPrefixNotationException {
         if (stack.isEmpty()) {
             throw new WrongPrefixNotationException();
         }
@@ -22,7 +22,7 @@ public class ExpressionCalculator {
         return new Expression[]{first};
     }
 
-    public static double calculate(String expression) throws IllegalFunctionArgument, IllegalPrefixNotationOperand, WrongPrefixNotationException{
+    public static double calculate(String expression) throws IllegalFunctionArgument, IllegalPrefixNotationOperand, WrongPrefixNotationException {
 
         Stack<Expression> stack = new Stack<>();
         String[] words = expression.split(" ");

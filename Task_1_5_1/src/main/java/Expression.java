@@ -1,7 +1,19 @@
+/**
+ * Interface for some arithmetic operations.
+ */
 public interface Expression {
 
+    /**
+     * Recursive expression evaluating.
+     *
+     * @return result of expression
+     * @throws IllegalFunctionArgument throws when functions like log or / gets invalid arguments.
+     */
     double evaluate() throws IllegalFunctionArgument;
 
+    /**
+     * Constant - number from input string.
+     */
     class Constant implements Expression {
         private final double value;
 
@@ -14,6 +26,9 @@ public interface Expression {
         }
     }
 
+    /**
+     * Adding two Expressions.
+     */
     class Plus implements Expression {
         private final Expression first;
         private final Expression second;
@@ -28,6 +43,9 @@ public interface Expression {
         }
     }
 
+    /**
+     * Subtracting two Expressions.
+     */
     class Minus implements Expression {
         private final Expression first;
         private final Expression second;
@@ -42,6 +60,9 @@ public interface Expression {
         }
     }
 
+    /**
+     * Multiply two Expressions.
+     */
     class Multiplication implements Expression {
         private final Expression first;
         private final Expression second;
@@ -56,6 +77,9 @@ public interface Expression {
         }
     }
 
+    /**
+     * Divide two Expressions.
+     */
     class Division implements Expression {
         private final Expression first;
         private final Expression second;
@@ -74,6 +98,9 @@ public interface Expression {
         }
     }
 
+    /**
+     * Take Logarithm log_a (b), from expressions a and b.
+     */
     class Log implements Expression {
         private final Expression first;
         private final Expression second;
@@ -98,6 +125,9 @@ public interface Expression {
         }
     }
 
+    /**
+     * a^b from expressions a and b.
+     */
     class Pow implements Expression {
         private final Expression first;
         private final Expression second;
@@ -112,6 +142,9 @@ public interface Expression {
         }
     }
 
+    /**
+     * Sin of expression.
+     */
     class Sin implements Expression {
         private final Expression first;
 
@@ -124,6 +157,9 @@ public interface Expression {
         }
     }
 
+    /**
+     * Cos of expression.
+     */
     class Cos implements Expression {
         private final Expression first;
 
@@ -136,6 +172,9 @@ public interface Expression {
         }
     }
 
+    /**
+     * Sqrt of expression.
+     */
     class Sqrt implements Expression {
         private final Expression first;
 
