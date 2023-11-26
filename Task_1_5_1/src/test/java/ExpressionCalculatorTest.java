@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ExpressionCalculatorTest {
 
-    private final double Eps = 0.00001;
+    private final double eps = 0.00001;
 
     @Test
     @DisplayName("CommonCalculation")
@@ -16,7 +16,7 @@ class ExpressionCalculatorTest {
 
         try {
             double actual = ExpressionCalculator.calculate(s);
-            assertTrue(Math.abs(expected - actual) < Eps);
+            assertTrue(Math.abs(expected - actual) < eps);
         } catch (Exception e) {
             fail();
         }
@@ -30,7 +30,7 @@ class ExpressionCalculatorTest {
 
         try {
             double actual = ExpressionCalculator.calculate(s);
-            assertTrue(Math.abs(expected - actual) < Eps);
+            assertTrue(Math.abs(expected - actual) < eps);
         } catch (Exception e) {
             fail();
         }
@@ -45,7 +45,7 @@ class ExpressionCalculatorTest {
 
         try {
             double actual = ExpressionCalculator.calculate(s);
-            assertTrue(Math.abs(expected - actual) < Eps);
+            assertTrue(Math.abs(expected - actual) < eps);
         } catch (Exception e) {
             fail();
         }
