@@ -126,6 +126,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dl>
 <hr>
 <pre>public interface <span class="typeNameLabel">Expression</span></pre>
+<div class="block">Interface for some arithmetic operations.</div>
 </li>
 </ul>
 </div>
@@ -149,52 +150,72 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <tr class="altColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="Expression.Constant.html" title="class in &lt;Unnamed&gt;">Expression.Constant</a></span></code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Constant - number from input string.</div>
+</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="Expression.Cos.html" title="class in &lt;Unnamed&gt;">Expression.Cos</a></span></code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Cos of expression.</div>
+</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="Expression.Division.html" title="class in &lt;Unnamed&gt;">Expression.Division</a></span></code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Divide two Expressions.</div>
+</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="Expression.Log.html" title="class in &lt;Unnamed&gt;">Expression.Log</a></span></code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Take Logarithm log_a (b), from expressions a and b.</div>
+</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="Expression.Minus.html" title="class in &lt;Unnamed&gt;">Expression.Minus</a></span></code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Subtracting two Expressions.</div>
+</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="Expression.Multiplication.html" title="class in &lt;Unnamed&gt;">Expression.Multiplication</a></span></code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Multiply two Expressions.</div>
+</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="Expression.Plus.html" title="class in &lt;Unnamed&gt;">Expression.Plus</a></span></code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Adding two Expressions.</div>
+</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="Expression.Pow.html" title="class in &lt;Unnamed&gt;">Expression.Pow</a></span></code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">a^b from expressions a and b.</div>
+</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="Expression.Sin.html" title="class in &lt;Unnamed&gt;">Expression.Sin</a></span></code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Sin of expression.</div>
+</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="Expression.Sqrt.html" title="class in &lt;Unnamed&gt;">Expression.Sqrt</a></span></code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Sqrt of expression.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -217,7 +238,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#evaluate()">evaluate</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Recursive expression evaluating.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -244,9 +267,12 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <h4>evaluate</h4>
 <pre class="methodSignature">double&nbsp;evaluate()
          throws <a href="IllegalFunctionArgument.html" title="class in &lt;Unnamed&gt;">IllegalFunctionArgument</a></pre>
+<div class="block">Recursive expression evaluating.</div>
 <dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>result of expression</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="IllegalFunctionArgument.html" title="class in &lt;Unnamed&gt;">IllegalFunctionArgument</a></code></dd>
+<dd><code><a href="IllegalFunctionArgument.html" title="class in &lt;Unnamed&gt;">IllegalFunctionArgument</a></code> - throws when functions like log or / gets invalid arguments.</dd>
 </dl>
 </li>
 </ul>
