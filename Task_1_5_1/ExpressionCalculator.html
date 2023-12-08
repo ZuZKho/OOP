@@ -230,8 +230,8 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>calculate</h4>
 <pre class="methodSignature">public static&nbsp;double&nbsp;calculate&#8203;(java.lang.String&nbsp;expression)
-                        throws <a href="IllegalFunctionArgument.html" title="class in &lt;Unnamed&gt;">IllegalFunctionArgument</a>,
-                               <a href="IllegalPrefixNotationOperand.html" title="class in &lt;Unnamed&gt;">IllegalPrefixNotationOperand</a>,
+                        throws <a href="IllegalFunctionArgumentException.html" title="class in &lt;Unnamed&gt;">IllegalFunctionArgumentException</a>,
+                               <a href="IllegalPrefixNotationOperandException.html" title="class in &lt;Unnamed&gt;">IllegalPrefixNotationOperandException</a>,
                                <a href="WrongPrefixNotationException.html" title="class in &lt;Unnamed&gt;">WrongPrefixNotationException</a></pre>
 <div class="block">Calculating expression from string.</div>
 <dl>
@@ -240,8 +240,8 @@ extends java.lang.Object</pre>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>double value of expression.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="IllegalFunctionArgument.html" title="class in &lt;Unnamed&gt;">IllegalFunctionArgument</a></code> - division by 0, sqrt from negative and another...</dd>
-<dd><code><a href="IllegalPrefixNotationOperand.html" title="class in &lt;Unnamed&gt;">IllegalPrefixNotationOperand</a></code> - not allowed argument like sqr, ln.</dd>
+<dd><code><a href="IllegalFunctionArgumentException.html" title="class in &lt;Unnamed&gt;">IllegalFunctionArgumentException</a></code> - division by 0, sqrt from negative and another...</dd>
+<dd><code><a href="IllegalPrefixNotationOperandException.html" title="class in &lt;Unnamed&gt;">IllegalPrefixNotationOperandException</a></code> - not allowed argument like sqr, ln.</dd>
 <dd><code><a href="WrongPrefixNotationException.html" title="class in &lt;Unnamed&gt;">WrongPrefixNotationException</a></code> - can't parse string as prefix notation.</dd>
 </dl>
 </li>
