@@ -7,9 +7,9 @@ public interface Expression {
      * Recursive expression evaluating.
      *
      * @return result of expression
-     * @throws IllegalFunctionArgument throws when functions like log or / gets invalid arguments.
+     * @throws IllegalFunctionArgumentException throws when functions like log or / gets invalid arguments.
      */
-    double evaluate() throws IllegalFunctionArgument;
+    double evaluate() throws IllegalFunctionArgumentException;
 
     /**
      * Constant - number from input string.
@@ -38,7 +38,7 @@ public interface Expression {
             this.second = second;
         }
 
-        public double evaluate() throws IllegalFunctionArgument {
+        public double evaluate() throws IllegalFunctionArgumentException {
             return first.evaluate() + second.evaluate();
         }
     }
@@ -55,7 +55,7 @@ public interface Expression {
             this.second = second;
         }
 
-        public double evaluate() throws IllegalFunctionArgument {
+        public double evaluate() throws IllegalFunctionArgumentException {
             return first.evaluate() - second.evaluate();
         }
     }
@@ -72,7 +72,7 @@ public interface Expression {
             this.second = second;
         }
 
-        public double evaluate() throws IllegalFunctionArgument {
+        public double evaluate() throws IllegalFunctionArgumentException {
             return first.evaluate() * second.evaluate();
         }
     }
@@ -89,10 +89,10 @@ public interface Expression {
             this.second = second;
         }
 
-        public double evaluate() throws IllegalFunctionArgument {
+        public double evaluate() throws IllegalFunctionArgumentException {
             double result = second.evaluate();
             if (result == 0) {
-                throw new IllegalFunctionArgument("Can't divide by 0");
+                throw new IllegalFunctionArgumentException("Can't divide by 0");
             }
             return first.evaluate() / result;
         }
@@ -110,16 +110,16 @@ public interface Expression {
             this.second = second;
         }
 
-        public double evaluate() throws IllegalFunctionArgument {
+        public double evaluate() throws IllegalFunctionArgumentException {
             double res1 = first.evaluate();
             double res2 = second.evaluate();
             if (res1 <= 0 || res2 <= 0) {
-                throw new IllegalFunctionArgument();
+                throw new IllegalFunctionArgumentException("Bad log arguments");
             }
             // log_b(x) = log(x) / log(b);
             res1 = Math.log(res1);
             if (res1 == 0) {
-                throw new IllegalFunctionArgument("Bad log arguments");
+                throw new IllegalFunctionArgumentException("Bad log arguments");
             }
             return Math.log(res2) / res1;
         }
@@ -137,7 +137,7 @@ public interface Expression {
             this.second = second;
         }
 
-        public double evaluate() throws IllegalFunctionArgument {
+        public double evaluate() throws IllegalFunctionArgumentException {
             return Math.pow(first.evaluate(), second.evaluate());
         }
     }
@@ -152,7 +152,7 @@ public interface Expression {
             this.first = first;
         }
 
-        public double evaluate() throws IllegalFunctionArgument {
+        public double evaluate() throws IllegalFunctionArgumentException {
             return Math.sin(first.evaluate());
         }
     }
@@ -167,7 +167,7 @@ public interface Expression {
             this.first = first;
         }
 
-        public double evaluate() throws IllegalFunctionArgument {
+        public double evaluate() throws IllegalFunctionArgumentException {
             return Math.cos(first.evaluate());
         }
     }
@@ -182,10 +182,10 @@ public interface Expression {
             this.first = first;
         }
 
-        public double evaluate() throws IllegalFunctionArgument {
+        public double evaluate() throws IllegalFunctionArgumentException {
             double res = first.evaluate();
             if (res < 0) {
-                throw new IllegalFunctionArgument("Can't sqrt from negative number");
+                throw new IllegalFunctionArgumentException("Can't sqrt from negative number");
             }
 
             return Math.sqrt(first.evaluate());

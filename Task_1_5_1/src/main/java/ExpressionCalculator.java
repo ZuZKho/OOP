@@ -5,10 +5,20 @@ import java.util.Stack;
  */
 public class ExpressionCalculator {
 
-    private static Expression[] myPop2(Stack<Expression> stack)
+    private static Expression[] popUnaryOperatorArguments(Stack<Expression> stack)
+            throws WrongPrefixNotationException {
+        if (stack.isEmpty()) {
+            throw new WrongPrefixNotationException("Stack is too small");
+        }
+
+        Expression first = stack.pop();
+        return new Expression[]{first};
+    }
+
+    private static Expression[] popBinaryOperatorArguments(Stack<Expression> stack)
             throws WrongPrefixNotationException {
         if (stack.size() < 2) {
-            throw new WrongPrefixNotationException();
+            throw new WrongPrefixNotationException("Stack is too small");
         }
 
         Expression first = stack.pop();
@@ -16,28 +26,18 @@ public class ExpressionCalculator {
         return new Expression[]{first, second};
     }
 
-    private static Expression[] myPop1(Stack<Expression> stack)
-            throws WrongPrefixNotationException {
-        if (stack.isEmpty()) {
-            throw new WrongPrefixNotationException();
-        }
-
-        Expression first = stack.pop();
-        return new Expression[]{first};
-    }
-
     /**
      * Calculating expression from string.
      *
      * @param expression input string.
      * @return double value of expression.
-     * @throws IllegalFunctionArgument      division by 0, sqrt from negative and another...
-     * @throws IllegalPrefixNotationOperand not allowed argument like sqr, ln.
-     * @throws WrongPrefixNotationException can't parse string as prefix notation.
+     * @throws IllegalFunctionArgumentException      division by 0, sqrt from negative and another...
+     * @throws IllegalPrefixNotationOperandException not allowed argument like sqr, ln.
+     * @throws WrongPrefixNotationException          can't parse string as prefix notation.
      */
     public static double calculate(String expression)
-            throws IllegalFunctionArgument,
-            IllegalPrefixNotationOperand,
+            throws IllegalFunctionArgumentException,
+            IllegalPrefixNotationOperandException,
             WrongPrefixNotationException {
 
         Stack<Expression> stack = new Stack<>();
@@ -49,39 +49,39 @@ public class ExpressionCalculator {
 
             switch (current) {
                 case "+":
-                    operands = myPop2(stack);
+                    operands = popBinaryOperatorArguments(stack);
                     stack.push(new Expression.Plus(operands[0], operands[1]));
                     break;
                 case "-":
-                    operands = myPop2(stack);
+                    operands = popBinaryOperatorArguments(stack);
                     stack.push(new Expression.Minus(operands[0], operands[1]));
                     break;
                 case "*":
-                    operands = myPop2(stack);
+                    operands = popBinaryOperatorArguments(stack);
                     stack.push(new Expression.Multiplication(operands[0], operands[1]));
                     break;
                 case "/":
-                    operands = myPop2(stack);
+                    operands = popBinaryOperatorArguments(stack);
                     stack.push(new Expression.Division(operands[0], operands[1]));
                     break;
                 case "log":
-                    operands = myPop2(stack);
+                    operands = popBinaryOperatorArguments(stack);
                     stack.push(new Expression.Log(operands[0], operands[1]));
                     break;
                 case "pow":
-                    operands = myPop2(stack);
+                    operands = popBinaryOperatorArguments(stack);
                     stack.push(new Expression.Pow(operands[0], operands[1]));
                     break;
                 case "sin":
-                    operands = myPop1(stack);
+                    operands = popUnaryOperatorArguments(stack);
                     stack.push(new Expression.Sin(operands[0]));
                     break;
                 case "cos":
-                    operands = myPop1(stack);
+                    operands = popUnaryOperatorArguments(stack);
                     stack.push(new Expression.Cos(operands[0]));
                     break;
                 case "sqrt":
-                    operands = myPop1(stack);
+                    operands = popUnaryOperatorArguments(stack);
                     stack.push(new Expression.Sqrt(operands[0]));
                     break;
                 default:
@@ -89,7 +89,7 @@ public class ExpressionCalculator {
                         double value = Double.parseDouble(current);
                         stack.push(new Expression.Constant(value));
                     } catch (Exception e) {
-                        throw new IllegalPrefixNotationOperand();
+                        throw new IllegalPrefixNotationOperandException("Unknown operation");
                     }
                     break;
             }
@@ -97,7 +97,7 @@ public class ExpressionCalculator {
 
         Expression result = stack.pop();
         if (!stack.isEmpty()) {
-            throw new WrongPrefixNotationException();
+            throw new WrongPrefixNotationException("Empty stack");
         }
         return result.evaluate();
     }

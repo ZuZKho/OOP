@@ -3,4 +3,11 @@
  */
 public class WrongPrefixNotationException extends Exception {
 
+    WrongPrefixNotationException() {
+        super("Unknown operand or symbol");
+    }
+
+    WrongPrefixNotationException(String msg) {
+        super(msg);
+    }
 }

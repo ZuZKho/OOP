@@ -76,7 +76,7 @@ class ExpressionCalculatorTest {
     void test6() {
         String s = "pow 12 log 11 sqr * 13 cos - 6 1";
 
-        assertThrows(IllegalPrefixNotationOperand.class, () -> {
+        assertThrows(IllegalPrefixNotationOperandException.class, () -> {
             ExpressionCalculator.calculate(s);
         });
     }
@@ -86,7 +86,7 @@ class ExpressionCalculatorTest {
     void test7() {
         String s = "log 1 2";
 
-        assertThrows(IllegalFunctionArgument.class, () -> {
+        assertThrows(IllegalFunctionArgumentException.class, () -> {
             ExpressionCalculator.calculate(s);
         });
     }
@@ -96,7 +96,7 @@ class ExpressionCalculatorTest {
     void test8() {
         String s = "/ 2 sin 0";
 
-        assertThrows(IllegalFunctionArgument.class, () -> {
+        assertThrows(IllegalFunctionArgumentException.class, () -> {
             ExpressionCalculator.calculate(s);
         });
     }
