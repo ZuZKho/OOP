@@ -12,13 +12,28 @@ public class NotebookRecord {
     private final String date;
     private final String content;
 
+    /**
+     * Конструктор заметки с датой в String.
+     *
+     * @param title заголовок.
+     * @param date дата.
+     * @param content текст заметки.
+     */
     @JsonCreator
-    public NotebookRecord(@JsonProperty("title") String title, @JsonProperty("date") String date, @JsonProperty("content") String content) {
+    public NotebookRecord(@JsonProperty("title") String title,
+                          @JsonProperty("date") String date,
+                          @JsonProperty("content") String content) {
         this.title = title;
         this.date = date;
         this.content = content;
     }
 
+    /**
+     * Конструктор заметки c data.now().
+     *
+     * @param title заголовок.
+     * @param content текст заметки.
+     */
     public NotebookRecord(String title, String content) {
         this.title = title;
         this.date = LocalDateTime.now().format(Shared.formatter);

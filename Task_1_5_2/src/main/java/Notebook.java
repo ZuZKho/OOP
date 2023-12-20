@@ -5,7 +5,11 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
+/**
+ * Класс записной книжки.
+ */
 public class Notebook {
 
     private final File file = new File(Shared.fileName);
@@ -81,7 +85,7 @@ public class Notebook {
     public void remove(String title) {
         try {
             List<NotebookRecord> records = readJson();
-            writeJson(records.stream().filter(record -> !title.equals(record.title())).toList());
+            writeJson(records.stream().filter(record -> !title.equals(record.title())).collect(Collectors.toList()));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -133,7 +137,7 @@ public class Notebook {
                         }
                         return false;
                     })
-                    .toList();
+                    .collect(Collectors.toList());;
 
             if (filteredRecords.isEmpty()) {
                 System.out.println("Нет подходящих заметок");

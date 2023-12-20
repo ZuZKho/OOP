@@ -1,5 +1,7 @@
-import java.util.Arrays;
 import org.apache.commons.cli.*;
+
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 
 class Main {
@@ -30,7 +32,9 @@ class Main {
                 notebook.show();
             } else {
                 String[] keywords = Arrays.copyOfRange(arguments, 2, arguments.length);
-                keywords = Arrays.stream(keywords).map(String::toLowerCase).toList().toArray(new String[0]);
+                keywords = Arrays.stream(keywords).map(String::toLowerCase)
+                        .collect(Collectors.toList())
+                        .toArray(new String[0]);
                 notebook.show(arguments[0], arguments[1], keywords);
             }
         }
