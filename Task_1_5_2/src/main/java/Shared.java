@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
  */
 public class Shared {
 
-    static public final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy H:mm");
-    static public final String fileName = "src/main/resources/notebook.json";
+    public static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy H:mm");
+    public static final String fileName = "src/main/resources/notebook.json";
 
 }

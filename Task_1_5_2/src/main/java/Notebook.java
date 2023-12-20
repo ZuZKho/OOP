@@ -1,6 +1,5 @@
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -24,6 +23,9 @@ public class Notebook {
         return list;
     }
 
+    /**
+     * Конструктор по умолчанию. Создает файл JSON'а при его отсутствии.
+     */
     public Notebook() {
         file.getParentFile().mkdirs();
         try {
@@ -101,8 +103,8 @@ public class Notebook {
      * Показать заметки удовлетворяющие фильтру.
      *
      * @param startDateString левая граница даты.
-     * @param endDateString правая граница даты.
-     * @param keywords ключевые слова в заголовке.
+     * @param endDateString   правая граница даты.
+     * @param keywords        ключевые слова в заголовке.
      */
     public void show(String startDateString, String endDateString, String[] keywords) {
         LocalDateTime startDate;
@@ -118,8 +120,10 @@ public class Notebook {
             List<NotebookRecord> records = readJson();
 
             var filteredRecords = records.stream()
-                    .filter(record -> record.dateDate().isBefore(endDate) && record.dateDate().isAfter(startDate)
-                            || record.dateDate().equals(startDate) || record.dateDate().equals(endDate))
+                    .filter(record -> record.dateDate().isBefore(endDate)
+                            && record.dateDate().isAfter(startDate)
+                            || record.dateDate().equals(startDate)
+                            || record.dateDate().equals(endDate))
                     .filter(record -> {
                         for (var keyword : keywords) {
                             String title = record.title().toLowerCase();
