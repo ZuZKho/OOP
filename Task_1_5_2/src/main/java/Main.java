@@ -1,8 +1,6 @@
-import org.apache.commons.cli.*;
-
 import java.util.Arrays;
 import java.util.stream.Collectors;
-
+import org.apache.commons.cli.*;
 
 class Main {
 

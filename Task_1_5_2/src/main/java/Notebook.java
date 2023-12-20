@@ -85,7 +85,9 @@ public class Notebook {
     public void remove(String title) {
         try {
             List<NotebookRecord> records = readJson();
-            writeJson(records.stream().filter(record -> !title.equals(record.title())).collect(Collectors.toList()));
+            writeJson(records.stream()
+                    .filter(record -> !title.equals(record.title()))
+                    .collect(Collectors.toList()));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -137,7 +139,8 @@ public class Notebook {
                         }
                         return false;
                     })
-                    .collect(Collectors.toList());;
+                    .collect(Collectors.toList());
+            ;
 
             if (filteredRecords.isEmpty()) {
                 System.out.println("Нет подходящих заметок");

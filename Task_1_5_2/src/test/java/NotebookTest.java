@@ -26,11 +26,11 @@ class NotebookTest {
      */
     void test1() {
         assertDoesNotThrow(() -> {
-            LocalDateTime before = LocalDateTime.parse(
+            final LocalDateTime before = LocalDateTime.parse(
                     LocalDateTime.now().format(Shared.formatter),
                     Shared.formatter);
             Main.main(new String[]{"-add", "Моя заметка", "Текст моей заметки"});
-            LocalDateTime after = LocalDateTime.parse(
+            final LocalDateTime after = LocalDateTime.parse(
                     LocalDateTime.now().format(Shared.formatter),
                     Shared.formatter);
 
@@ -55,9 +55,9 @@ class NotebookTest {
     void test2() {
         assertDoesNotThrow(() -> {
             Main.main(new String[]{"-show",
-                    LocalDateTime.now().minusHours(2).format(Shared.formatter),
-                    LocalDateTime.now().plusHours(2).format(Shared.formatter),
-                    "МоЯ"});
+                LocalDateTime.now().minusHours(2).format(Shared.formatter),
+                LocalDateTime.now().plusHours(2).format(Shared.formatter),
+                "МоЯ"});
 
             String[] actual = output.toString().replace("\r", "").split("\n");
             output.reset();
@@ -72,9 +72,9 @@ class NotebookTest {
     void test3() {
         assertDoesNotThrow(() -> {
             Main.main(new String[]{"-show",
-                    LocalDateTime.now().minusHours(2).format(Shared.formatter),
-                    LocalDateTime.now().plusHours(2).format(Shared.formatter),
-                    "Твоя"});
+                LocalDateTime.now().minusHours(2).format(Shared.formatter),
+                LocalDateTime.now().plusHours(2).format(Shared.formatter),
+                "Твоя"});
 
             String actual = output.toString().replace("\r", "");
 
