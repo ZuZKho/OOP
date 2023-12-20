@@ -1,9 +1,8 @@
-import org.junit.jupiter.api.*;
-
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.PrintStream;
 import java.time.LocalDateTime;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,12 +17,12 @@ class NotebookTest {
         System.setOut(new PrintStream(output));
     }
 
-    @Test
-    @Order(1)
-    /**
+    /*
      * Сложная обработка времени, так как в функции -add использую .now() и чтобы затестить такое
      * замеряю время до вызова, после вызова и проверяю вложенность.
      */
+    @Test
+    @Order(1)
     void test1() {
         assertDoesNotThrow(() -> {
             final LocalDateTime before = LocalDateTime.parse(
