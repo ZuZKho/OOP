@@ -11,8 +11,10 @@ public class PrimeDetector {
      */
     public static boolean isPrime(long number) {
 
-        for(long i = 2; i * i <= number; i++) {
-            if (number % i == 0) return false;
+        for (long i = 2; i * i <= number; i++) {
+            if (number % i == 0) {
+                return false;
+            }
         }
 
         return true;

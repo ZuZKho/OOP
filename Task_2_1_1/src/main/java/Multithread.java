@@ -14,7 +14,8 @@ public class Multithread {
      * @return true/false
      * @throws InterruptedException
      */
-    public static boolean containsCompositeNumber(long[] array, int nThreads) throws InterruptedException {
+    public static boolean containsCompositeNumber(long[] array, int nThreads)
+            throws InterruptedException {
 
         AtomicInteger idx = new AtomicInteger(0);
         AtomicBoolean contains = new AtomicBoolean(false);
@@ -25,7 +26,9 @@ public class Multithread {
             threads[i] = new Thread(() -> {
                 while (true) {
                     Integer cur = idx.getAndIncrement();
-                    if (cur >= array.length) return;
+                    if (cur >= array.length) {
+                        return;
+                    }
 
                     if (!PrimeDetector.isPrime(array[cur])) {
                         contains.set(true);

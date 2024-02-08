@@ -1,8 +1,11 @@
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 /**
+ * Test class.
+ * <p>
  * Time statistics:
  * ParallelStream: 52 ms
  * Sequential: 101 ms
@@ -16,10 +19,13 @@ public class PrimeTest {
 
     final long[] array1 = new long[]{6, 8, 7, 13, 5, 9, 4};
 
-    final long[] array2 = new long[]{20319251, 6997901, 6997927, 6997937, 17858849, 6997967,
-            6998009, 6998029, 6998039, 20165149, 6998051, 6998053, 1000000007, 1000000007, 1000000009, 1000000009,
-            10000000469L, 999999999847L, 10000000469L, 999999999937L, 999999999959L, 999999999989L,
-            999999999767L, 999999999767L, 100000009069L, 100000008937L, 100000008947L};
+    final long[] array2 = new long[]{
+            20319251, 6997901, 6997927, 6997937, 17858849, 6997967,
+            6998009, 6998029, 6998039, 20165149, 6998051, 6998053,
+            1000000007, 1000000007, 1000000009, 1000000009, 10000000469L,
+            999999999847L, 10000000469L, 999999999937L, 999999999959L, 999999999989L,
+            999999999767L, 999999999767L, 100000009069L, 100000008937L, 100000008947L
+    };
 
     @Test
     public void testSequential1() {

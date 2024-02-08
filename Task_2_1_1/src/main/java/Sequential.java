@@ -10,7 +10,7 @@ public class Sequential {
      * @return true/false
      */
     public static boolean containsCompositeNumber(long[] array) {
-        for(int i = 0; i < array.length; i++) {
+        for (int i = 0; i < array.length; i++) {
             if (!PrimeDetector.isPrime(array[i])) {
                 return true;
             }
