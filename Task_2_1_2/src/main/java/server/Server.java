@@ -1,18 +1,17 @@
 package server;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
-import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-import static server.BytesConverter.*;
+import static server.BytesConverter.readInt;
+import static server.BytesConverter.readLong;
 
 public class Server {
 
@@ -80,7 +79,7 @@ public class Server {
                     clientSocket.close();
                 }
             }
-        } catch(IOException e) {
+        } catch (IOException e) {
             Run(port);
         } catch (Exception e) {
             System.err.println("SERVER " + port + ": ERROR: " + e);

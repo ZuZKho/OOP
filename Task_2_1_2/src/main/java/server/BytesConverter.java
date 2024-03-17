@@ -6,9 +6,6 @@ import java.nio.ByteBuffer;
 
 public class BytesConverter {
 
-    protected static final int LONG_BYTES = 8;
-    protected static final int INT_BYTES = 4;
-
     protected static long[] toLongArray(byte[] bytes, int count) {
         var bb = ByteBuffer.wrap(bytes);
         long[] res = new long[count];

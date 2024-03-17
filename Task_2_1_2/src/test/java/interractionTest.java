@@ -4,7 +4,6 @@ import server.RandomlyWorkingServer;
 import server.Server;
 
 import java.net.InetSocketAddress;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 import static client.PrimeArrayDetector.isArrayPrime;
@@ -51,7 +50,7 @@ public class interractionTest {
         }
 
 
-        Thread.sleep(300);
+        Thread.sleep(50);
     }
 
     @Test
@@ -78,7 +77,7 @@ public class interractionTest {
         }
 
 
-        Thread.sleep(300);
+        Thread.sleep(50);
     }
 
     @RepeatedTest(5)
@@ -86,7 +85,7 @@ public class interractionTest {
         InetSocketAddress[] servers = new InetSocketAddress[]{
                 new InetSocketAddress(host, 18080),
                 new InetSocketAddress(host, 18081),
-                new InetSocketAddress(host,18082)};
+                new InetSocketAddress(host, 18082)};
 
         ArrayList<Thread> threads = new ArrayList<>();
         threads.add(new Thread(() -> {
@@ -115,7 +114,7 @@ public class interractionTest {
             thread.interrupt();
         }
 
-        Thread.sleep(300);
+        Thread.sleep(50);
     }
 
 
@@ -124,7 +123,7 @@ public class interractionTest {
         InetSocketAddress[] servers = new InetSocketAddress[]{
                 new InetSocketAddress(host, 18080),
                 new InetSocketAddress(host, 18081),
-                new InetSocketAddress(host,18082),
+                new InetSocketAddress(host, 18082),
                 new InetSocketAddress(host, 18084)};
 
         ArrayList<Thread> threads = new ArrayList<>();
@@ -154,7 +153,7 @@ public class interractionTest {
             thread.interrupt();
         }
 
-        Thread.sleep(300);
+        Thread.sleep(50);
     }
 
 }

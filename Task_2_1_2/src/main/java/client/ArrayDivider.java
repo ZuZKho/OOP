@@ -1,6 +1,8 @@
 package client;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.HashMap;
+import java.util.Queue;
 
 public class ArrayDivider {
 

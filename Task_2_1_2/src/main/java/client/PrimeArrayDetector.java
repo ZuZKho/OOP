@@ -1,11 +1,7 @@
 package client;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.SocketAddress;
-import java.net.UnknownHostException;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
@@ -14,8 +10,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 
-
-import static server.BytesConverter.*;
 /**
  * Остановка по плохим соединениям или нерабочим серверам не предусмотрена,
  * т.е. если все сервера "плохие" проверка будет происходить бесконечно.
@@ -36,7 +30,7 @@ public class PrimeArrayDetector {
     private static HashMap<Integer, InetSocketAddress> idToAddress = new HashMap<>();
     private static HashMap<InetSocketAddress, Long> activityTime = new HashMap<>();
     private static HashMap<InetSocketAddress, Integer> priority = new HashMap<>();
-    
+
     private static void decreaseServerPriority(InetSocketAddress address) {
         Integer old = priority.get(address);
         if (old == null) {
@@ -45,16 +39,16 @@ public class PrimeArrayDetector {
             priority.put(address, old - 5);
         }
     }
-    
+
     private static void increaseServerPriority(InetSocketAddress address) {
         Integer old = priority.get(address);
         if (old == null) {
             priority.put(address, 5);
         } else {
             priority.put(address, old + 5);
-        }    
+        }
     }
-    
+
     private static boolean sendTaskToServer(SocketChannel server, InetSocketAddress address) {
         ArrayDivider.Task task = arrayDivider.getTask();
         if (task == null) {
@@ -91,14 +85,14 @@ public class PrimeArrayDetector {
             serverChannel.configureBlocking(true);
             serverChannel.connect(address);
             serverChannel.configureBlocking(false);
-            
+
             System.out.println("CLIENT: Connected to " + address);
         } catch (Exception e) {
             decreaseServerPriority(address);
             System.out.println("CLIENT: ERROR while connecting to server " + address);
             return;
         }
-        
+
         if (sendTaskToServer(serverChannel, address)) {
             System.out.println("CLIENT: Data successfully sent to " + address);
             try {
@@ -177,11 +171,11 @@ public class PrimeArrayDetector {
         arrayDivider = new ArrayDivider(arr, Math.max(arr.length / addresses.length / 3, 2));
         UpdateConnections();
 
-        while(true) {
+        while (true) {
             try {
                 int count = selector.select(MAX_DELAY);
                 if (count == 0) {
-                    for(var key : selector.keys()) {
+                    for (var key : selector.keys()) {
                         SocketChannel in = (SocketChannel) key.channel();
                         int id = ids.get(in);
                         InetSocketAddress address = idToAddress.get(id);
@@ -190,12 +184,12 @@ public class PrimeArrayDetector {
                     UpdateConnections();
                     continue;
                 }
-            } catch (Exception e){
+            } catch (Exception e) {
                 System.out.println("CLIENT: ERROR: Selector error.");
                 return null;
             }
 
-            for(var key : selector.keys()) {
+            for (var key : selector.keys()) {
                 SocketChannel in = (SocketChannel) key.channel();
                 int id = ids.get(in);
                 InetSocketAddress address = idToAddress.get(id);

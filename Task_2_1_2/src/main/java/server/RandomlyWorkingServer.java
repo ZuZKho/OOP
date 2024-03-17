@@ -82,7 +82,7 @@ public class RandomlyWorkingServer {
                     };
                     futures.add(executorService.submit(cur));
 
-                    count --;
+                    count--;
                 }
 
                 Thread.sleep(delay);
@@ -117,7 +117,7 @@ public class RandomlyWorkingServer {
             }
         } catch (InterruptedException e) {
             System.out.println("SERVER " + port + " was turned off.");
-        } catch(IOException e) {
+        } catch (IOException e) {
             Run(port);
         } catch (Exception e) {
             System.err.println("SERVER " + port + ": ERROR: " + e);
