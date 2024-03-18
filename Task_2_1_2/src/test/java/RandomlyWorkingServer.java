@@ -1,13 +1,12 @@
-import server.Executor;
+import static server.DelayBytesReader.readInt;
+import static server.DelayBytesReader.readLong;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
 import java.util.Random;
-
-import static server.DelayBytesReader.readInt;
-import static server.DelayBytesReader.readLong;
+import server.Executor;
 
 /**
  * Copy of server class with randomly happening errors.
@@ -39,7 +38,7 @@ public class RandomlyWorkingServer {
      *
      * @param port server port.
      */
-    public void Run(int port) {
+    public void run(int port) {
         try (ServerSocket serverSocket = new ServerSocket(port, 10)) {
             serverSocket.setSoTimeout(DELAY);
 
@@ -58,7 +57,8 @@ public class RandomlyWorkingServer {
                 } catch (SocketTimeoutException e) {
                     continue;
                 }
-                System.out.println(String.format("SERVER %s: Connection successfully established with %s:%s", port, clientSocket.getLocalAddress(), clientSocket.getLocalPort()));
+                System.out.println(String.format("SERVER %s: Connection successfully established with %s:%s",
+                        port, clientSocket.getLocalAddress(), clientSocket.getLocalPort()));
 
                 var in = clientSocket.getInputStream();
                 var out = clientSocket.getOutputStream();
@@ -71,7 +71,8 @@ public class RandomlyWorkingServer {
                     // Random error check
                     if (rnd.nextInt(101) > connectionChance) {
                         clientSocket.close();
-                        System.out.println(String.format("SERVER %s: Connection randomly dropped %s:%s", port, clientSocket.getLocalAddress(), clientSocket.getLocalPort()));
+                        System.out.println(String.format("SERVER %s: Connection randomly dropped %s:%s",
+                                port, clientSocket.getLocalAddress(), clientSocket.getLocalPort()));
                         continue;
                     }
 
@@ -89,13 +90,15 @@ public class RandomlyWorkingServer {
                 // Random error check
                 if (rnd.nextInt(101) > answerChance) {
                     clientSocket.close();
-                    System.out.println(String.format("SERVER %s: Connection randomly dropped %s:%s", port, clientSocket.getLocalAddress(), clientSocket.getLocalPort()));
+                    System.out.println(String.format("SERVER %s: Connection randomly dropped %s:%s",
+                            port, clientSocket.getLocalAddress(), clientSocket.getLocalPort()));
                     continue;
                 }
 
                 out.write(executor.get());
                 out.flush();
-                System.out.println("SERVER " + port + ": Data from " + clientSocket.getLocalAddress() + clientSocket.getLocalPort() + " was handled, socket closed.");
+                System.out.println("SERVER " + port + ": Data from " +
+                        clientSocket.getLocalAddress() + clientSocket.getLocalPort() + " was handled, socket closed.");
                 clientSocket.close();
             }
         } catch (InterruptedException e) {

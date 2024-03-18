@@ -1,12 +1,12 @@
 package server;
 
+import static server.DelayBytesReader.readInt;
+import static server.DelayBytesReader.readLong;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
-
-import static server.DelayBytesReader.readInt;
-import static server.DelayBytesReader.readLong;
 
 /**
  * Server class for detecting prime numbers.
@@ -20,7 +20,7 @@ public class Server {
      *
      * @param port server port.
      */
-    public static void Run(int port) {
+    public static void run(int port) {
         try (ServerSocket serverSocket = new ServerSocket(port, 10)) {
             serverSocket.setSoTimeout(DELAY);
 
@@ -39,7 +39,8 @@ public class Server {
                 } catch (SocketTimeoutException e) {
                     continue;
                 }
-                System.out.println(String.format("SERVER %s: Connection successfully established with %s:%s", port, clientSocket.getLocalAddress(), clientSocket.getLocalPort()));
+                System.out.println(String.format("SERVER %s: Connection successfully established with %s:%s",
+                        port, clientSocket.getLocalAddress(), clientSocket.getLocalPort()));
 
                 var in = clientSocket.getInputStream();
                 var out = clientSocket.getOutputStream();
@@ -58,7 +59,8 @@ public class Server {
 
                 out.write(executor.get());
                 out.flush();
-                System.out.println("SERVER " + port + ": Data from " + clientSocket.getLocalAddress() + clientSocket.getLocalPort() + " was handled, socket closed.");
+                System.out.println("SERVER " + port + ": Data from " + clientSocket.getLocalAddress() +
+                        clientSocket.getLocalPort() + " was handled, socket closed.");
                 clientSocket.close();
             }
         } catch (Exception e) {

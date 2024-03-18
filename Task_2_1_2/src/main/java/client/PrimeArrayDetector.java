@@ -12,9 +12,7 @@ import java.util.HashMap;
 
 /**
  * Main client class.
- *
  * There is one client and several servers. All computing tasks processing by servers.
- *
  * Client stop because of "bad servers" not supported.
  * Each server has priority, it works in next way:
  *      Every connections request all priorities increasing by 1.
@@ -136,7 +134,7 @@ public class PrimeArrayDetector {
      *
      * @return true if all tasks finished, false otherwise.
      */
-    private static boolean UpdateConnections() {
+    private static boolean updateConnections() {
         if (arrayDivider.isFinished()) {
             return false;
         }
@@ -153,7 +151,9 @@ public class PrimeArrayDetector {
         servers.sort(Comparator.comparing((InetSocketAddress addr) -> priority.get(addr)));
 
         for (var server : servers) {
-            if (priority.get(server) < 0) continue;
+            if (priority.get(server) < 0) {
+                continue;
+            }
             connectServer(server);
         }
 
@@ -213,7 +213,7 @@ public class PrimeArrayDetector {
         }
 
         arrayDivider = new ArrayDivider(arr, Math.max(arr.length / addresses.length / 3, 2));
-        UpdateConnections();
+        updateConnections();
 
         while (true) {
             try {
@@ -248,7 +248,7 @@ public class PrimeArrayDetector {
                     }
                 }
             }
-            if (!UpdateConnections()) {
+            if (!updateConnections()) {
                 return true;
             }
         }

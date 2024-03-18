@@ -3,8 +3,8 @@ package server;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
@@ -22,10 +22,10 @@ public class Executor {
     /**
      * Create executor.
      *
-     * @param nThreads amount of threads of fixedThreadPoolExecutorService.
+     * @param nthreads amount of threads of fixedThreadPoolExecutorService.
      */
-    public Executor(int nThreads) {
-        executorService = Executors.newFixedThreadPool(nThreads);
+    public Executor(int nthreads) {
+        executorService = Executors.newFixedThreadPool(nthreads);
     }
 
     /**
@@ -47,8 +47,8 @@ public class Executor {
      * Is all already sent numbers is prime.
      *
      * @return Is all already sent numbers is prime.
-     * @throws ExecutionException
-     * @throws InterruptedException
+     * @throws ExecutionException problem with executorService.
+     * @throws InterruptedException can be thrown when server stops by interruption.
      */
     public int get() throws ExecutionException, InterruptedException {
         for (var future : futures) {
