@@ -1,26 +1,45 @@
-package server;
+import server.Executor;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
+import java.util.Random;
 
 import static server.DelayBytesReader.readInt;
 import static server.DelayBytesReader.readLong;
 
 /**
- * Server class for detecting prime numbers.
+ * Copy of server class with randomly happening errors.
  */
-public class Server {
+public class RandomlyWorkingServer {
 
     private static final int DELAY = 50;
+
+    private long delay;
+    private int connectionChance;
+    private int answerChance;
+    private Random rnd = new Random(System.currentTimeMillis());
+
+    /**
+     * Constructor for setting error coefficients.
+     *
+     * @param delay delay for emulating slow servers.
+     * @param connectionChance chance in percent that server will close socket during reading.
+     * @param answerChance chance in percent that server will close socket without answering.
+     */
+    public RandomlyWorkingServer(long delay, int connectionChance, int answerChance) {
+        this.delay = delay;
+        this.connectionChance = connectionChance;
+        this.answerChance = answerChance;
+    }
 
     /**
      * Start server.
      *
      * @param port server port.
      */
-    public static void Run(int port) {
+    public void Run(int port) {
         try (ServerSocket serverSocket = new ServerSocket(port, 10)) {
             serverSocket.setSoTimeout(DELAY);
 
@@ -48,6 +67,14 @@ public class Server {
                 // Если клиент долго не отвечает или возникли ошибки, отключаемся от него.
                 try {
                     int count = readInt(in, DELAY);
+
+                    // Random error check
+                    if (rnd.nextInt(101) > connectionChance) {
+                        clientSocket.close();
+                        System.out.println(String.format("SERVER %s: Connection randomly dropped %s:%s", port, clientSocket.getLocalAddress(), clientSocket.getLocalPort()));
+                        continue;
+                    }
+
                     for (; count > 0; count--) {
                         executor.send(readLong(in, DELAY));
                     }
@@ -56,14 +83,25 @@ public class Server {
                     continue;
                 }
 
+                // Waiting emulating slow servers
+                Thread.sleep(delay);
+
+                // Random error check
+                if (rnd.nextInt(101) > answerChance) {
+                    clientSocket.close();
+                    System.out.println(String.format("SERVER %s: Connection randomly dropped %s:%s", port, clientSocket.getLocalAddress(), clientSocket.getLocalPort()));
+                    continue;
+                }
+
                 out.write(executor.get());
                 out.flush();
                 System.out.println("SERVER " + port + ": Data from " + clientSocket.getLocalAddress() + clientSocket.getLocalPort() + " was handled, socket closed.");
                 clientSocket.close();
             }
+        } catch (InterruptedException e) {
+            System.out.println("SERVER " + port + " was turned off.");
         } catch (Exception e) {
             System.err.println("SERVER " + port + ": ERROR: " + e);
         }
     }
 }
-

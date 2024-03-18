@@ -11,18 +11,20 @@ import java.util.Comparator;
 import java.util.HashMap;
 
 /**
- * Остановка по плохим соединениям или нерабочим серверам не предусмотрена,
- * т.е. если все сервера "плохие" проверка будет происходить бесконечно.
+ * Main client class.
+ *
+ * There is one client and several servers. All computing tasks processing by servers.
+ *
+ * Client stop because of "bad servers" not supported.
+ * Each server has priority, it works in next way:
+ *      Every connections request all priorities increasing by 1.
+ *      Every successful data handle server's priority increasing by 5.
+ *      Every non-successful data handle server's priority decreasing by 5.
+ *      If server's priority less than 0, client will not connect to this server.
  */
 public class PrimeArrayDetector {
 
     private static final long MAX_DELAY = 400;
-
-    public static void main(String[] args) {
-        long[] arr = new long[]{17, 17, 17, 19, 7};
-        System.out.println(isArrayPrime(arr, new InetSocketAddress[]{new InetSocketAddress("0.0.0.0", 18080), new InetSocketAddress("0.0.0.0", 18081)}));
-    }
-
     private static ArrayDivider arrayDivider;
     private static Selector selector;
     private static HashMap<InetSocketAddress, Integer> statuses = new HashMap<>();
@@ -31,24 +33,35 @@ public class PrimeArrayDetector {
     private static HashMap<InetSocketAddress, Long> activityTime = new HashMap<>();
     private static HashMap<InetSocketAddress, Integer> priority = new HashMap<>();
 
-    private static void decreaseServerPriority(InetSocketAddress address) {
+    /**
+     * Decrease server priority by value.
+     *
+     * @param address address of server.
+     * @param value value by which to decrease.
+     */
+    private static void decreaseServerPriority(InetSocketAddress address, int value) {
         Integer old = priority.get(address);
-        if (old == null) {
-            priority.put(address, -5);
-        } else {
-            priority.put(address, old - 5);
-        }
+        priority.put(address, old - value);
     }
 
-    private static void increaseServerPriority(InetSocketAddress address) {
+    /**
+     * Increase server priority by value.
+     *
+     * @param address address of server.
+     * @param value value by which to increase.
+     */
+    private static void increaseServerPriority(InetSocketAddress address, int value) {
         Integer old = priority.get(address);
-        if (old == null) {
-            priority.put(address, 5);
-        } else {
-            priority.put(address, old + 5);
-        }
+        priority.put(address, old + value);
     }
 
+    /**
+     * Assign task to a server ans send it.
+     *
+     * @param server serverSocket.
+     * @param address serverAddress.
+     * @return success of operation.
+     */
     private static boolean sendTaskToServer(SocketChannel server, InetSocketAddress address) {
         ArrayDivider.Task task = arrayDivider.getTask();
         if (task == null) {
@@ -78,6 +91,11 @@ public class PrimeArrayDetector {
     }
 
 
+    /**
+     * Try to create connection with server.
+     *
+     * @param address address of server.
+     */
     private static void connectServer(InetSocketAddress address) {
         SocketChannel serverChannel;
         try {
@@ -88,7 +106,7 @@ public class PrimeArrayDetector {
 
             System.out.println("CLIENT: Connected to " + address);
         } catch (Exception e) {
-            decreaseServerPriority(address);
+            decreaseServerPriority(address, 5);
             System.out.println("CLIENT: ERROR while connecting to server " + address);
             return;
         }
@@ -112,7 +130,12 @@ public class PrimeArrayDetector {
     }
 
     // true если нельзя завершать, false если можно завершать.
-    // Нужно добавить обработку приоритетов.
+
+    /**
+     * Go through all servers and try to make connections and send tasks.
+     *
+     * @return true if all tasks finished, false otherwise.
+     */
     private static boolean UpdateConnections() {
         if (arrayDivider.isFinished()) {
             return false;
@@ -137,22 +160,43 @@ public class PrimeArrayDetector {
         return true;
     }
 
+    /**
+     * Reject previously assigned task.
+     *
+     * @param key selector selectionKey.
+     * @param address address of server.
+     * @param taskId id of assigned task.
+     */
     private static void reject(SelectionKey key, InetSocketAddress address, int taskId) {
         key.cancel();
-        decreaseServerPriority(address);
+        decreaseServerPriority(address, 5);
         arrayDivider.rejectTask(taskId);
         statuses.put(address, 0);
         System.out.println("CLIENT: " + address + "'s task rejected.");
     }
 
+    /**
+     * Approve previously assigned task.
+     *
+     * @param key selector selectionKey.
+     * @param address address of server.
+     * @param taskId id of assigned task.
+     */
     private static void approve(SelectionKey key, InetSocketAddress address, int taskId) {
         key.cancel();
         statuses.put(address, 0);
         arrayDivider.approveTask(taskId);
-        increaseServerPriority(address);
+        increaseServerPriority(address, 5);
         System.out.println("CLIENT: " + address + "'s task approved.");
     }
 
+    /**
+     * Main client function.
+     *
+     * @param arr array to check.
+     * @param addresses available servers list.
+     * @return is array prime.
+     */
     public static Boolean isArrayPrime(long[] arr, InetSocketAddress[] addresses) {
 
         statuses.clear();
@@ -173,20 +217,9 @@ public class PrimeArrayDetector {
 
         while (true) {
             try {
-                int count = selector.select(MAX_DELAY);
-                if (count == 0) {
-                    for (var key : selector.keys()) {
-                        SocketChannel in = (SocketChannel) key.channel();
-                        int id = ids.get(in);
-                        InetSocketAddress address = idToAddress.get(id);
-                        reject(key, address, id);
-                    }
-                    UpdateConnections();
-                    continue;
-                }
-            } catch (Exception e) {
-                System.out.println("CLIENT: ERROR: Selector error.");
-                return null;
+                selector.select(MAX_DELAY);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
 
             for (var key : selector.keys()) {
@@ -197,10 +230,7 @@ public class PrimeArrayDetector {
                 if (key.isReadable()) {
                     try {
                         ByteBuffer byteBuffer = ByteBuffer.allocate(1);
-
-                        int readed = in.read(byteBuffer);
-
-                        if (readed == 1) {
+                        if (in.read(byteBuffer) == 1) {
                             approve(key, address, id);
                             if (byteBuffer.flip().get() == 0) {
                                 return false;

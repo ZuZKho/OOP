@@ -1,6 +1,5 @@
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
-import server.RandomlyWorkingServer;
 import server.Server;
 
 import java.net.InetSocketAddress;
@@ -10,17 +9,19 @@ import static client.PrimeArrayDetector.isArrayPrime;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class interractionTest {
+public class interactionTest {
 
     private static String host = "0.0.0.0";
 
-    private long[] primeArray = new long[]{20319251, 6997901, 6997927, 6997937, 17858849, 6997967,
+    private long[] primeArray = new long[]{
+            20319251, 6997901, 6997927, 6997937, 17858849, 6997967,
             6998009, 6998029, 6998039, 20165149, 6998051, 6998053,
             1000000007, 1000000007, 1000000009, 1000000009, 10000000469L,
             999999999847L, 10000000469L, 999999999937L, 999999999959L, 999999999989L,
             999999999767L, 999999999767L, 100000009069L, 100000008937L, 100000008947L};
 
-    private long[] complexArray = new long[]{20319251, 6997901, 6997927, 6997937, 17858849, 6997967,
+    private long[] complexArray = new long[]{
+            20319251, 6997901, 6997927, 6997937, 17858849, 6997967,
             6998009, 6998029, 6998039, 20165149, 6998051, 6998053,
             1000000007, 1000000007, 1000000009, 1000000009, 10000000469L,
             999999999847L, 10000000469L, 999999999937L, 999999999959L, 999999999989L,
@@ -28,15 +29,18 @@ public class interractionTest {
 
     @Test
     void workingServersPrimeTest() throws InterruptedException {
-        InetSocketAddress[] servers = new InetSocketAddress[]{new InetSocketAddress(host, 18080), new InetSocketAddress(host, 18081)};
-        ArrayList<Thread> threads = new ArrayList<>();
-        threads.add(new Thread(() -> {
-            Server.Run(18080);
-        }));
-        threads.add(new Thread(() -> {
-            Server.Run(18081);
-        }));
-
+        InetSocketAddress[] servers = new InetSocketAddress[]{
+                new InetSocketAddress(host, 18080),
+                new InetSocketAddress(host, 18081)
+        };
+        Thread[] threads = new Thread[]{
+                new Thread(() -> {
+                    Server.Run(18080);
+                }),
+                new Thread(() -> {
+                    Server.Run(18081);
+                })
+        };
         for (var thread : threads) {
             thread.start();
         }
@@ -48,8 +52,6 @@ public class interractionTest {
         for (var thread : threads) {
             thread.interrupt();
         }
-
-
         Thread.sleep(50);
     }
 
@@ -89,15 +91,15 @@ public class interractionTest {
 
         ArrayList<Thread> threads = new ArrayList<>();
         threads.add(new Thread(() -> {
-            RandomlyWorkingServer rwServer = new RandomlyWorkingServer(200, 50, 80, 80);
+            RandomlyWorkingServer rwServer = new RandomlyWorkingServer(200, 20, 40);
             rwServer.Run(18081);
         }));
         threads.add(new Thread(() -> {
-            RandomlyWorkingServer rwServer = new RandomlyWorkingServer(100, 60, 80, 60);
+            RandomlyWorkingServer rwServer = new RandomlyWorkingServer(100, 60, 60);
             rwServer.Run(18080);
         }));
         threads.add(new Thread(() -> {
-            RandomlyWorkingServer rwServer = new RandomlyWorkingServer(200, 90, 90, 90);
+            RandomlyWorkingServer rwServer = new RandomlyWorkingServer(200, 90, 90);
             rwServer.Run(18082);
         }));
 
@@ -128,15 +130,15 @@ public class interractionTest {
 
         ArrayList<Thread> threads = new ArrayList<>();
         threads.add(new Thread(() -> {
-            RandomlyWorkingServer rwServer = new RandomlyWorkingServer(200, 80, 30, 70);
+            RandomlyWorkingServer rwServer = new RandomlyWorkingServer(200, 80, 70);
             rwServer.Run(18081);
         }));
         threads.add(new Thread(() -> {
-            RandomlyWorkingServer rwServer = new RandomlyWorkingServer(100, 90, 50, 60);
+            RandomlyWorkingServer rwServer = new RandomlyWorkingServer(100, 90, 60);
             rwServer.Run(18080);
         }));
         threads.add(new Thread(() -> {
-            RandomlyWorkingServer rwServer = new RandomlyWorkingServer(200, 80, 80, 80);
+            RandomlyWorkingServer rwServer = new RandomlyWorkingServer(200, 80, 80);
             rwServer.Run(18082);
         }));
 
