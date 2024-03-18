@@ -39,8 +39,8 @@ public class Server {
                 } catch (SocketTimeoutException e) {
                     continue;
                 }
-                System.out.println(String.format("SERVER %s: Connection successfully established with %s:%s",
-                        port, clientSocket.getLocalAddress(), clientSocket.getLocalPort()));
+                System.out.println("SERVER " + port + ": Connection successfully established with "
+                        + clientSocket.getLocalAddress() + ":" + clientSocket.getLocalPort());
 
                 var in = clientSocket.getInputStream();
                 var out = clientSocket.getOutputStream();
@@ -59,8 +59,10 @@ public class Server {
 
                 out.write(executor.get());
                 out.flush();
-                System.out.println("SERVER " + port + ": Data from " + clientSocket.getLocalAddress() +
-                        clientSocket.getLocalPort() + " was handled, socket closed.");
+                System.out.println("SERVER " + port + ": Data from "
+                        + clientSocket.getLocalAddress()
+                        + clientSocket.getLocalPort()
+                        + " was handled, socket closed.");
                 clientSocket.close();
             }
         } catch (Exception e) {

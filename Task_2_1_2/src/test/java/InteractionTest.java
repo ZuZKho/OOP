@@ -2,10 +2,10 @@ import static client.PrimeArrayDetector.isArrayPrime;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.Test;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 import server.Server;
 
 /**
