@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":9,"i1":9};
+var data = {"i0":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -133,8 +133,16 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">PrimeArrayDetector</span>
 extends java.lang.Object</pre>
-<div class="block">Остановка по плохим соединениям или нерабочим серверам не предусмотрена,
- т.е. если все сервера "плохие" проверка будет происходить бесконечно.</div>
+<div class="block">Main client class.
+
+ There is one client and several servers. All computing tasks processing by servers.
+
+ Client stop because of "bad servers" not supported.
+ Each server has priority, it works in next way:
+      Every connections request all priorities increasing by 1.
+      Every successful data handle server's priority increasing by 5.
+      Every non-successful data handle server's priority decreasing by 5.
+      If server's priority less than 0, client will not connect to this server.</div>
 </li>
 </ul>
 </div>
@@ -180,12 +188,9 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>static java.lang.Boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isArrayPrime(long%5B%5D,java.net.InetSocketAddress%5B%5D)">isArrayPrime</a></span>&#8203;(long[]&nbsp;arr,
             java.net.InetSocketAddress[]&nbsp;addresses)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i1" class="rowColor">
-<td class="colFirst"><code>static void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#main(java.lang.String%5B%5D)">main</a></span>&#8203;(java.lang.String[]&nbsp;args)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Main client function.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -230,15 +235,6 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="main(java.lang.String[])">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>main</h4>
-<pre class="methodSignature">public static&nbsp;void&nbsp;main&#8203;(java.lang.String[]&nbsp;args)</pre>
-</li>
-</ul>
 <a id="isArrayPrime(long[],java.net.InetSocketAddress[])">
 <!--   -->
 </a>
@@ -247,6 +243,14 @@ extends java.lang.Object</pre>
 <h4>isArrayPrime</h4>
 <pre class="methodSignature">public static&nbsp;java.lang.Boolean&nbsp;isArrayPrime&#8203;(long[]&nbsp;arr,
                                              java.net.InetSocketAddress[]&nbsp;addresses)</pre>
+<div class="block">Main client function.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>arr</code> - array to check.</dd>
+<dd><code>addresses</code> - available servers list.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>is array prime.</dd>
+</dl>
 </li>
 </ul>
 </li>

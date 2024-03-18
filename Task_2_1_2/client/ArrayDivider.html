@@ -133,6 +133,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">ArrayDivider</span>
 extends java.lang.Object</pre>
+<div class="block">Class for dividing long[] to multiple subarrayy and provide api for interaction.</div>
 </li>
 </ul>
 </div>
@@ -155,7 +156,9 @@ extends java.lang.Object</pre>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(long%5B%5D,int)">ArrayDivider</a></span>&#8203;(long[]&nbsp;array,
             int&nbsp;taskSize)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Constructor which divides input array into tasks.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -178,22 +181,30 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#approveTask(int)">approveTask</a></span>&#8203;(int&nbsp;id)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Approve that task was finished.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>client.ArrayDivider.Task</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTask()">getTask</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Get not finished and not currently processing task.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isFinished()">isFinished</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Is all tasks finished.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#rejectTask(int)">rejectTask</a></span>&#8203;(int&nbsp;id)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Say that previously taken task wasn't finished and need to repeat it.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -227,6 +238,12 @@ extends java.lang.Object</pre>
 <h4>ArrayDivider</h4>
 <pre>public&nbsp;ArrayDivider&#8203;(long[]&nbsp;array,
                     int&nbsp;taskSize)</pre>
+<div class="block">Constructor which divides input array into tasks.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>array</code> - input array.</dd>
+<dd><code>taskSize</code> - size of subarrays.</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -246,6 +263,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>isFinished</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;isFinished()</pre>
+<div class="block">Is all tasks finished.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>is all tasks finished.</dd>
+</dl>
 </li>
 </ul>
 <a id="getTask()">
@@ -255,6 +277,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getTask</h4>
 <pre class="methodSignature">public&nbsp;client.ArrayDivider.Task&nbsp;getTask()</pre>
+<div class="block">Get not finished and not currently processing task.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>task or null.</dd>
+</dl>
 </li>
 </ul>
 <a id="approveTask(int)">
@@ -264,6 +291,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>approveTask</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;approveTask&#8203;(int&nbsp;id)</pre>
+<div class="block">Approve that task was finished.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>id</code> - id of task that was finished.</dd>
+</dl>
 </li>
 </ul>
 <a id="rejectTask(int)">
@@ -273,6 +305,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>rejectTask</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;rejectTask&#8203;(int&nbsp;id)</pre>
+<div class="block">Say that previously taken task wasn't finished and need to repeat it.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>id</code> - task id.</dd>
+</dl>
 </li>
 </ul>
 </li>
