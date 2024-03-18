@@ -157,7 +157,7 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(int)">Executor</a></span>&#8203;(int&nbsp;nThreads)</code></th>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(int)">Executor</a></span>&#8203;(int&nbsp;nthreads)</code></th>
 <td class="colLast">
 <div class="block">Create executor.</div>
 </td>
@@ -224,11 +224,11 @@ extends java.lang.Object</pre>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>Executor</h4>
-<pre>public&nbsp;Executor&#8203;(int&nbsp;nThreads)</pre>
+<pre>public&nbsp;Executor&#8203;(int&nbsp;nthreads)</pre>
 <div class="block">Create executor.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>nThreads</code> - amount of threads of fixedThreadPoolExecutorService.</dd>
+<dd><code>nthreads</code> - amount of threads of fixedThreadPoolExecutorService.</dd>
 </dl>
 </li>
 </ul>
@@ -270,8 +270,8 @@ extends java.lang.Object</pre>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Is all already sent numbers is prime.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.util.concurrent.ExecutionException</code></dd>
-<dd><code>java.lang.InterruptedException</code></dd>
+<dd><code>java.util.concurrent.ExecutionException</code> - problem with executorService.</dd>
+<dd><code>java.lang.InterruptedException</code> - can be thrown when server stops by interruption.</dd>
 </dl>
 </li>
 </ul>
