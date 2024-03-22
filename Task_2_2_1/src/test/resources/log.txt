@@ -1,0 +1,49 @@
+2024-03-22 15:58:43:537 - Pizzeria is opened.
+2024-03-22 15:58:43:545 - Order #1 was successfully added to queue.
+2024-03-22 15:58:43:545 - Order #1 was taken by baker Bob.
+2024-03-22 15:58:43:556 - Order #2 was taken by baker Tom.
+2024-03-22 15:58:43:558 - Order #2 was successfully added to queue.
+2024-03-22 15:58:43:579 - Order #3 was successfully added to queue.
+2024-03-22 15:58:43:579 - Order #3 was taken by baker John.
+2024-03-22 15:58:43:587 - Order #4 was successfully added to queue.
+2024-03-22 15:58:43:587 - Order #4 was taken by baker Tim.
+2024-03-22 15:58:43:591 - Order #5 was successfully added to queue.
+2024-03-22 15:58:43:598 - Order #6 was successfully added to queue.
+2024-03-22 15:58:43:598 - Order #1 was moved to storage.
+2024-03-22 15:58:43:605 - Order #5 was taken by baker Bob.
+2024-03-22 15:58:43:605 - Courier Joe started delivery with orders: #1.
+2024-03-22 15:58:43:609 - Order #2 was moved to storage.
+2024-03-22 15:58:43:609 - Order #6 was taken by baker Tom.
+2024-03-22 15:58:43:609 - Courier Caleb started delivery with orders: #2.
+2024-03-22 15:58:43:611 - Order #3 was moved to storage.
+2024-03-22 15:58:43:619 - Order #7 was successfully added to queue.
+2024-03-22 15:58:43:619 - Order #7 was taken by baker John.
+2024-03-22 15:58:43:635 - Order #8 was successfully added to queue.
+2024-03-22 15:58:43:637 - Order #9 was successfully added to queue.
+2024-03-22 15:58:43:644 - Order #10 was successfully added to queue.
+2024-03-22 15:58:43:647 - Pizzeria stopped to accept new orders.
+2024-03-22 15:58:43:650 - Order #6 was moved to storage.
+2024-03-22 15:58:43:650 - Order #7 was moved to storage.
+2024-03-22 15:58:43:650 - Order #8 was taken by baker Tom.
+2024-03-22 15:58:43:650 - Order #9 was taken by baker John.
+2024-03-22 15:58:43:656 - Order #5 was moved to storage.
+2024-03-22 15:58:43:656 - Order #10 was taken by baker Bob.
+2024-03-22 15:58:43:659 - Order #4 was moved to storage.
+2024-03-22 15:58:43:668 - Courier Joe finished delivery of orders: #1
+2024-03-22 15:58:43:668 - Courier Joe started delivery with orders: #3, #6.
+2024-03-22 15:58:43:671 - Courier Caleb finished delivery of orders: #2
+2024-03-22 15:58:43:671 - Courier Caleb started delivery with orders: #7.
+2024-03-22 15:58:43:685 - Order #9 was moved to storage.
+2024-03-22 15:58:43:700 - Order #8 was moved to storage.
+2024-03-22 15:58:43:716 - Order #10 was moved to storage.
+2024-03-22 15:58:43:716 - Courier Caleb finished delivery of orders: #7
+2024-03-22 15:58:43:716 - Courier Caleb started delivery with orders: #5.
+2024-03-22 15:58:43:792 - Courier Caleb finished delivery of orders: #5
+2024-03-22 15:58:43:793 - Courier Caleb started delivery with orders: #4.
+2024-03-22 15:58:43:824 - Courier Caleb finished delivery of orders: #4
+2024-03-22 15:58:43:824 - Courier Joe finished delivery of orders: #3, #6
+2024-03-22 15:58:43:825 - Courier Joe started delivery with orders: #8, #10.
+2024-03-22 15:58:43:824 - Courier Caleb started delivery with orders: #9.
+2024-03-22 15:58:43:917 - Courier Caleb finished delivery of orders: #9
+2024-03-22 15:58:43:947 - Courier Joe finished delivery of orders: #8, #10
+2024-03-22 15:58:43:948 - Pizzeria is closed.
