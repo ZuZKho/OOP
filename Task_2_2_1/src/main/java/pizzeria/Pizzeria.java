@@ -2,19 +2,18 @@ package pizzeria;
 
 import dto.OrderDTO;
 import dto.PizzeriaDTO;
-import lombok.extern.slf4j.Slf4j;
-import utils.ExtendedBlockingQueue;
-
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
-
+import java.util.List;
+import lombok.extern.slf4j.Slf4j;
+import utils.ExtendedBlockingQueue;
 
 /**
  * Main pizzeria class.
  */
 @Slf4j
+@SuppressWarnings("AbbreviationAsWordInNameCheck")
 public class Pizzeria {
 
     /**

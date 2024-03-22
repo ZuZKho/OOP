@@ -32,6 +32,7 @@ public class ExtendedBlockingQueue<T> {
      * Add element to queue. Will wait() if queue is full.
      *
      * @param item element.
+     * @throws InterruptedException
      */
     public synchronized void add(T item) throws InterruptedException {
         while (queue.size() == queueSize) {
@@ -90,6 +91,8 @@ public class ExtendedBlockingQueue<T> {
 
     /**
      * Returns only when queue becomes empty.
+     *
+     * @throws InterruptedException
      */
     public synchronized void waitUntilEmpty() throws InterruptedException {
         while (!queue.isEmpty()) {

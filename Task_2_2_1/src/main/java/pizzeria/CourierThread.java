@@ -1,32 +1,40 @@
 package pizzeria;
 
 import dto.CourierDTO;
+import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.List;
-
+/**
+ * Runnable class emulating courier work.
+ */
 @Slf4j
+@SuppressWarnings("AbbreviationAsWordInNameCheck")
 public class CourierThread implements Runnable {
 
-    private final String name;
-    private final int volume;
-    private final Pizzeria pizzeria;
-
+    /**
+     * Constructor.
+     *
+     * @param pizzeria   courier's pizzeria.
+     * @param courierDTO courier's dto.
+     */
     CourierThread(Pizzeria pizzeria, CourierDTO courierDTO) {
         this.name = courierDTO.getName();
         this.volume = courierDTO.getVolume();
         this.pizzeria = pizzeria;
     }
 
+    /**
+     * run method for Runnable.
+     */
     @Override
     public void run() {
-        while((pizzeria.isWorking.get() || !pizzeria.storage.isEmpty()) && !Thread.interrupted()) {
+        while ((pizzeria.isWorking.get() || !pizzeria.storage.isEmpty()) && !Thread.interrupted()) {
             try {
                 List<Order> orders = pizzeria.storage.multipoll(volume);
 
                 StringBuilder stringBuilder = new StringBuilder();
                 int sleepingTime = 0;
-                for(int i = 0; i < orders.size(); i++) {
+                for (int i = 0; i < orders.size(); i++) {
                     sleepingTime += orders.get(i).getDeliveryTime();
                     stringBuilder.append("#");
                     stringBuilder.append(orders.get(i).id);
@@ -44,4 +52,10 @@ public class CourierThread implements Runnable {
             }
         }
     }
+
+
+    private final String name;
+    private final int volume;
+    private final Pizzeria pizzeria;
 }
+

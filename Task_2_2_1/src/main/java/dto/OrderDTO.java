@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
  */
 @Getter
 @NoArgsConstructor
+@SuppressWarnings("AbbreviationAsWordInNameCheck")
 public class OrderDTO {
     String address;
     @JsonProperty("delivery-time")

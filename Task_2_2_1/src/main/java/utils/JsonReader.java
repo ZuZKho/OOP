@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dto.OrderDTO;
 import dto.PizzeriaDTO;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -12,7 +11,9 @@ import java.util.List;
 /**
  * Utility class for reading configuration files.
  */
-public class JSONReader {
+
+@SuppressWarnings("AbbreviationAsWordInNameCheck")
+public class JsonReader {
 
     private static ObjectMapper objectMapper = new ObjectMapper();
 
@@ -31,7 +32,7 @@ public class JSONReader {
      * Read orders configuration file.
      *
      * @param fileName path from project directory.
-     * @return List<OrderDTO> obtained from configuration file.
+     * @return List of OrderDTO obtained from configuration file.
      * @throws IOException wrong json file.
      */
     public static List<OrderDTO> readOrdersDTOList(String fileName) throws IOException {

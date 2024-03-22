@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
  * Runnable class emulating Baker work.
  */
 @Slf4j
+@SuppressWarnings("AbbreviationAsWordInNameCheck")
 public class BakerThread implements Runnable {
 
     /**
