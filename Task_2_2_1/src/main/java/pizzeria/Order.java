@@ -5,6 +5,7 @@ import dto.OrderDTO;
 /**
  * Extension of OrderDTO with id field.
  */
+@SuppressWarnings("AbbreviationAsWordInName")
 public class Order extends OrderDTO {
     int id;
 

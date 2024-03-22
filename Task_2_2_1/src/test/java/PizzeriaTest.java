@@ -1,12 +1,16 @@
 import dto.OrderDTO;
 import dto.PizzeriaDTO;
+import java.io.IOException;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import pizzeria.Pizzeria;
 import utils.JsonReader;
 
-import java.io.IOException;
-import java.util.List;
 
+/**
+ * Pizzeria work test by logs verifying.
+ */
+@SuppressWarnings("AbbreviationAsWordInName")
 public class PizzeriaTest {
 
     @Test

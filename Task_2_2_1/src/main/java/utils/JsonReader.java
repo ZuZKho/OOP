@@ -11,8 +11,7 @@ import java.util.List;
 /**
  * Utility class for reading configuration files.
  */
-
-@SuppressWarnings("AbbreviationAsWordInNameCheck")
+@SuppressWarnings("AbbreviationAsWordInName")
 public class JsonReader {
 
     private static ObjectMapper objectMapper = new ObjectMapper();

@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
  * Runnable class emulating Baker work.
  */
 @Slf4j
-@SuppressWarnings("AbbreviationAsWordInNameCheck")
+@SuppressWarnings("AbbreviationAsWordInName")
 public class BakerThread implements Runnable {
 
     /**
@@ -27,7 +27,8 @@ public class BakerThread implements Runnable {
      */
     @Override
     public void run() {
-        while ((pizzeria.isWorking.get() || !pizzeria.ordersQueue.isEmpty()) && !Thread.interrupted()) {
+        while ((pizzeria.isWorking.get() || !pizzeria.ordersQueue.isEmpty())
+                && !Thread.interrupted()) {
             try {
                 Order order = pizzeria.ordersQueue.poll();
 

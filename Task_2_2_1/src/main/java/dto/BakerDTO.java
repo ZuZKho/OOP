@@ -7,7 +7,7 @@ import lombok.Getter;
  * BakerDTO class.
  */
 @Getter
-@SuppressWarnings("AbbreviationAsWordInNameCheck")
+@SuppressWarnings("AbbreviationAsWordInName")
 public class BakerDTO {
     String name;
     @JsonProperty("baking-time")

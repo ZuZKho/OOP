@@ -8,7 +8,7 @@ import lombok.Getter;
  * PizzeriaDTO class.
  */
 @Getter
-@SuppressWarnings("AbbreviationAsWordInNameCheck")
+@SuppressWarnings("AbbreviationAsWordInName")
 public class PizzeriaDTO {
     List<BakerDTO> bakers;
     List<CourierDTO> couriers;

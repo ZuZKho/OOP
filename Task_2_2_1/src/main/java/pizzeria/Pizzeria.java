@@ -13,7 +13,7 @@ import utils.ExtendedBlockingQueue;
  * Main pizzeria class.
  */
 @Slf4j
-@SuppressWarnings("AbbreviationAsWordInNameCheck")
+@SuppressWarnings("AbbreviationAsWordInName")
 public class Pizzeria {
 
     /**

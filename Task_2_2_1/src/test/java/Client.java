@@ -1,8 +1,7 @@
 import dto.OrderDTO;
-import pizzeria.Pizzeria;
-
 import java.util.List;
 import java.util.Random;
+import pizzeria.Pizzeria;
 
 /**
  * Class for sending orders to pizzeria.

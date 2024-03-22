@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
  * Runnable class emulating courier work.
  */
 @Slf4j
-@SuppressWarnings("AbbreviationAsWordInNameCheck")
+@SuppressWarnings("AbbreviationAsWordInName")
 public class CourierThread implements Runnable {
 
     /**
@@ -28,7 +28,8 @@ public class CourierThread implements Runnable {
      */
     @Override
     public void run() {
-        while ((pizzeria.isWorking.get() || !pizzeria.storage.isEmpty()) && !Thread.interrupted()) {
+        while ((pizzeria.isWorking.get() || !pizzeria.storage.isEmpty())
+                && !Thread.interrupted()) {
             try {
                 List<Order> orders = pizzeria.storage.multipoll(volume);
 
