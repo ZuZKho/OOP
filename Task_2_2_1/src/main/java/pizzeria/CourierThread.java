@@ -47,7 +47,7 @@ public class CourierThread implements Runnable {
                 log.info("Courier {} started delivery with orders: {}.", name, stringBuilder);
 
                 Thread.sleep(sleepingTime);
-                log.info("Courier {} finished delivery of orders: {}", name, stringBuilder);
+                log.info("Courier {} finished delivery of orders: {}.", name, stringBuilder);
             } catch (InterruptedException e) {
                 return;
             }

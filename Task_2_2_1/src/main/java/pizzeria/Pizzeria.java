@@ -3,9 +3,9 @@ package pizzeria;
 import dto.OrderDTO;
 import dto.PizzeriaDTO;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import utils.ExtendedBlockingQueue;
 
@@ -85,8 +85,8 @@ public class Pizzeria {
      */
     public void workDay() {
         try {
-            startWorkingDay();
             log.info("Pizzeria is opened.");
+            startWorkingDay();
 
             Thread.sleep(workingTime);
             log.info("Pizzeria stopped to accept new orders.");
@@ -111,8 +111,8 @@ public class Pizzeria {
             }
 
             Order order = new Order(orderDTO, idCounter.getAndAdd(1));
-            ordersQueue.add(order);
             log.info("Order #{} was successfully added to queue.", order.id);
+            ordersQueue.add(order);
             return true;
         } catch (InterruptedException e) {
             throw new RuntimeException(e);

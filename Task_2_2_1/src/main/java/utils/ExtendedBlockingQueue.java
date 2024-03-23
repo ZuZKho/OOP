@@ -18,7 +18,8 @@ public class ExtendedBlockingQueue<T> {
     /**
      * Create blocking queue of some size.
      *
-     * @param queueSize if 0 queue won't be restricted by size, otherwise it's maximal number of elements in queue.
+     * @param queueSize if 0 queue won't be restricted by size,
+     *                  otherwise it's maximal number of elements in queue.g
      */
     public ExtendedBlockingQueue(int queueSize) {
         if (queueSize == 0) {

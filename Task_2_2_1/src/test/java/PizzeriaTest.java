@@ -1,3 +1,5 @@
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import dto.OrderDTO;
 import dto.PizzeriaDTO;
 import java.io.IOException;
@@ -14,7 +16,7 @@ import utils.JsonReader;
 public class PizzeriaTest {
 
     @Test
-    void test1() throws IOException, InterruptedException {
+    void testNormalOrders() throws IOException, InterruptedException {
         PizzeriaDTO pizzeriaDTO = JsonReader.readPizzeriaDTO("src/main/resources/Pizzeria2.json");
         List<OrderDTO> orders = JsonReader.readOrdersDTOList("src/main/resources/Orders1.json");
 
@@ -28,8 +30,10 @@ public class PizzeriaTest {
 
         pizzeriaThread.start();
         clientThread.start();
-
         pizzeriaThread.join();
         clientThread.interrupt();
+
+        assertTrue(LogsVerifier.verify());
     }
+
 }

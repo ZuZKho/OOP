@@ -10,7 +10,7 @@
     },
     {
       "name": "Tim",
-      "baking-time": 70
+      "baking-time": 60
     },
     {
       "name": "Tom",
@@ -25,6 +25,10 @@
     {
       "name": "Caleb",
       "volume": 1  
+    },
+    {
+      "name": "Nolan",
+      "volume": 3
     }
   ],
   "storage-size": 6,	
