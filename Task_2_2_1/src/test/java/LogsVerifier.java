@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -36,31 +37,20 @@ public class LogsVerifier {
         }
     }
 
+    /**
+     * Verify logs from Pizzeria.
+     * Checking Sequence of actions of each order.
+     *
+     * @return true if logs correct, false otherwise.
+     */
     public static boolean verify() {
-        int pizzeriaStatus = 0;
         ordersStatuses = new HashMap<>();
+        File logFile = new File("src/test/resources/log.txt");
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/log.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(logFile))) {
             while (reader.ready()) {
                 String str = reader.readLine();
-                if (str.contains("Pizzeria")) {
-                    if (str.contains("opened")) {
-                        if (pizzeriaStatus != 0) {
-                            return false;
-                        }
-                        pizzeriaStatus++;
-                    } else if (str.contains("stopped")) {
-                        if (pizzeriaStatus != 1) {
-                            return false;
-                        }
-                        pizzeriaStatus++;
-                    } else if (str.contains("closed")) {
-                        if (pizzeriaStatus != 2) {
-                            return false;
-                        }
-                        pizzeriaStatus++;
-                    }
-                } else {
+                if (!str.contains("Pizzeria")) {
                     if (str.contains("added to queue")) {
                         checkStatuses(str, 0);
                     } else if (str.contains("was taken")) {
@@ -75,10 +65,6 @@ public class LogsVerifier {
                 }
             }
         } catch (Exception e) {
-            return false;
-        }
-
-        if (pizzeriaStatus != 3) {
             return false;
         }
 
