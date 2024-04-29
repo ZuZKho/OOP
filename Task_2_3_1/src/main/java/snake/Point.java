@@ -18,6 +18,24 @@ public class Point {
     }
 
     /**
+     * X coordinate getter.
+     *
+     * @return x coordinate.
+     */
+    public int getX() {
+        return x;
+    }
+
+    /**
+     * Y coordinate getter.
+     *
+     * @return y coordinate.
+     */
+    public int getY() {
+        return y;
+    }
+
+    /**
      * Some hashCode realization.
      *
      * @return hashCode of Point.
