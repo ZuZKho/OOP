@@ -1,9 +1,9 @@
 package snake.snake;
 
-import javafx.scene.input.KeyCode;
 import java.util.ArrayDeque;
 import java.util.HashSet;
 import java.util.Queue;
+import javafx.scene.input.KeyCode;
 import snake.Point;
 
 /**
@@ -93,7 +93,7 @@ public class Snake {
             case LEFT -> headX = (headX - 1 + width) % width;
             case DOWN -> headY = (headY + 1) % height;
             case UP -> headY = (headY - 1 + height) % height;
-            default -> {}
+            default -> { }
         }
 
         Point head = new Point(headX, headY);

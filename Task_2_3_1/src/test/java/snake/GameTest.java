@@ -71,10 +71,10 @@ class GameTest {
 
         while (!queue.isEmpty()) {
             Point current = queue.poll();
-            Point[] pts = new Point[]{  new Point((current.getX() + 1) % width, current.getY()),
-                                        new Point((current.getX() - 1 + width) % width, current.getY()),
-                                        new Point(current.getX(), (current.getY() + 1) % height),
-                                        new Point(current.getX(), (current.getY() - 1 + height) % height)};
+            Point[] pts = new Point[]{new Point((current.getX() + 1) % width, current.getY()),
+                    new Point((current.getX() - 1 + width) % width, current.getY()),
+                    new Point(current.getX(), (current.getY() + 1) % height),
+                    new Point(current.getX(), (current.getY() - 1 + height) % height)};
 
             for (var point : pts) {
                 if (points.contains(point)) {

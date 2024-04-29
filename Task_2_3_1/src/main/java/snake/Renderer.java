@@ -21,7 +21,8 @@ public class Renderer {
      * @param viewportHeight viewport height in pixels.
      */
     public Renderer(GameField gameField, Group root, int viewportWidth, int viewportHeight) {
-        var buff = root.getChildren().stream().filter(e -> e.getClass() != Rectangle.class).toList();
+        var buff = root.getChildren().stream()
+                .filter(e -> e.getClass() != Rectangle.class).toList();
         root.getChildren().clear();
         buff.forEach(e -> root.getChildren().add(e));
 
@@ -46,7 +47,7 @@ public class Renderer {
                 root.getChildren().add(rectangle);
             }
         }
-        Render(gameField);
+        render(gameField);
     }
 
     /**
@@ -54,7 +55,7 @@ public class Renderer {
      *
      * @param gameField game field taken from Game.
      */
-    public void Render(GameField gameField) {
+    public void render(GameField gameField) {
         for (int i = 0; i < gameField.getWidth(); i++) {
             for (int j = 0; j < gameField.getHeight(); j++) {
                 field[i][j].setFill(getCellColor(gameField, new Point(i, j)));

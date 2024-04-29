@@ -12,7 +12,8 @@ import snake.snake.Snake;
 public class Game {
 
     private final Random random = new Random(System.currentTimeMillis());
-    private final int width, height;
+    private final int width;
+    private final int height;
     private final HashSet<Point> targets = new HashSet<>();
     private final Snake snake;
     private final int targetsCount;
@@ -21,7 +22,7 @@ public class Game {
     /**
      * Check if all targets are present and update if need.
      */
-    private void UpdateTargets() {
+    private void updateTargets() {
         while (targets.size() < targetsCount) {
             Point newTarget = new Point(random.nextInt(width), random.nextInt(height));
             if (snake.isUsed(newTarget) || targets.contains(newTarget)) {
@@ -43,7 +44,7 @@ public class Game {
         this.height = height;
         this.snake = new Snake(width, height);
         this.targetsCount = targetsCount;
-        UpdateTargets();
+        updateTargets();
     }
 
     /**
@@ -55,7 +56,7 @@ public class Game {
     public boolean update(KeyCode pressedButton) {
         boolean status = snake.update(pressedButton, targets);
         score += targetsCount - targets.size();
-        UpdateTargets();
+        updateTargets();
         return status;
     }
 

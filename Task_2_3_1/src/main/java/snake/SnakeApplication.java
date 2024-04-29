@@ -93,7 +93,7 @@ public class SnakeApplication extends Application {
                 startGame();
             }
 
-            renderer.Render(game.getRenderData());
+            renderer.render(game.getRenderData());
             currentScore = game.getScore();
             currentScoreLabel.setText("Current score: " + currentScore);
             double currentSpeed = Math.max(150, initialSpeed - game.getScore() * 10);
@@ -118,8 +118,8 @@ public class SnakeApplication extends Application {
         });
 
         pauseLabel = new Label("Pause");
-        pauseLabel.setStyle("-fx-padding: 200; -fx-background-color: rgba(255, 255, 255, 0.8); " +
-                            "-fx-font-size: 250; -fx-color: rgb(252,252,252); -fx-font-weight: bold");
+        pauseLabel.setStyle("-fx-padding: 200; -fx-background-color: rgba(255, 255, 255, 0.8); "
+                + "-fx-font-size: 250; -fx-color: rgb(252,252,252); -fx-font-weight: bold");
         root.getChildren().add(pauseLabel);
 
         maximumScoreLabel = new Label();
