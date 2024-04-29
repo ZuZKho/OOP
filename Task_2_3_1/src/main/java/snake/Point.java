@@ -3,12 +3,13 @@ package snake;
 /**
  * Point class.
  */
+@SuppressWarnings("MemberName")
 public class Point {
     private final int x;
     private final int y;
 
     /**
-     * Default constructor
+     * Default constructor.
      *
      * @param x x coordinate of Point.
      * @param y y coordinate of Point.

@@ -20,6 +20,7 @@ import javafx.util.Duration;
 /**
  * Main application class.
  */
+@SuppressWarnings("VariableDeclarationUsageDistance")
 public class SnakeApplication extends Application {
 
     /**
@@ -117,7 +118,8 @@ public class SnakeApplication extends Application {
         });
 
         pauseLabel = new Label("Pause");
-        pauseLabel.setStyle("-fx-padding: 200; -fx-background-color: rgba(255, 255, 255, 0.8); -fx-font-size: 250; -fx-color: rgb(252,252,252); -fx-font-weight: bold");
+        pauseLabel.setStyle("-fx-padding: 200; -fx-background-color: rgba(255, 255, 255, 0.8); " +
+                            "-fx-font-size: 250; -fx-color: rgb(252,252,252); -fx-font-weight: bold");
         root.getChildren().add(pauseLabel);
 
         maximumScoreLabel = new Label();
@@ -164,7 +166,11 @@ public class SnakeApplication extends Application {
         scoreVbox.setTranslateX(1100);
         scoreVbox.setTranslateY(50);
         root.getChildren().add(scoreVbox);
-        VBox vbox = new VBox(guideLabel, widthLabel, widthSlider, heightLabel, heightSlider, targetLabel, targetSlider, hbox);
+        VBox vbox = new VBox(guideLabel,
+                widthLabel, widthSlider,
+                heightLabel, heightSlider,
+                targetLabel, targetSlider,
+                hbox);
         vbox.setTranslateX(1100);
         vbox.setTranslateY(250);
         root.getChildren().add(vbox);
@@ -196,10 +202,15 @@ public class SnakeApplication extends Application {
     private KeyCode lastPressedKey = null;
     private Group root = new Group();
     private Label pauseLabel;
-    private Label lastScoreLabel, maximumScoreLabel, currentScoreLabel;
-    private int currentScore = 0, maximumScore = 0, lastScore = 0;
+    private Label lastScoreLabel;
+    private Label maximumScoreLabel;
+    private Label currentScoreLabel;
+    private int currentScore = 0;
+    private int maximumScore = 0;
+    private int lastScore = 0;
     private int initialSpeed = 400;
-    private int viewportWidth = 1280, viewportHeight = 720;
+    private int viewportWidth = 1280;
+    private int viewportHeight = 720;
     private int width = 15;
     private int height = 15;
     private int targetsCount = 2;

@@ -1,4 +1,4 @@
-package snake.gameField;
+package snake.gamefield;
 
 /**
  * Enum showing game-cell status.

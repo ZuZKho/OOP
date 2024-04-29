@@ -3,7 +3,7 @@ package snake;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import snake.gameField.GameField;
+import snake.gamefield.GameField;
 
 /**
  * Class that adds field rendering to JavaFX app.

@@ -1,4 +1,4 @@
-package snake.gameField;
+package snake.gamefield;
 
 import java.util.HashSet;
 import snake.Point;

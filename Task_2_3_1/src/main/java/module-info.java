@@ -6,6 +6,6 @@ module snake {
     exports snake;
     exports snake.snake;
     opens snake.snake to javafx.fxml;
-    exports snake.gameField;
-    opens snake.gameField to javafx.fxml;
+    exports snake.gamefield;
+    opens snake.gamefield to javafx.fxml;
 }

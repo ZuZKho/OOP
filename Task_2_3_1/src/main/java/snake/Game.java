@@ -1,9 +1,9 @@
 package snake;
 
-import javafx.scene.input.KeyCode;
 import java.util.HashSet;
 import java.util.Random;
-import snake.gameField.GameField;
+import javafx.scene.input.KeyCode;
+import snake.gamefield.GameField;
 import snake.snake.Snake;
 
 /**
@@ -24,7 +24,9 @@ public class Game {
     private void UpdateTargets() {
         while (targets.size() < targetsCount) {
             Point newTarget = new Point(random.nextInt(width), random.nextInt(height));
-            if (snake.isUsed(newTarget) || targets.contains(newTarget)) continue;
+            if (snake.isUsed(newTarget) || targets.contains(newTarget)) {
+                continue;
+            }
             targets.add(newTarget);
         }
     }

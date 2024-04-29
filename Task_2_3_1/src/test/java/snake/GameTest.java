@@ -1,21 +1,27 @@
 package snake;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import javafx.scene.input.KeyCode;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 import java.util.Random;
+import javafx.scene.input.KeyCode;
 import org.junit.jupiter.api.RepeatedTest;
-import snake.gameField.Cell;
+import snake.gamefield.Cell;
 
+/**
+ * Tests.
+ */
+@SuppressWarnings("Indentation")
 class GameTest {
 
     @RepeatedTest(10)
     void targetsGameTest() {
-        int width = 15, height = 15;
+        int width = 15;
+        int height = 15;
         Game game = new Game(width, height, 5);
         while (game.update(getRandomButton())) {
             var gameField = game.getRenderData();
@@ -34,7 +40,8 @@ class GameTest {
 
     @RepeatedTest(10)
     void snakeIntegrityTest() {
-        int width = 15, height = 15;
+        int width = 15;
+        int height = 15;
         Game game = new Game(width, height, 5);
         while (game.update(getRandomButton())) {
             var gameField = game.getRenderData();
@@ -42,7 +49,8 @@ class GameTest {
 
             for (int i = 0; i < width; i++) {
                 for (int j = 0; j < height; j++) {
-                    if (gameField.getCell(new Point(i, j)) == Cell.SNAKE || gameField.getCell(new Point(i, j)) == Cell.SNAKEHEAD) {
+                    if (gameField.getCell(new Point(i, j)) == Cell.SNAKE
+                            || gameField.getCell(new Point(i, j)) == Cell.SNAKEHEAD) {
                         snakePoints.add(new Point(i, j));
                     }
                 }
@@ -63,10 +71,10 @@ class GameTest {
 
         while (!queue.isEmpty()) {
             Point current = queue.poll();
-            Point[] pts = new Point[]{new Point((current.getX() + 1) % width, current.getY()),
-                          new Point((current.getX() - 1 + width) % width, current.getY()),
-                          new Point(current.getX(), (current.getY() + 1) % height),
-                          new Point(current.getX(), (current.getY() - 1 + height) % height)};
+            Point[] pts = new Point[]{  new Point((current.getX() + 1) % width, current.getY()),
+                                        new Point((current.getX() - 1 + width) % width, current.getY()),
+                                        new Point(current.getX(), (current.getY() + 1) % height),
+                                        new Point(current.getX(), (current.getY() - 1 + height) % height)};
 
             for (var point : pts) {
                 if (points.contains(point)) {
