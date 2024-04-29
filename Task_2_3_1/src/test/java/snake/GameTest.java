@@ -1,13 +1,15 @@
 package snake;
 
-import javafx.scene.input.KeyCode;
-import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.Test;
-import snake.GameField.Cell;
-
-import java.util.*;
-
 import static org.junit.jupiter.api.Assertions.*;
+
+import javafx.scene.input.KeyCode;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
+import java.util.Random;
+import org.junit.jupiter.api.RepeatedTest;
+import snake.gameField.Cell;
 
 class GameTest {
 

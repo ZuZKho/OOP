@@ -4,7 +4,8 @@ package snake;
  * Point class.
  */
 public class Point {
-    private int x, y;
+    private final int x;
+    private final int y;
 
     /**
      * Default constructor

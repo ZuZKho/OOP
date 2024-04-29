@@ -1,19 +1,20 @@
 package snake.snake;
 
 import javafx.scene.input.KeyCode;
-import snake.Point;
-
 import java.util.ArrayDeque;
 import java.util.HashSet;
 import java.util.Queue;
+import snake.Point;
 
 /**
  * Snake class, storing all information about snake position in Game.
  */
 public class Snake {
 
-    private final int width, height;
-    private int headX, headY;
+    private final int width;
+    private final int height;
+    private int headX;
+    private int headY;
     private Direction direction = Direction.UP;
     private final Queue<Point> queue = new ArrayDeque<>();
     private final HashSet<Point> used = new HashSet<>();
@@ -60,7 +61,7 @@ public class Snake {
      * @return is game ended.
      */
     public boolean update(KeyCode pressedButton, HashSet<Point> targets) {
-        if (pressedButton != null)
+        if (pressedButton != null) {
             switch (pressedButton) {
                 case LEFT:
                     if (direction != direction.RIGHT) {
@@ -82,13 +83,17 @@ public class Snake {
                         direction = direction.DOWN;
                     }
                     break;
+                default:
+                    break;
             }
+        }
 
         switch (direction) {
             case RIGHT -> headX = (headX + 1) % width;
             case LEFT -> headX = (headX - 1 + width) % width;
             case DOWN -> headY = (headY + 1) % height;
             case UP -> headY = (headY - 1 + height) % height;
+            default -> {}
         }
 
         Point head = new Point(headX, headY);

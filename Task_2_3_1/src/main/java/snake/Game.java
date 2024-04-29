@@ -1,11 +1,10 @@
 package snake;
 
 import javafx.scene.input.KeyCode;
-import snake.GameField.GameField;
-import snake.snake.Snake;
-
 import java.util.HashSet;
 import java.util.Random;
+import snake.gameField.GameField;
+import snake.snake.Snake;
 
 /**
  * Main class for snake game logic.

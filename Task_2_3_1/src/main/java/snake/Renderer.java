@@ -3,7 +3,7 @@ package snake;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import snake.GameField.GameField;
+import snake.gameField.GameField;
 
 /**
  * Class that adds field rendering to JavaFX app.
@@ -21,9 +21,9 @@ public class Renderer {
      * @param viewportHeight viewport height in pixels.
      */
     public Renderer(GameField gameField, Group root, int viewportWidth, int viewportHeight) {
-        var Mem = root.getChildren().stream().filter(e -> e.getClass() != Rectangle.class).toList();
+        var buff = root.getChildren().stream().filter(e -> e.getClass() != Rectangle.class).toList();
         root.getChildren().clear();
-        Mem.forEach(e -> root.getChildren().add(e));
+        buff.forEach(e -> root.getChildren().add(e));
 
         field = new Rectangle[gameField.getWidth()][gameField.getHeight()];
         viewportWidth -= 200;

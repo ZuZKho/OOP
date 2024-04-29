@@ -1,9 +1,8 @@
-package snake.GameField;
-
-import snake.Point;
-import snake.snake.Snake;
+package snake.gameField;
 
 import java.util.HashSet;
+import snake.Point;
+import snake.snake.Snake;
 
 /**
  * Class that Game provides for rendering.
