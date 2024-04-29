@@ -16,14 +16,19 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.io.IOException;
 
-import static java.lang.Math.max;
-
+/**
+ * Main application class.
+ */
 public class SnakeApplication extends Application {
 
+    /**
+     * Start method of app.
+     *
+     * @param primaryStage stage of app.
+     */
     @Override
-    public void start(Stage primaryStage) throws IOException {
+    public void start(Stage primaryStage) {
         createStage(primaryStage);
         timeline = new Timeline(new KeyFrame(Duration.millis(initialSpeed), frameEventHandler));
         timeline.setCycleCount(Timeline.INDEFINITE);
@@ -31,12 +36,20 @@ public class SnakeApplication extends Application {
         timeline.play();
     }
 
+    /**
+     * Deafult JavaFX main class.
+     *
+     * @param args command line arguments.
+     */
     public static void main(String[] args) {
         Application.launch(args);
     }
 
+    /**
+     * Game initializing method.
+     */
     private void startGame() {
-        maximumScore = max(maximumScore, currentScore);
+        maximumScore = Math.max(maximumScore, currentScore);
         lastScore = currentScore;
         currentScore = 0;
         maximumScoreLabel.setText("Maximum score: " + maximumScore);
@@ -48,6 +61,9 @@ public class SnakeApplication extends Application {
         renderer = new Renderer(game.getRenderData(), root, viewportWidth, viewportHeight);
     }
 
+    /**
+     * Event handler gets called every game frame to update app state.
+     */
     private EventHandler<ActionEvent> frameEventHandler = new EventHandler<ActionEvent>() {
         @Override
         public void handle(ActionEvent event) {
@@ -79,11 +95,16 @@ public class SnakeApplication extends Application {
             renderer.Render(game.getRenderData());
             currentScore = game.getScore();
             currentScoreLabel.setText("Current score: " + currentScore);
-            double currentSpeed = max(100, initialSpeed - game.getScore() * 10);
+            double currentSpeed = Math.max(150, initialSpeed - game.getScore() * 10);
             timeline.setRate((double) initialSpeed / currentSpeed);
         }
     };
 
+    /**
+     * Class that creates all the JavaFX objects, instead of fxml file.
+     *
+     * @param primaryStage stage to create objects on it.
+     */
     private void createStage(Stage primaryStage) {
         // Setting scene
         Scene primaryScene = new Scene(root, viewportWidth, viewportHeight);
@@ -155,6 +176,11 @@ public class SnakeApplication extends Application {
         primaryStage.show();
     }
 
+    /**
+     * Edit JavaFX Slider.
+     *
+     * @param slider slider to edit.
+     */
     private void setupSlider(Slider slider) {
         slider.setShowTickLabels(true);
         slider.setShowTickMarks(true);
