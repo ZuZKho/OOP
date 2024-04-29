@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"snake.gamefield","l":"Cell"},{"p":"snake.snake","l":"Direction"},{"p":"snake","l":"Game"},{"p":"snake.gamefield","l":"GameField"},{"p":"snake","l":"Point"},{"p":"snake","l":"Renderer"},{"p":"snake.snake","l":"Snake"},{"p":"snake","l":"SnakeApplication"}];updateSearchResults();
