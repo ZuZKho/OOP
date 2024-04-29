@@ -1,0 +1,22 @@
+[
+  {
+    "address": "Pushkina 13",
+    "delivery-time": 100
+  },
+  {
+    "address": "Lenina 12",
+    "delivery-time": 60
+  },
+  {
+    "address": "Pobedi 9",
+    "delivery-time": 50
+  },
+  {
+    "address": "Pirogova 14",
+    "delivery-time": 90
+  },
+  {
+    "address": "Kutuzova 8",
+    "delivery-time": 40
+  }
+]

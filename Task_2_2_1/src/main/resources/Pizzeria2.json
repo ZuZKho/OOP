@@ -1,0 +1,36 @@
+{
+  "bakers": [
+    {
+      "name": "Bob",
+      "baking-time": 50
+    },
+    {
+      "name": "John",
+      "baking-time": 30
+    },
+    {
+      "name": "Tim",
+      "baking-time": 60
+    },
+    {
+      "name": "Tom",
+      "baking-time": 40
+    }
+  ],
+  "couriers": [
+    {
+      "name": "Joe",
+      "volume": 2
+    },
+    {
+      "name": "Caleb",
+      "volume": 1  
+    },
+    {
+      "name": "Nolan",
+      "volume": 3
+    }
+  ],
+  "storage-size": 6,	
+  "working-time": 100
+}
