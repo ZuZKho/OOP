@@ -1,0 +1,45 @@
+plugins {
+    id 'java'
+    id 'jacoco'
+}
+
+group = 'goncharov'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    implementation 'org.codehaus.groovy:groovy-all:3.0.9'
+    implementation("org.gradle:gradle-tooling-api:7.3-20210825160000+0000")
+    runtimeOnly 'org.slf4j:slf4j-simple:1.7.10'
+    implementation("org.apache.directory.studio:org.apache.commons.io:2.4")
+    implementation("com.puppycrawl.tools:checkstyle:10.15.0")
+    implementation("org.eclipse.jgit:org.eclipse.jgit:6.9.0.202403050737-r")
+    implementation 'org.freemarker:freemarker:2.3.30'
+    testCompileOnly("org.projectlombok:lombok:1.18.20")
+    testAnnotationProcessor("org.projectlombok:lombok:1.18.20")
+    compileOnly("org.projectlombok:lombok:1.18.32")
+    annotationProcessor("org.projectlombok:lombok:1.18.20")
+    implementation("com.github.stefanbirkner:system-lambda:1.2.1")
+}
+
+test {
+    useJUnitPlatform()
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+jacocoTestReport {
+    reports {
+        xml.required = true
+    }
+}
