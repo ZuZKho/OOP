@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"goncharov"},{"l":"goncharov.checkers"},{"l":"goncharov.dsl"}];updateSearchResults();
