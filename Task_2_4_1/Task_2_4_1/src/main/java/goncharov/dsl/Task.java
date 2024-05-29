@@ -1,12 +1,14 @@
 package goncharov.dsl;
 
+import java.time.LocalDate;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.time.LocalDate;
-
+/**
+ * Task info class.
+ */
 @Data
-@EqualsAndHashCode(callSuper=false)
+@EqualsAndHashCode(callSuper = false)
 public class Task extends GroovyConfigurable {
     String tag;
     LocalDate softDeadline;

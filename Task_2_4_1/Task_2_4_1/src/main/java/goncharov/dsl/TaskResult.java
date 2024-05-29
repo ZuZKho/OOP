@@ -2,6 +2,9 @@ package goncharov.dsl;
 
 import lombok.Data;
 
+/**
+ * Results of all available checks on task.
+ */
 @Data
 public class TaskResult {
 

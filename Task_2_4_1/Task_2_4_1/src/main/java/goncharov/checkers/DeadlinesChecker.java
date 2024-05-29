@@ -27,6 +27,13 @@ public class DeadlinesChecker implements Checker {
         this.storagePath = storagePath;
     }
 
+    /**
+     * Run deadlines checker.
+     *
+     * @param student
+     * @param task
+     * @param tasksResults
+     */
     public void run(Student student, Task task, HashMap<Student, HashMap<Task, TaskResult>> tasksResults) {
         try {
             File repository = new File(storagePath + student.getNickname());
@@ -35,7 +42,8 @@ public class DeadlinesChecker implements Checker {
             LocalDate firstCommitDate = null, lastCommitDate = null;
 
             for (RevCommit commit : commits) {
-                LocalDate commitDate = LocalDate.ofInstant(Instant.ofEpochSecond(commit.getCommitTime()), ZoneId.systemDefault());
+                LocalDate commitDate = LocalDate.ofInstant(
+                        Instant.ofEpochSecond(commit.getCommitTime()), ZoneId.systemDefault());
                 if (firstCommitDate == null || commitDate.isBefore(firstCommitDate)) {
                     firstCommitDate = commitDate;
                 }

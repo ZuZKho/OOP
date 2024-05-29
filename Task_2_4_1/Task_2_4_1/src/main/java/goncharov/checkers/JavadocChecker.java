@@ -24,9 +24,17 @@ public class JavadocChecker implements Checker {
         this.storagePath = storagePath;
     }
 
+    /**
+     * Run javadoc checker.
+     *
+     * @param student
+     * @param task
+     * @param tasksResults
+     */
     public void run(Student student, Task task, HashMap<Student, HashMap<Task, TaskResult>> tasksResults) {
         GradleConnector connector = GradleConnector.newConnector();
-        connector.forProjectDirectory(new File(storagePath + student.getNickname() + "/" + task.getTag()));
+        connector.forProjectDirectory(new File(storagePath + student.getNickname()
+                                                                        + "/" + task.getTag()));
         ProjectConnection connection = connector.connect();
         try {
             connection.newBuild()

@@ -3,10 +3,10 @@ package goncharov.checkers;
 import goncharov.dsl.Student;
 import goncharov.dsl.Task;
 import goncharov.dsl.TaskResult;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.util.HashMap;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import org.gradle.tooling.GradleConnector;
 import org.gradle.tooling.ProjectConnection;
 import org.w3c.dom.Document;
@@ -31,7 +31,8 @@ public class TestsChecker implements Checker {
     public void run(Student student, Task task, HashMap<Student, HashMap<Task, TaskResult>> tasksResults) {
         // Build
         GradleConnector connector = GradleConnector.newConnector();
-        connector.forProjectDirectory(new File(storagePath + student.getNickname() + "/" + task.getTag()));
+        connector.forProjectDirectory(new File(storagePath
+                                    + student.getNickname() + "/" + task.getTag()));
         ProjectConnection connection = connector.connect();
         try {
             connection.newBuild()
@@ -46,7 +47,8 @@ public class TestsChecker implements Checker {
         tasksResults.get(student).get(task).setCompiled(true);
 
         // Test results checking
-        String testResultsFolder = storagePath + student.getNickname() + "/" + task.getTag() + "/build/test-results/test/";
+        String testResultsFolder = storagePath + student.getNickname()
+                                + "/" + task.getTag() + "/build/test-results/test/";
         File folder = new File(testResultsFolder);
         String xmlName = "";
         for (var file : folder.listFiles()) {
@@ -57,7 +59,8 @@ public class TestsChecker implements Checker {
             }
         }
         try {
-            String testsResultsFileName = storagePath + student.getNickname() + "/" + task.getTag() + "/build/test-results/test/" + xmlName;
+            String testsResultsFileName = storagePath + student.getNickname() + "/"
+                                    + task.getTag() + "/build/test-results/test/" + xmlName;
             DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             Document doc = builder.parse(new File(testsResultsFileName));
             doc.getDocumentElement().normalize();

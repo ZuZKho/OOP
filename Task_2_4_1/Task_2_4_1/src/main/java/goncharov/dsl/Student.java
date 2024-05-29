@@ -3,8 +3,11 @@ package goncharov.dsl;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+/**
+ * Student info class.
+ */
 @Data
-@EqualsAndHashCode(callSuper=false)
+@EqualsAndHashCode(callSuper = false)
 public class Student extends GroovyConfigurable {
 
     private String fullname;
