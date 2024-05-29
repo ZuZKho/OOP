@@ -50,7 +50,9 @@ public class App {
             for (var task : config.getTasks()) {
                 tasksResults.get(student).put(task, new TaskResult(downloaded));
             }
-            if (!downloaded) continue;
+            if (!downloaded) {
+                continue;
+            }
 
             //  Run all needed checks
             for (var task : config.getTasks()) {

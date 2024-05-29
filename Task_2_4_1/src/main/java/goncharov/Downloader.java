@@ -16,7 +16,7 @@ public class Downloader {
      *
      * @param repo link to repository.
      * @param subfolder name of folder to store downloaded files.
-     * @return
+     * @return is downloaded successfully.
      */
     public boolean download(String repo, String subfolder) {
         try {

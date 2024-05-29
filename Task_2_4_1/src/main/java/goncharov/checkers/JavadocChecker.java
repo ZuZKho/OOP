@@ -27,9 +27,9 @@ public class JavadocChecker implements Checker {
     /**
      * Run javadoc checker.
      *
-     * @param student
-     * @param task
-     * @param tasksResults
+     * @param student student info.
+     * @param task task info.
+     * @param tasksResults place to store results.
      */
     public void run(Student student, Task task, HashMap<Student, HashMap<Task, TaskResult>> tasksResults) {
         GradleConnector connector = GradleConnector.newConnector();

@@ -1,6 +1,7 @@
 package goncharov.checkers;
 
 import static com.github.stefanbirkner.systemlambda.SystemLambda.catchSystemExit;
+
 import com.puppycrawl.tools.checkstyle.Main;
 import goncharov.dsl.Student;
 import goncharov.dsl.Task;
@@ -28,9 +29,9 @@ public class CheckstyleChecker implements Checker {
     /**
      *  Run checkstyle checker.
      *
-     * @param student
-     * @param task
-     * @param tasksResults
+     * @param student student info.
+     * @param task task info.
+     * @param tasksResults place to store results.
      */
     public void run(Student student, Task task,
                     HashMap<Student, HashMap<Task, TaskResult>> tasksResults) {
@@ -39,8 +40,8 @@ public class CheckstyleChecker implements Checker {
             catchSystemExit(() -> {
                 String configPath = storagePath + "/" + student.getNickname()
                                                     + "/.github/google_checks.xml";
-                var mainSourcePath = storagePath + "/" + student.getNickname() +
-                                            "/" + task.getTag() + "/src/main/java";
+                var mainSourcePath = storagePath + "/" + student.getNickname()
+                                            + "/" + task.getTag() + "/src/main/java";
                 Main.main("-c", configPath, "-o", checkstylePath, mainSourcePath);
             });
             BufferedReader reader = new BufferedReader(new FileReader(checkstylePath));

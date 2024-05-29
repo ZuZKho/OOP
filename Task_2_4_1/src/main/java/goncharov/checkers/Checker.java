@@ -13,9 +13,9 @@ public interface Checker {
     /**
      * Run checker.
      *
-     * @param student
-     * @param task
-     * @param tasksResults
+     * @param student student info.
+     * @param task task info.
+     * @param tasksResults place to store results.
      */
     void run(Student student, Task task, HashMap<Student, HashMap<Task, TaskResult>> tasksResults);
 }

@@ -10,6 +10,12 @@ import java.util.Collection;
  * Post process class for groovy objects.
  */
 public class GroovyConfigurable extends GroovyObjectSupport {
+
+    /**
+     * Post process groovy object.
+     *
+     * @throws Exception post processing error.
+     */
     public void postProcess() throws Exception {
         for (MetaProperty metaProperty : getMetaClass().getProperties()) {
             Object value = getProperty(metaProperty.getName());

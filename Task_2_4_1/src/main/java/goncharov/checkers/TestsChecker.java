@@ -28,7 +28,15 @@ public class TestsChecker implements Checker {
         this.storagePath = storagePath;
     }
 
-    public void run(Student student, Task task, HashMap<Student, HashMap<Task, TaskResult>> tasksResults) {
+    /**
+     * Run tests checker.
+     *
+     * @param student student info.
+     * @param task task info.
+     * @param tasksResults place to store results.
+     */
+    public void run(Student student, Task task, HashMap<Student,
+                            HashMap<Task, TaskResult>> tasksResults) {
         // Build
         GradleConnector connector = GradleConnector.newConnector();
         connector.forProjectDirectory(new File(storagePath

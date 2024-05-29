@@ -30,16 +30,18 @@ public class DeadlinesChecker implements Checker {
     /**
      * Run deadlines checker.
      *
-     * @param student
-     * @param task
-     * @param tasksResults
+     * @param student student info.
+     * @param task task info.
+     * @param tasksResults place to store results.
      */
-    public void run(Student student, Task task, HashMap<Student, HashMap<Task, TaskResult>> tasksResults) {
+    public void run(Student student, Task task, HashMap<Student,
+                            HashMap<Task, TaskResult>> tasksResults) {
         try {
             File repository = new File(storagePath + student.getNickname());
             var commits = Git.open(repository).log().addPath(task.getTag()).call();
 
-            LocalDate firstCommitDate = null, lastCommitDate = null;
+            LocalDate firstCommitDate = null;
+            LocalDate lastCommitDate = null;
 
             for (RevCommit commit : commits) {
                 LocalDate commitDate = LocalDate.ofInstant(
