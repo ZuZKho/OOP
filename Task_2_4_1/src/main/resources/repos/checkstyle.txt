@@ -1,0 +1,7 @@
+Начинаем проверку...
+[WARN] C:\Users\matve\Desktop\git\NSU OOP\OOP\Task_2_4_1\src\main\resources\repos\mixdone\Task_1_1_2\src\main\java\Polynomial.java:1:1: Пропущен Javadoc комментарий. [MissingJavadocType]
+[WARN] C:\Users\matve\Desktop\git\NSU OOP\OOP\Task_2_4_1\src\main\resources\repos\mixdone\Task_1_1_2\src\main\java\Polynomial.java:5:5: Пропущен Javadoc комментарий. [MissingJavadocMethod]
+[WARN] C:\Users\matve\Desktop\git\NSU OOP\OOP\Task_2_4_1\src\main\resources\repos\mixdone\Task_1_1_2\src\main\java\Polynomial.java:9:9: Символ '}' (9) должен быть в той же строке, как и следующая часть мультиблочного выражения (например: if/else-if/else, do/while или try/catch/finally). [RightCurlySame]
+[WARN] C:\Users\matve\Desktop\git\NSU OOP\OOP\Task_2_4_1\src\main\resources\repos\mixdone\Task_1_1_2\src\main\java\Polynomial.java:90: Теги Javadoc не должны быть пустыми. [NonEmptyAtclauseDescription]
+[WARN] C:\Users\matve\Desktop\git\NSU OOP\OOP\Task_2_4_1\src\main\resources\repos\mixdone\Task_1_1_2\src\main\java\Polynomial.java:113:5: 'METHOD_DEF' должен быть отделён от предыдущей строки. [EmptyLineSeparator]
+Проверка завершена.

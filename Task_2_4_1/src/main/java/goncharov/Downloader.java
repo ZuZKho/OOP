@@ -1,0 +1,33 @@
+package goncharov;
+
+/**
+ * Class for downloading repositories.
+ */
+public class Downloader {
+
+    private String storagePath = "";
+
+    public Downloader(String path) {
+        storagePath = path;
+    }
+
+    /**
+     * Download repository from github.
+     *
+     * @param repo link to repository.
+     * @param subfolder name of folder to store downloaded files.
+     * @return is downloaded successfully.
+     */
+    public boolean download(String repo, String subfolder) {
+        try {
+            ProcessBuilder processBuilder = new ProcessBuilder("git",
+                                        "clone", repo, storagePath + "/" + subfolder);
+            Process process = processBuilder.start();
+            int exitCode = process.waitFor();
+            return exitCode == 0;
+        } catch (Exception e) {
+            System.out.println("Can't download repository " + repo + ": " + e);
+            return false;
+        }
+    }
+}
