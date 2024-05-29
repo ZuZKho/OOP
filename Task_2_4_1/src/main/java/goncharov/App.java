@@ -23,13 +23,16 @@ public class App {
     private static String storagePath = "src/main/resources/repos/";
     private static String configFileName = "src/main/resources/config.groovy";
     private static Downloader downloader = new Downloader(storagePath);
-    private static Checker[] checkers = new Checker[]{new JavadocChecker(storagePath), new CheckstyleChecker(storagePath), new DeadlinesChecker(storagePath), new TestsChecker(storagePath)};
+    private static Checker[] checkers = new Checker[]{new JavadocChecker(storagePath),
+            new CheckstyleChecker(storagePath),
+            new DeadlinesChecker(storagePath),
+            new TestsChecker(storagePath)};
 
     /**
      * App starting method.
      *
      * @param args not used.
-     * @throws Exception any problems during deleting files.
+     * @throws IOException any problems during deleting files.
      */
     public static void main(String[] args) throws IOException {
         // Initializing App
@@ -46,7 +49,8 @@ public class App {
             tasksResults.put(student, new HashMap<>());
 
             // Downloading repositories
-            boolean downloaded = downloader.download(student.getRepository(), student.getNickname());
+            boolean downloaded = downloader.download(student.getRepository(),
+                                                     student.getNickname());
             for (var task : config.getTasks()) {
                 tasksResults.get(student).put(task, new TaskResult(downloaded));
             }
