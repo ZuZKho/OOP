@@ -9,12 +9,12 @@ public class TaskResult {
         this.downloaded = downloaded;
     }
 
-    boolean downloaded;
+    boolean downloaded = false;
     boolean compiled = false;
     boolean javadoc = false;
     boolean softDeadline = false;
     boolean hardDeadline = false;
-    String mark = "-0.5";
+    float mark = -0.5f;
     int checkstyleWarnings = -1;
     int testsPassed = -1;
     int testsSkipped = -1;

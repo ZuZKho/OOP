@@ -3,7 +3,6 @@ package goncharov.dsl;
 import groovy.lang.Closure;
 import groovy.lang.GroovyObjectSupport;
 import groovy.lang.MetaProperty;
-
 import java.lang.reflect.ParameterizedType;
 import java.util.Collection;
 
@@ -15,7 +14,7 @@ public class GroovyConfigurable extends GroovyObjectSupport {
                     value instanceof Collection) {
                 ParameterizedType collectionType = (ParameterizedType)
                         getClass().getDeclaredField(metaProperty.getName()).getGenericType();
-                Class itemClass = (Class)collectionType.getActualTypeArguments()[0];
+                Class itemClass = (Class) collectionType.getActualTypeArguments()[0];
                 if (GroovyConfigurable.class.isAssignableFrom(itemClass)) {
                     Collection collection = (Collection) value;
                     Collection newValue = collection.getClass().newInstance();

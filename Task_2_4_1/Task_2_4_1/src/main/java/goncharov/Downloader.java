@@ -15,6 +15,7 @@ public class Downloader {
             int exitCode= process.waitFor();
             return exitCode == 0;
         } catch (Exception e) {
+            System.out.println("Can't download repository " + repo + ": " + e);
             return false;
         }
     }

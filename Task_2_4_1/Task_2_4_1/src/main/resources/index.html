@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Task results</title>
     <style>
         table {
@@ -9,7 +10,10 @@
         }
         th, td {
             padding: 8px;
-            text-align: left;
+            text-align: center;
+        }
+        .student {
+            border: 3px solid black;
         }
 
         p {
@@ -30,175 +34,143 @@
             font-weight: 600;
             font-size: 20px;
         }
+
+        .warn {
+            background-color: #ff9248;
+        }
     </style>
 </head>
 
 <body>
-<table border="1">
+<table border="1px solid black">
     <tr>
-        <th>Name</th>
-                     <th>
-                Task_1_4_1
-            </th>
-            <th>
-                Task_1_1_2
-            </th>
-            <th>
-                Task_1_3_1
-            </th>
-            <th>
-                Task_1_1_1
-            </th>
+        <th rowspan="2">Name</th>
+        <th rowspan="2">Total Mark</th>
+        <th rowspan="2">Task tag</th>
+        <th rowspan="2">Downloaded</th>
+        <th rowspan="2">Compiled</th>
+        <th rowspan="2">Javadoc</th>
+        <th rowspan="2">Checkstyle</th>
+        <th colspan="3">Tests</th>
+        <th colspan="2">Deadlines</th>
+        <th rowspan="2">Mark</th>
     </tr>
-        <tr>
-            <th>Гончаров Матвей</th>
-                <td>
-                    <p>Downloaded successfully: <b>true</b></p>
-                    <p>Compiled successfully: <b>true</b></p>
-                    <p>Javadoc generated: <b>true</b></p>
-
-                    <p>Checkstyle warning count:
+    <tr>
+        <th>Passed</th>
+        <th>Skipped</th>
+        <th>Failed</th>
+        <th>Soft</th>
+        <th>Hard</th>
+    </tr>
+            <tr class="student">
+            <th rowspan="4">Гончаров Матвей</th>
+            <th rowspan="4"><b>2.5</b></th>
+                <tr>
+                    <th>Task_1_4_1</th>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+                    <td>
                           <span class="yellow">4</span>
-                    </p>
+                    </td>
+                    <td class="green">6</td>
+                    <td class="yellow">0</td>
+                    <td class="red">0</td>
 
-                    <p>Tests Passed/Skipped/Failed: <span class="green">6</span>/
-                                                    <span class="yellow">0</span>/
-                                                    <span class="red">0</span></p>
-                    <p>Deadlines & Mark:
-                            <span class="red"><b>soft</b></span>
-                            <span class="green"><b>hard</b></span>
-                        <b>0.5</b>
-                    </p>
-                </td>
-                <td>
-                    <p>Downloaded successfully: <b>true</b></p>
-                    <p>Compiled successfully: <b>true</b></p>
-                    <p>Javadoc generated: <b>true</b></p>
+                    <td>&#10060;</td>
+                    <td>&#10004;</td>
 
-                    <p>Checkstyle warning count:
+                    <td><b>0,5</b></td>
+                </tr>
+                <tr>
+                    <th>Task_1_1_2</th>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+                    <td>
                           <span class="green">0</span>
-                    </p>
+                    </td>
+                    <td class="green">15</td>
+                    <td class="yellow">0</td>
+                    <td class="red">0</td>
 
-                    <p>Tests Passed/Skipped/Failed: <span class="green">15</span>/
-                                                    <span class="yellow">0</span>/
-                                                    <span class="red">0</span></p>
-                    <p>Deadlines & Mark:
-                           <span class="green"><b>soft</b></span>
-                            <span class="green"><b>hard</b></span>
-                        <b>1.0</b>
-                    </p>
-                </td>
-                <td>
-                    <p>Downloaded successfully: <b>true</b></p>
-                    <p>Compiled successfully: <b>true</b></p>
-                    <p>Javadoc generated: <b>true</b></p>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
 
-                    <p>Checkstyle warning count:
-                          <span class="yellow">3</span>
-                    </p>
-
-                    <p>Tests Passed/Skipped/Failed: <span class="green">5</span>/
-                                                    <span class="yellow">0</span>/
-                                                    <span class="red">0</span></p>
-                    <p>Deadlines & Mark:
-                           <span class="green"><b>soft</b></span>
-                            <span class="green"><b>hard</b></span>
-                        <b>1.0</b>
-                    </p>
-                </td>
-                <td>
-                    <p>Downloaded successfully: <b>true</b></p>
-                    <p>Compiled successfully: <b>true</b></p>
-                    <p>Javadoc generated: <b>true</b></p>
-
-                    <p>Checkstyle warning count:
+                    <td><b>1</b></td>
+                </tr>
+                <tr>
+                    <th>Task_1_1_1</th>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+                    <td>
                           <span class="yellow">2</span>
-                    </p>
+                    </td>
+                    <td class="green">5</td>
+                    <td class="yellow">0</td>
+                    <td class="red">0</td>
 
-                    <p>Tests Passed/Skipped/Failed: <span class="green">5</span>/
-                                                    <span class="yellow">0</span>/
-                                                    <span class="red">0</span></p>
-                    <p>Deadlines & Mark:
-                           <span class="green"><b>soft</b></span>
-                            <span class="green"><b>hard</b></span>
-                        <b>1.0</b>
-                    </p>
-                </td>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+
+                    <td><b>1</b></td>
+                </tr>
         </tr>
-        <tr>
-            <th>Михаил Диза</th>
-                <td>
-                    <p>Downloaded successfully: <b>true</b></p>
-                    <p>Compiled successfully: <b>true</b></p>
-                    <p>Javadoc generated: <b>true</b></p>
-
-                    <p>Checkstyle warning count:
+        <tr class="student">
+            <th rowspan="4">Михаил Диза</th>
+            <th rowspan="4"><b>1.0</b></th>
+                <tr>
+                    <th>Task_1_4_1</th>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+                    <td>
                           <span class="yellow">5</span>
-                    </p>
+                    </td>
+                    <td class="green">6</td>
+                    <td class="yellow">0</td>
+                    <td class="red">0</td>
 
-                    <p>Tests Passed/Skipped/Failed: <span class="green">6</span>/
-                                                    <span class="yellow">0</span>/
-                                                    <span class="red">0</span></p>
-                    <p>Deadlines & Mark:
-                            <span class="red"><b>soft</b></span>
-                            <span class="green"><b>hard</b></span>
-                        <b>0.5</b>
-                    </p>
-                </td>
-                <td>
-                    <p>Downloaded successfully: <b>true</b></p>
-                    <p>Compiled successfully: <b>true</b></p>
-                    <p>Javadoc generated: <b>true</b></p>
+                    <td>&#10060;</td>
+                    <td>&#10004;</td>
 
-                    <p>Checkstyle warning count:
+                    <td><b>0,5</b></td>
+                </tr>
+                <tr>
+                    <th>Task_1_1_2</th>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+                    <td>
                           <span class="yellow">5</span>
-                    </p>
+                    </td>
+                    <td class="green">23</td>
+                    <td class="yellow">0</td>
+                    <td class="red">0</td>
 
-                    <p>Tests Passed/Skipped/Failed: <span class="green">23</span>/
-                                                    <span class="yellow">0</span>/
-                                                    <span class="red">0</span></p>
-                    <p>Deadlines & Mark:
-                           <span class="green"><b>soft</b></span>
-                            <span class="green"><b>hard</b></span>
-                        <b>1.0</b>
-                    </p>
-                </td>
-                <td>
-                    <p>Downloaded successfully: <b>true</b></p>
-                    <p>Compiled successfully: <b>false</b></p>
-                    <p>Javadoc generated: <b>true</b></p>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
 
-                    <p>Checkstyle warning count:
-                          <span class="yellow">2</span>
-                    </p>
+                    <td><b>1</b></td>
+                </tr>
+                <tr>
+                    <th>Task_1_1_1</th>
+                    <td>&#10004;</td>
+                    <td>&#10060;</td>
+                    <td>&#10060;</td>
+                    <td>
+                          <span class="yellow">5</span>
+                    </td>
+                    <td class="green">-1</td>
+                    <td class="yellow">-1</td>
+                    <td class="red">-1</td>
 
-                    <p>Tests Passed/Skipped/Failed: <span class="green">1</span>/
-                                                    <span class="yellow">0</span>/
-                                                    <span class="red">1</span></p>
-                    <p>Deadlines & Mark:
-                           <span class="green"><b>soft</b></span>
-                            <span class="green"><b>hard</b></span>
-                        <b>1.0</b>
-                    </p>
-                </td>
-                <td>
-                    <p>Downloaded successfully: <b>true</b></p>
-                    <p>Compiled successfully: <b>false</b></p>
-                    <p>Javadoc generated: <b>false</b></p>
+                    <td>&#10060;</td>
+                    <td>&#10060;</td>
 
-                    <p>Checkstyle warning count:
-                          <span class="yellow">2</span>
-                    </p>
-
-                    <p>Tests Passed/Skipped/Failed: <span class="green">-1</span>/
-                                                    <span class="yellow">-1</span>/
-                                                    <span class="red">-1</span></p>
-                    <p>Deadlines & Mark:
-                            <span class="red"><b>soft</b></span>
-                            <span class="red"><b>hard</b></span>
-                        <b>-0.5</b>
-                    </p>
-                </td>
+                    <td><b>-0,5</b></td>
+                </tr>
         </tr>
 </table>
 

@@ -27,11 +27,6 @@ tasks = [
             hardDeadline = LocalDate.of(2024, 4, 30)
         },
         {
-            tag = "Task_1_3_1"
-            softDeadline = LocalDate.of(2024, 4, 19)
-            hardDeadline = LocalDate.of(2024, 4, 30)
-        },
-        {
             tag = "Task_1_1_1"
             softDeadline = LocalDate.of(2024, 4, 19)
             hardDeadline = LocalDate.of(2024, 4, 30)
